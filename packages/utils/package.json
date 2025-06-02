@@ -1,0 +1,9 @@
+{
+  "name": "utils",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@schemas/*": [
+        "../../packages/schemas/src/*"
+      ],
+      "@ui/*": [
+        "../../packages/ui/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
