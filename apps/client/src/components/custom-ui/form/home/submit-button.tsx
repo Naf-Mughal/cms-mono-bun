@@ -15,7 +15,7 @@ export const SubmitButton = ({ children }: SubmitButtonProps) => {
   ]);
 
   return (
-    <Button type="submit" className="w-28 h-12 bg-[#09B96D] hover:bg-[#09B96D]/90" disabled={isSubmitting || !canSubmit}>
+    <Button type="submit" className="w-28 h-12 bg-[#09B96D] hover:bg-[#09B96D]/90 hover:cursor-pointer disabled:cursor-not-allowed" disabled={isSubmitting || !canSubmit}>
       {children}
     </Button>
   );

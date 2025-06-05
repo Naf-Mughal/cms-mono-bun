@@ -1,22 +1,26 @@
 "use client"
+import { usePreview } from '@/providers/preview';
 import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import React, { Fragment } from 'react'
+import { Button } from '../ui/button';
 
 
 
 const NavHeader: React.FC = () => {
     const paths = usePathname()?.split("/").splice(1);
     const params = useSearchParams();
-    console.log(paths?.slice(0,-2), "paths");
+    console.log(paths?.slice(0, -2), "paths");
+    const { preview, setPreview } = usePreview();
+
     const rawPaths: any = {
         "booklets": { displayName: "Booklets", linkName: "Create Booklet", shouldLinkButton: true, linkPath: '/booklets/create' },
         "create": { displayName: "Create Booklet", linkName: "", shouldLinkButton: false, linkPath: '' },
         "update": { displayName: "Edit Booklets", linkName: "", shouldLinkButton: false, linkPath: '' },
-        "tasks": { displayName: "Booklets Tasks", linkName: "Preview Booklet" , shouldLinkButton: true},
+        "tasks": { displayName: "Booklets Tasks", linkName: "Preview Booklet", shouldLinkButton: true },
         "view": { displayName: "View Booklets", linkName: "", shouldLinkButton: false, linkPath: '' },
-        "perform": { displayName: "Perform Booklet Task", linkName: params.get("preview") === "true" ? "Hide Preview" : "Preview Booklet", shouldLinkButton: true, linkPath: usePathname(), queryParams: params.get("preview") === "true" ? { preview: false } : { preview: true } },
+        "perform": { displayName: "Perform Booklet Task", linkName: preview ? "Hide Preview" : "Preview Booklet", shouldLinkButton: true, linkPath: usePathname(), isPreview: true },
         "view-task": { displayName: "View Booklet Task", linkName: "", shouldLinkButton: false, linkPath: '' },
     }
     const filteredPaths = paths.filter((path) => rawPaths[path]!);
@@ -27,7 +31,7 @@ const NavHeader: React.FC = () => {
             <div className="flex items-center gap-12">
                 <div className="flex items-center gap-2">
                     {(paths && paths?.length > 1) && (
-                        <Link href={`/${paths?.slice(0,-2).join('/')}`} prefetch>
+                        <Link href={`/${paths?.slice(0, -2).join('/')}`} prefetch>
                             <ChevronLeft />
                         </Link>
                     )}
@@ -45,8 +49,8 @@ const NavHeader: React.FC = () => {
                 </div>
             </div>
             {
-                (paths && rawPaths[currentPath]?.shouldLinkButton) && (
-                    <Link prefetch href={{ pathname: rawPaths[currentPath]?.linkPath as string, query: rawPaths[currentPath]?.queryParams }} className="w-44 h-10 rounded-md bg-[#007EA7] text-white flex justify-center items-center gap-1 cursor-pointer">
+                (paths && rawPaths[currentPath]?.shouldLinkButton) && !rawPaths[currentPath]?.isPreview &&(
+                    <Link href={{ pathname: rawPaths[currentPath]?.linkPath as string, query: rawPaths[currentPath]?.queryParams }} className="w-44 h-10 rounded-md bg-[#007EA7] text-white flex justify-center items-center gap-1 cursor-pointer">
                         {
                             currentPath === "booklets" && <Plus />
                         }
@@ -54,6 +58,11 @@ const NavHeader: React.FC = () => {
                     </Link>
                 )
             }
+            {rawPaths[currentPath]?.isPreview && (
+                <Button className="w-44 h-10 rounded-md bg-[#007EA7] text-white flex justify-center items-center gap-1 cursor-pointer" type='button' onClick={() => setPreview(!preview)}>
+                    <span className='font-semibold'>{rawPaths[currentPath]?.linkName}</span>
+                </Button>
+            )}
         </nav>
     )
 }

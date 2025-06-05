@@ -16,6 +16,7 @@ export const RadioField = ({ label, value, selected, onClick }: RadioFieldProps)
                 id={value}
                 value={value}
                 className={`${selected ? "bg-[#09B96D]" : ""} !text-white`}
+                onClick={onClick}
             />
             {label}
         </Label>

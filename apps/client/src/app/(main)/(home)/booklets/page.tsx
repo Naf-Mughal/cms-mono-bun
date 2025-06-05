@@ -1,8 +1,10 @@
-export const dynamic = 'force-dynamic';
+'use client'
 import BookletTable, { type TableData } from '@/components/home/booklet-table'
+import { Client } from '@/lib/eden';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import { tryCatch } from "@utils/try-catch"
-import { axiosAuthClient } from '@/lib/axios'
+
+
 interface InputData {
     booklets: TableData[],
     currentPage: number,
@@ -44,19 +46,24 @@ const transformData = (data: InputData): TableData[] => {
     return res
 }
 
-const Dashboard: React.FC = async () => {
 
-    const { error, data: response } = await tryCatch(axiosAuthClient.post("/booklets/paginate", { page: 1, limit: 10 }))
-    if (error) return "An error occured";
-    const data = transformData(response.data.data)
+const Booklets: React.FC = () => {
+    const client = Client();
+    const { data: res, isLoading, isError } = useQuery({
+        queryKey: ['booklets'],
+        queryFn: () => client?.api.booklets.paginate.post({ page: 1, limit: 10 }),
+        retry: false,
+    });
+    if (isError && !isLoading && !res) return "An error occured";
+    const data = transformData(res?.data.data)
     return (
         <section className='flex-1 flex flex-col gap-4 px-4'>
             <div className=""></div>
             <div>
-                <BookletTable data={data} />
+                <BookletTable data={data} isLoading={isLoading} />
             </div>
         </section>
     )
 }
 
-export default Dashboard
+export default Booklets

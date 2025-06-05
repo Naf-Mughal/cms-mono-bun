@@ -81,7 +81,7 @@ export default function MorphingLoader({ message = "Loading...", color = "#09b96
     }, [])
 
     return (
-        <div className="flex h-full items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
             <div className="relative flex flex-col items-center">
                 {/* Glow effect */}
                 {isHexColor ? (

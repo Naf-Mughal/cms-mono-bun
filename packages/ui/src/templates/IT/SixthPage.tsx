@@ -63,7 +63,7 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
               <tr>
                 <td className={`border border-gray-300 p-2 ${tasks?.valueInNumber ? '' : 'text-red-600'}`}>{tasks?.valueInNumber || "القيمة بالأرقام (...  ريال سعودي)"} </td>
                 <td className={`border border-gray-300 p-2 ${tasks?.valueInWords ? '' : 'text-red-600'}`}>{tasks?.valueInWords || "القيمة بالتفقيط"}</td>
-                <td className={`border border-gray-300 p-2 ${tasks?.paymentMethod ? '' : 'text-red-600'}`}>شيك مصدق / حوالة بنكية / نظام سداد</td>
+                <td className={`border border-gray-300 p-2 ${tasks?.paymentMethod ? '' : 'text-red-600'}`}>{tasks?.paymentMethod || "شيك مصدق / حوالة بنكية / نظام سداد"}</td>
               </tr>
             </tbody>
           </table>

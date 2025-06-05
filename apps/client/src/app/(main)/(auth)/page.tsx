@@ -4,14 +4,12 @@ import Image from "next/image";
 export default function LoginPage() {
   return (
     <section className="relative overflow-hidden min-h-[calc(100vh-96px)]">
-      {/* Background effects */}
       <div className="absolute w-[403px] h-[403px] left-[85px] top-[75px] bg-gradient-to-br from-[#09B96D] to-[#007EA7] opacity-15 blur-[150px] rounded-md"></div>
       <div className="absolute w-[133px] h-[392px] left-[661px] top-[551px] bg-[#10B4FF] opacity-20 blur-[100px]"></div>
       <div className="absolute w-[133px] h-[392px] left-[-69px] top-[264px] bg-[#09B96D] opacity-15 blur-[100px]"></div>
       <div className="absolute w-[403px] h-[403px] left-[85px] top-[620px] bg-gradient-to-br from-[#09B96D] to-[#007EA7] opacity-15 blur-[150px] rounded-md"></div>
 
       <div className="flex min-h-[calc(100vh-96px)] p-4">
-        {/* Login Form */}
         <div className="lg:w-1/2 w-full flex justify-center pt-20 z-10 px-8">
           <LoginForm />
         </div>

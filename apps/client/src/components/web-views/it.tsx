@@ -99,14 +99,13 @@ const getPageComponent = (currentPageNumber: number, tasks: any): React.ReactNod
     }
 }
 
-const IT = ({ tasks, reload, path, currentPageNumber }: { tasks: any, reload: boolean, path: string, currentPageNumber: number }) => {
-    console.log(tasks, reload, path, currentPageNumber)
+const IT = ({ tasks, currentPageNumber }: { tasks: any, currentPageNumber: number }) => {
     const filteredTasks: any = {}
     tasks?.filter((item: any) => item.pageNumber === currentPageNumber).forEach((item: any) => {
         if (item.inputType === 'radio') {
-            filteredTasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children?.value
+            filteredTasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children?.value || item.data?.children?.find((child: any) => child.value === item.data.value)?.value
         }
-        else if (item.inputType === 'table' || item.inputType === 'nested-list') {
+        else if (item.inputType === 'table' || item.inputType === 'nested-list', item.inputType === 'rows-table') {
             filteredTasks[item.inputName] = item.data
         }
         else if (item.inputType === 'dynamic-table') {
@@ -117,16 +116,6 @@ const IT = ({ tasks, reload, path, currentPageNumber }: { tasks: any, reload: bo
         }
     })
 
-    console.log(filteredTasks)
-    const router = useRouter();
-    useEffect(() => {
-        if (currentPageNumber === 0) {
-            router.push(`${path}?preview=false`);
-        }
-        if (reload) {
-            router.push(`${path}?preview=true`);
-        }
-    }, [reload])
     return (
         <div className='h-full flex flex-col gap-2 my-4' style={{ direction: 'rtl' }}>
             {currentPageNumber === 0 ? null : (

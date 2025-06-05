@@ -99,7 +99,8 @@ export enum BookletInputTypesEnum {
     Table = "table",
     DynamicTable = "dynamic-table",
     NestedList = "nested-list",
-    MultiUpload = "multi-upload"
+    MultiUpload = "multi-upload",
+    RowsTable = 'rows-table'
 }
 
 export const baseValueSchema = z.object({

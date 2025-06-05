@@ -46,8 +46,6 @@ const TwentyFourthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="mb-3 text-black"><span className="font-semibold">أولاً:</span> الشروط الخاصة بالمعدات</p>
                     <p className="mb-3 text-black">تخضع المعدات المستخدمة في تنفيذ الأعمال للمواصفات والمقاييس المعمول بها في المملكة العربية السعودية.</p>
                     <p>{tasks?.equipment}</p>
-                </div>
-                <div className="border-b border-gray-300 pb-4 mb-6">
                     <p className="mb-3 text-black"><span className="font-semibold">ثانياً:</span> جدول مواصفات المعدات</p>
                     <ReadonlyTable data={tasks?.equipmentTable} />
                 </div>

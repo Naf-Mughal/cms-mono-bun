@@ -49,7 +49,7 @@ export default function Table({ data, setData }: TableProps) {
     // Handle editing a cell
     const handleEditCell = (rowIndex: number, columnIndex: number, value: string) => {
         const updatedData = { ...data }
-        updatedData.children[columnIndex].children.value[rowIndex] = value
+        updatedData.children[columnIndex]!.children.value[rowIndex] = value
         setData(updatedData)
     }
 

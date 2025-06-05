@@ -141,7 +141,7 @@ export const ListField = ({
                         className={cn("bg-[#F6F8FC] h-12 border-0", className)}
                         {...inputProps}
                     />
-                    <Button type="button" className="h-12 bg-[#09B96D]" onClick={addValue}>
+                    <Button type="button" className="h-12 bg-[#09B96D] hover:cursor-pointer disabled:cursor-not-allowed" onClick={addValue}>
                         Add
                     </Button>
                 </div>

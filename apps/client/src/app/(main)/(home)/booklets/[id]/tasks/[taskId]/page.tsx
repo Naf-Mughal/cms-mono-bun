@@ -1,10 +1,9 @@
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation'
+'use client'
 
-export const dynamic = 'force-dynamic'
+import { usePathname, useRouter } from "next/navigation";
 
 export default async function BookletTaskPage() {
-    const header = await headers();
-    const path = header.get("x-current-path")
-    return redirect(`${path}/perform`)
+    const router = useRouter();
+    const path = usePathname();
+    return router.push(`${path}/perform`)
 }

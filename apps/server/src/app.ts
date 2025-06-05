@@ -21,3 +21,5 @@ export const app = new Elysia({ prefix: '/api' })
     .use(bookletRouter)
     .use(uploadRouter)
     .listen(process.env.PORT || 8080);
+
+export type App = typeof app 

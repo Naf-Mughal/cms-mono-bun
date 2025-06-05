@@ -1,27 +1,6 @@
-export enum BookletInputTypesEnum {
-    Text = 'text',
-    Radio = 'radio',
-    Date = 'date',
-    List = 'list',
-    Readonly = 'readonly',
-    NestedList = 'nested-list',
-    DynamicTable = 'dynamic-table',
-    Table = 'table',
-    MultiUpload = 'multi-upload',
-}
-export enum BookletTaskStatusesEnum {
-    Pending = 'Pending',
-}
-export enum BookletTaskTypesEnum {
-    Add = 'Add',
-}
-export enum PaymentTypesEnum {
-    CertifiedCheque = 'Certified Cheque',
-    Cash = 'Cash',
-    Other = 'Other',
-}
+import { BookletInputTypesEnum, BookletTaskStatusesEnum, BookletTaskTypesEnum, type BookletTasks } from "@schemas/index";
 
-export const bookletTasksSeed: any = [
+export const bookletTasksSeed: BookletTasks = [
     {
         name: 'Name of Government Orgnization',
         inputName: 'nameOfGovtEntity',
@@ -54,7 +33,7 @@ export const bookletTasksSeed: any = [
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Radio,
+        inputType: BookletInputTypesEnum.Text,
         description: 'In this paragraph, the government entity mentions the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
         pageNumber: 6
     },
@@ -71,8 +50,8 @@ export const bookletTasksSeed: any = [
         pageNumber: 6
     },
     {
-        name: 'Other Payment Method',
-        inputName: 'otherPaymentMethod',
+        name: 'Payment Method',
+        inputName: 'paymentMethod',
         data: {
             value: "Certified Cheque",
             children: [
@@ -86,7 +65,7 @@ export const bookletTasksSeed: any = [
                 },
                 {
                     value: "Other",
-                    type: BookletInputTypesEnum.Readonly,
+                    type: BookletInputTypesEnum.Text,
                     children: [{
                         value: null,
                         type: BookletInputTypesEnum.Text
@@ -96,7 +75,7 @@ export const bookletTasksSeed: any = [
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
+        inputType: BookletInputTypesEnum.Radio,
         description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
         pageNumber: 6
     },
@@ -1027,18 +1006,18 @@ export const bookletTasksSeed: any = [
         description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
         pageNumber: 24
     },
-    // {
-    //     name: 'How to perform business and services',
-    //     inputName: 'howToPerformBusinessAndServices',
-    //     data: {
-    //         value: [],
-    //     },
-    //     status: BookletTaskStatusesEnum.Pending,
-    //     type: BookletTaskTypesEnum.Add,
-    //     inputType: BookletInputTypesEnum.List,
-    //     description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
-    //     pageNumber: 3
-    // },
+    {
+        name: 'How to perform business and services',
+        inputName: 'howToPerformBusinessAndServices',
+        data: {
+            value: [],
+        },
+        status: BookletTaskStatusesEnum.Pending,
+        type: BookletTaskTypesEnum.Add,
+        inputType: BookletInputTypesEnum.RowsTable,
+        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        pageNumber: 25
+    },
     {
         name: 'Quality Specifications',
         inputName: 'qualitySpecifications',
