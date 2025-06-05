@@ -127,7 +127,7 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
                                         <Eye />
                                     </Link>
                                     <Link
-                                        href={`${process.env.NEXT_PUBLIC_API_URL}/booklets/${item._id}/download`}
+                                        href={`${process.env.NEXT_PUBLIC_API_URL}/api/booklets/${item._id}/download`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         download={true}
