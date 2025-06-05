@@ -1,5 +1,5 @@
 import React from 'react'
-import ReadonlyRowsTable from 'src/components/readonly-rows-table';
+import ReadonlyRowsTable from '../../components/readonly-rows-table';
 
 const TwentyFifthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
