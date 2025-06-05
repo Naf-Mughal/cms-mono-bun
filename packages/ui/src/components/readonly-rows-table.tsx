@@ -1,5 +1,7 @@
 "use client"
 
+import { Fragment } from "react/jsx-runtime"
+
 interface TableData {
     value: string[] // Names (rows 1, 3, 5, etc.)
     children: {
@@ -35,7 +37,7 @@ export default function ReadonlyRowsTable({ data }: ReadonlyRowsTableProps) {
                     </thead>
                     <tbody>
                         {Array.from({ length: pairsCount }).map((_, pairIndex) => (
-                            <>
+                            <Fragment key={pairIndex}>
                                 {/* Name row */}
                                 <tr key={`name-${pairIndex}`} className="hover:bg-gray-50 border-b">
                                     <td className="px-3 py-2 border-l">
@@ -48,7 +50,7 @@ export default function ReadonlyRowsTable({ data }: ReadonlyRowsTableProps) {
                                         <div className="text-right text-gray-600 text-sm">{data.children?.value?.[pairIndex] || "—"}</div>
                                     </td>
                                 </tr>
-                            </>
+                            </Fragment>
                         ))}
                     </tbody>
                 </table>
