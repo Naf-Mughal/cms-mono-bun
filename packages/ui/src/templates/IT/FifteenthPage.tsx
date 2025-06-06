@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReadonlyList } from '../../components/readonly-list';
 
 const FifteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
   return (
@@ -7,31 +8,13 @@ const FifteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold mb-2">35. وثائق العرض الفني</h3>
           <p className="mb-2">يشمل العرض الفني المتطلبات التالية:</p>
-          <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-            {tasks.technicalOfferDocuments?.map((item: any, index: number) => {
-              const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-              return (
-                <li key={index}>
-                  <span className="ml-2">{arabicNumber}.</span> {item}
-                </li>
-              );
-            })}
-          </ol>
+          <ReadonlyList data={tasks.technicalOfferDocuments || {}} />
         </div>
 
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold mb-2">36. وثائق العرض المالي</h3>
           <p className="mb-2">يشمل العرض المالي المتطلبات التالية:</p>
-          <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-            {tasks.finacialOfferDocuments?.map((item: any, index: number) => {
-              const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-              return (
-                <li key={index}>
-                  <span className="ml-2">{arabicNumber}.</span> {item}
-                </li>
-              );
-            })}
-          </ol>
+          <ReadonlyList data={tasks.financialOfferDocuments || {}} />
         </div>
 
         <div className="border-b border-gray-300 pb-4">

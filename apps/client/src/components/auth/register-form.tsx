@@ -33,7 +33,6 @@ export function RegisterForm() {
     const [userType, setUserType] = useState<UserType>("individual")
     const router = useRouter()
     const client = Client()
-    const { setToken } = useToken()
 
     const formConfig = useAppForm({
         defaultValues: {
@@ -50,7 +49,7 @@ export function RegisterForm() {
         }
     })
 
-    const { AppField, AuthSubmitButton, AppForm } = formConfig
+    const { AppField, AuthSubmitButton, AppForm, Subscribe } = formConfig
 
     const registerMutation = useMutation({
         mutationFn: async (credentials: RegisterCredentials): Promise<RegisterResponse> => {
@@ -61,28 +60,15 @@ export function RegisterForm() {
             if (error) {
                 throw new Error(error || 'Registration failed')
             }
-            if (!data?.data?.token) {
-                throw new Error('Invalid response: token not found')
-            }
             return data
         },
         onSuccess: (data) => {
             setError(null)
-            localStorage.setItem('token', data.data.token)
-            setToken(data.data.token)
-            router.push('/booklets')
+            router.push('/')
         },
         onError: (err: Error) => {
             setError(err.message || 'An error occurred during registration')
-        },
-        retry: (failureCount, error) => {
-            if (error.message.includes('User already exists') ||
-                error.message.includes('Invalid data')) {
-                return false
-            }
-            return failureCount < 2
-        },
-        retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+        }
     })
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -95,7 +81,7 @@ export function RegisterForm() {
         const confirmPassword = formData.get('confirmPassword') as string
         const phone = formData.get('phone') as string
         const organizationName = formData.get('organizationName') as string
-        if (!name || !email || !password || !confirmPassword || !phone) {
+        if (!name || !email || !password || !confirmPassword) {
             setError('Please fill in all required fields')
             return
         }
@@ -141,40 +127,50 @@ export function RegisterForm() {
                         />
                     )}
                 />
-
-                <AppField
-                    name="userType"
-                    children={({ AuthRadioGroupField }) => (
-                        <AuthRadioGroupField label="User Type">
-                            <RadioField
-                                value="organization"
-                                label="Organization"
-                                selected={userType === "organization"}
-                                onClick={() => setUserType("organization")}
-                            />
-                            <RadioField
-                                value="individual"
-                                label="Individual"
-                                selected={userType === "individual"}
-                                onClick={() => setUserType("individual")}
-                            />
-                        </AuthRadioGroupField>
+                <Subscribe
+                    selector={(state) => state.values.userType}
+                    children={(userType) => (
+                        <AppField
+                            name="userType"
+                            children={({ AuthRadioGroupField, handleChange }) => (
+                                <AuthRadioGroupField label="User Type">
+                                    <RadioField
+                                        value="organization"
+                                        label="Organization"
+                                        selected={userType === "organization"}
+                                        onClick={() => { setUserType("organization"); handleChange("organization") }}
+                                    />
+                                    <RadioField
+                                        value="individual"
+                                        label="Individual"
+                                        selected={userType === "individual"}
+                                        onClick={() => { setUserType("individual"); handleChange("individual") }}
+                                    />
+                                </AuthRadioGroupField>
+                            )}
+                        />
                     )}
                 />
+                <Subscribe
+                    selector={(state) => state.values.userType}
+                    children={(userType) => (
+                        <>
+                            {userType === "organization" && (
+                                <AppField
+                                    name="organizationName"
+                                    children={({ AuthTextField }) => (
+                                        <AuthTextField
+                                            label="Organization Name"
+                                            name="organizationName"
+                                            disabled={registerMutation.isPending}
+                                        />
+                                    )}
+                                />
+                            )}
 
-                {userType === "organization" && (
-                    <AppField
-                        name="organizationName"
-                        children={({ AuthTextField }) => (
-                            <AuthTextField
-                                label="Organization Name"
-                                name="organizationName"
-                                disabled={registerMutation.isPending}
-                            />
-                        )}
-                    />
-                )}
-
+                        </>
+                    )}
+                />
                 <AppField
                     name="email"
                     children={({ AuthTextField }) => (
@@ -210,6 +206,15 @@ export function RegisterForm() {
 
                 <AppField
                     name="confirmPassword"
+                    validators={{
+                        onChangeListenTo: ['password'],
+                        onChange: ({ value, fieldApi }) => {
+                            if (value !== fieldApi.form.getFieldValue('password')) {
+                                return [{ code: "custom", path: ['confirmPassword'], message: 'Passwords does not match' }]
+                            }
+                            return undefined
+                        },
+                    }}
                     children={({ AuthPasswordField }) => (
                         <AuthPasswordField
                             label="Confirm Password"

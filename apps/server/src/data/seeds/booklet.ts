@@ -760,7 +760,7 @@ export const bookletTasksSeed: BookletTasks = [
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.NestedList,
+        inputType: BookletInputTypesEnum.List,
         description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
         pageNumber: 23
     },
@@ -792,7 +792,7 @@ export const bookletTasksSeed: BookletTasks = [
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.NestedList,
+        inputType: BookletInputTypesEnum.List,
         description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
         pageNumber: 23
     },

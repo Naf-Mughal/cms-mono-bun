@@ -12,7 +12,7 @@ interface ListData {
     children?: { value?: string; children?: ListData }[];
 }
 
-interface NestedListProps {
+interface ListProps {
     data: ListData;
     onChange: (data: ListData) => void;
     depth?: 1 | 2 | 3;
@@ -28,7 +28,7 @@ const getPaddingClass = (depth: number): string => {
     return paddingMap[depth] || 'pr-4'; // Fallback to pr-4
 };
 
-export const NestedList = ({ data, onChange, depth = 1 }: NestedListProps) => {
+export const List = ({ data, onChange, depth = 1 }: ListProps) => {
     // State
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [editingIndex, setEditingIndex] = useState<number | null>(null);
@@ -269,7 +269,7 @@ export const NestedList = ({ data, onChange, depth = 1 }: NestedListProps) => {
                             {data?.children?.[index]?.children &&
                                 data.children[index].children.value &&
                                 data.children[index].children.value.length > 0 && (
-                                    <NestedList
+                                    <List
                                         key={`nested-${index}`}
                                         data={data.children[index].children}
                                         onChange={(newChildData: ListData) => {

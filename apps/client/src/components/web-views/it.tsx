@@ -105,7 +105,7 @@ const IT = ({ tasks, currentPageNumber }: { tasks: any, currentPageNumber: numbe
         if (item.inputType === 'radio') {
             filteredTasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children?.value || item.data?.children?.find((child: any) => child.value === item.data.value)?.value
         }
-        else if (item.inputType === 'table' || item.inputType === 'nested-list', item.inputType === 'rows-table') {
+        else if (item.inputType === 'table' || item.inputType === 'list' || item.inputType === 'rows-table') {
             filteredTasks[item.inputName] = item.data
         }
         else if (item.inputType === 'dynamic-table') {
@@ -115,7 +115,6 @@ const IT = ({ tasks, currentPageNumber }: { tasks: any, currentPageNumber: numbe
             filteredTasks[item.inputName] = item.data.value
         }
     })
-
     return (
         <div className='h-full flex flex-col gap-2 my-4' style={{ direction: 'rtl' }}>
             {currentPageNumber === 0 ? null : (

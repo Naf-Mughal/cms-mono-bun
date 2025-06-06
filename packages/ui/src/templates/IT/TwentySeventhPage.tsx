@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReadonlyList } from '../../components/readonly-list'
 
 const TwentySeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -11,16 +12,7 @@ const TwentySeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="mb-3">
                         يجب على المتنافس الالتزام بما ورد في سياسة المشاركة الاقتصادية الصادرة من هيئة المحتوى المحلي والمشتريات الحكومية، وتسليم متطلبات المشاركة الاقتصادية في ملف مستقل ليتم دراسته من قبل هيئة المحتوى المحلي والمشتريات الحكومية والذي يجب أن يحتوي على الآتي:
                     </p>
-                    <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.economicParticipationProgramRequirements?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks.economicParticipationProgramRequirements || {}} />
                 </div>
             </div>
         </div>

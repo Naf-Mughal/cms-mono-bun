@@ -1,5 +1,6 @@
 import React from 'react'
 import ReadonlyRowsTable from '../../components/readonly-rows-table';
+import { ReadonlyList } from '../../components/readonly-list';
 
 const TwentyFifthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -14,16 +15,7 @@ const TwentyFifthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <h3 className="font-semibold mb-2 text-black">74 مواصفات الجودة</h3>
                     <p className="mb-3 ">في هذه الفقرة تقوم الجهة الحكومية بتوضيح جميع شروط ومواصفات الجودة المطلوبة من المتعاقد من شهادات ومعايير محددة مثل ISO وغيرها.</p>
                     <p className="mb-3 text-black">يلتزم المتعاقد بمواصفات الجودة المطلوبة في تنفيذ النطاق المطلوب. ويجب على المتعاقد إخطار الجهة الحكومية بما يتسبب او قد يتسبب في عدم الامتثال لمتطلبات الجودة في السلع الموّردة والأعمال المقدمة وبأي تغييرات أو تعديلات قد تؤثر على هذه الجودة كتغيير موقع تصنيع المواد، أو تغيير المواد الخام ونسبها المستعملة في تصنيع السلع الموّردة.</p>
-                    <ol className="pr-6 space-y-1 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.qualitySpecifications?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks?.qualitySpecifications || {}} />
                     <p className="mb-3">يجب أن تغطي خطة ضمان أو ضبط الجودة الخاصة بالمتعاقد جميع الأنشطة ذات الصلة بنطاق العمل، وتوضح كيفية توافق الأعمال التي سيقوم بها المتعاقد مع متطلبات نطاق العمل وشروط الجودة المعمول بها. يجب كذلك أن تحدد الخطة نظام الجودة الموثق الذي سيتم تطبيقه من قبل المتعاقد في تنفيذ الأعمال، وبما يتوافق مع متطلبات المواصفة القياسية أيزو (ISO) 90001 مع الإشارة إلى جميع إجراءات وكتيبات المتعاقد ذات الصلة. </p>
                 </div>
             </div>

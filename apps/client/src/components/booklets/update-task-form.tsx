@@ -10,7 +10,7 @@ import { SubmitButton } from "../custom-ui/form/home/submit-button"
 import { RadioField } from "../custom-ui/form/radio-field"
 import DynamicTable from "../ui/dynamic-table"
 import Table from "../ui/table"
-import { NestedList } from "../ui/nested-list"
+import { List } from "../ui/nested-list"
 import { Toaster } from "sonner"
 import { MultiUpload } from "../ui/multi-upload"
 import { Client } from "@/lib/eden"
@@ -158,17 +158,7 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                     />
                 )
             case 'list':
-                return (
-                    <AppField
-                        name="data.value"
-                        children={({ ListField }) => (
-                            <ListField
-                                name="data.value"
-                                disabled={updateBookletTaskMutation.isPending}
-                            />
-                        )}
-                    />
-                )
+                return <List data={updatedData} onChange={setUpdatedData} />
             case 'radio':
                 return (
                     <>
@@ -204,15 +194,7 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                                             return radioValue === child.value && (
                                                 <Fragment key={index}>
                                                     {child?.type === "list" && (
-                                                        <AppField
-                                                            name={`data.children.${index}.children.value`}
-                                                            children={({ ListField }) => (
-                                                                <ListField
-                                                                    name={`data.children.${index}.children.value`}
-                                                                    disabled={updateBookletTaskMutation.isPending}
-                                                                />
-                                                            )}
-                                                        />
+                                                        <List data={updatedData} onChange={setUpdatedData} />
                                                     )}
                                                     {child?.type === "text" && (
                                                         <AppField
@@ -251,8 +233,6 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                 return <RowsTable data={updatedData} setData={setUpdatedData} />
             case 'dynamic-table':
                 return <DynamicTable onDataChange={setDynamicTable} initialData={dynamicTable as any || {}} />
-            case 'nested-list':
-                return <NestedList data={updatedData} onChange={setUpdatedData} />
             case 'multi-upload':
                 return <MultiUpload data={updatedData} prefix={id} onChange={setUpdatedData} />
 

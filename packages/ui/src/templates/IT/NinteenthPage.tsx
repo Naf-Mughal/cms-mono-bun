@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReadonlyList } from '../../components/readonly-list'
 
 const NinteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -20,16 +21,7 @@ const NinteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="mb-3">
                         يراعى في معايير تقييم العروض أن تكون واضحة وموضوعية ومحققة للمصلحة العامة وألا تهدف إلى ترسيه الخدمات على متنافسين محددين، على أن يؤخذ في الاعتبار عند إعدادها بما يلي:
                     </p>
-                    <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks?.criteriaForEvaluatingOffers?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks.criteriaForEvaluatingOffers || {}} />
                 </div>
 
                 <div className="border-b border-gray-300 pb-4 mb-6">

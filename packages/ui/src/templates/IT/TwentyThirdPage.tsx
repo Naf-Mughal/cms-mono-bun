@@ -1,6 +1,6 @@
 import React from 'react'
 import ReadOnlyDynamicTable from '../../components/readonly-dynamic-table'
-import { ReadonlyNestedList } from '../../components/readonly-nested-list'
+import { ReadonlyList } from '../../components/readonly-list'
 
 const TwentyThirdPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -11,12 +11,12 @@ const TwentyThirdPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 </div>
                 <div>
                     <h3 className="font-semibold mb-2"> 64 نطاق عمل المشروع </h3>
-                    <ReadonlyNestedList data={tasks.projectScopeOfWork || {}} />
+                    <ReadonlyList data={tasks.projectScopeOfWork || {}} />
                 </div>
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2 text-black">65	برنامج العمل</h3>
                     <p className=" mb-3">يلتزم المتعاقد في تنفيذ نطاق الأعمال خلال مدة ستة (6) أسابيع من تاريخ الترسية.</p>
-                    <ReadonlyNestedList data={tasks.workProgramme || {}} />
+                    <ReadonlyList data={tasks.workProgramme || {}} />
                 </div>
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2 text-black">66	مكان تنفيذ الأعمال</h3>

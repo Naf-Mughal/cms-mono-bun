@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReadonlyList } from '../../components/readonly-list'
 
 const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -25,16 +26,7 @@ const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="text-xl font-semibold pt-4 text-black">6. السجلات والتراخيص النظامية</h3>
-                    <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.regulatoryRecordsAndLicenses?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks?.regulatoryRecordsAndLicenses || {}} />
                 </div>
                 <div>
                     <p className="font-bold text-black">7. ممثل الجهة الحكومية</p>

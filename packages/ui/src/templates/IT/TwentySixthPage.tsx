@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReadonlyList } from '../../components/readonly-list';
 
 const TwentySixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -23,30 +24,12 @@ const TwentySixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2">77	تفضيل المنتجات الوطنية</h3>
                     <p className="mb-3">في حال اشتمال المنافسة على منتجات وطنية غير مدرجة في القائمة الإلزامية فتطبق الشروط التالية:</p>
-                    <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.preferenceForNationalProducts?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks.preferenceForNationalProducts || {}} />
                 </div>
                 <div>
                     <h3 className="font-semibold mb-2">78	اشتراطات آليات المحتوى المحلي (نسبة المحتوى المحلي)</h3>
                     <p className="mb-3">اشتراطات آلية وزن المحتوى المحلي في التقييم المالي/ آلية الحد الأدنى المطلوب للمحتوى المحلي.</p>
-                    <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.requirementsForLocalContentMechanisms?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks.requirementsForLocalContentMechanisms || {}} />
                 </div>
 
             </div>

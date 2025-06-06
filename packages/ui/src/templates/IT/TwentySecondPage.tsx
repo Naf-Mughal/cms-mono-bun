@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReadonlyList } from '../../components/readonly-list';
 
 const TwentySecondPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
     return (
@@ -8,16 +9,7 @@ const TwentySecondPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2">60	غرامات التأخير</h3>
                     <p className="mb-3"><span className="font-semibold">أولًا:</span> تفرض على المتعاقد غرامة [تأخير] إذا قصّر أو أخفق في تنفيذ التزاماته وفقًا لما يلي:</p>
-                    <ol className="pr-6 space-y-1 my-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.finesList?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks.finesList || {}} />
                     <p className="mb-3"><span className="font-semibold">ثانياً:</span> لا يتجاوز إجمالي الغرامة المنصوص عليها في هذا البند عن <span>[{tasks.fines || "5"} %] بالمئة</span> من القيمة الإجمالية للعقد.</p>
                 </div>
 
@@ -38,16 +30,7 @@ const TwentySecondPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
 
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-3">63	التأمين</h3>
-                    <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
-                        {tasks.insuranceList?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 1).toLocaleString('ar-EG'); // or 'ar-SA'
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
-                    </ol>
+                    <ReadonlyList data={tasks.insuranceList || {}} />
                 </div>
             </div>
         </div>
