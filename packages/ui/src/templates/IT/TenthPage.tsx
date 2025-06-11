@@ -22,7 +22,7 @@ const TenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold text-lg text-gray-900">18. تجزئة المنافسة</h3>
           <p>
-            {tasks?.competitionSegmentation || ""}
+            {tasks?.competitionSegmentation?.value || ""}
           </p>
         </div>
 

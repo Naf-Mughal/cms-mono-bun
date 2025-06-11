@@ -1,7 +1,7 @@
 import Users from "@/db/user.model";
 import { getJWTToken } from "@/utils/jwt";
 import { makeApiResponse } from "@/utils/response";
-import type { LoginData, UserData } from "@schemas/index";
+import { LangEnum, type LoginData, type UserData } from "@schemas/index";
 import { StatusCodes } from "http-status-codes";
 
 export const login = async ({ email, password }: LoginData) => {
@@ -27,7 +27,8 @@ export const register = async ({ name, email, password, phone, userType, organiz
             password: password,
             phone: phone,
             userType: userType,
-            organizationName: organizationName
+            organizationName: organizationName,
+            lang: LangEnum.En
         });
         await user.save();
         return { data: makeApiResponse("Registration successful", StatusCodes.OK, user), status: StatusCodes.OK };

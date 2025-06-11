@@ -8,7 +8,7 @@ import { RadioField } from "../custom-ui/form/radio-field"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Client } from "@/lib/eden"
-import { useToken } from "@/providers/token"
+import { useTranslations } from "@/providers/language"
 
 type UserType = "individual" | "organization"
 
@@ -33,6 +33,7 @@ export function RegisterForm() {
     const [userType, setUserType] = useState<UserType>("individual")
     const router = useRouter()
     const client = Client()
+    const t = useTranslations("RegisterPage");
 
     const formConfig = useAppForm({
         defaultValues: {
@@ -107,7 +108,7 @@ export function RegisterForm() {
 
     return (
         <div className="max-w-xl w-full space-y-4">
-            <h1 className="text-2xl font-bold text-[#525355]">Welcome Back</h1>
+            <h1 className="text-2xl font-bold text-[#525355]">{t('title')}</h1>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Show error from state or mutation */}
@@ -121,7 +122,7 @@ export function RegisterForm() {
                     name="name"
                     children={({ AuthTextField }) => (
                         <AuthTextField
-                            label="Name"
+                            label={t('name')}
                             name="name"
                             disabled={registerMutation.isPending}
                         />
@@ -133,7 +134,7 @@ export function RegisterForm() {
                         <AppField
                             name="userType"
                             children={({ AuthRadioGroupField, handleChange }) => (
-                                <AuthRadioGroupField label="User Type">
+                                <AuthRadioGroupField label={t('userType')}>
                                     <RadioField
                                         value="organization"
                                         label="Organization"
@@ -160,7 +161,7 @@ export function RegisterForm() {
                                     name="organizationName"
                                     children={({ AuthTextField }) => (
                                         <AuthTextField
-                                            label="Organization Name"
+                                            label={t('organizationName')}
                                             name="organizationName"
                                             disabled={registerMutation.isPending}
                                         />
@@ -175,7 +176,7 @@ export function RegisterForm() {
                     name="email"
                     children={({ AuthTextField }) => (
                         <AuthTextField
-                            label="Email"
+                            label={t('email')}
                             name="email"
                             disabled={registerMutation.isPending}
                         />
@@ -186,7 +187,7 @@ export function RegisterForm() {
                     name="phone"
                     children={({ AuthTextField }) => (
                         <AuthTextField
-                            label="Phone"
+                            label={t('phone')}
                             name="phone"
                             disabled={registerMutation.isPending}
                         />
@@ -197,7 +198,7 @@ export function RegisterForm() {
                     name="password"
                     children={({ AuthPasswordField }) => (
                         <AuthPasswordField
-                            label="Password"
+                            label={t('password')}
                             name="password"
                             disabled={registerMutation.isPending}
                         />
@@ -217,7 +218,7 @@ export function RegisterForm() {
                     }}
                     children={({ AuthPasswordField }) => (
                         <AuthPasswordField
-                            label="Confirm Password"
+                            label={t('confirmPassword')}
                             name="confirmPassword"
                             disabled={registerMutation.isPending}
                         />
@@ -226,15 +227,15 @@ export function RegisterForm() {
 
                 <AppForm>
                     <AuthSubmitButton>
-                        {registerMutation.isPending ? 'Signing up...' : 'Sign Up'}
+                        {registerMutation.isPending ? t("registering") : t("register")}
                     </AuthSubmitButton>
                 </AppForm>
             </form>
 
             <div className="flex justify-center items-center gap-3 pt-4">
-                <span className="text-[#9A9AA7]">Already have an account?</span>
+                <span className="text-[#9A9AA7]">{t("already")}</span>
                 <Link href="/" className="text-[#007EA7] font-semibold">
-                    Sign in
+                    {t("login")}
                 </Link>
             </div>
         </div>

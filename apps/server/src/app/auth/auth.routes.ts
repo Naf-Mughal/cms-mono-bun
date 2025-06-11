@@ -19,6 +19,9 @@ export const authRouter = new Elysia({ prefix: '/auth' })
         set.status = status;
         return data;
     })
+    .post('/lang', async ({ body }: Context & { body: { email: string } }) => {
+        return { };
+    })
     .derive(async ({ headers, set }) => {
         const token = headers.authorization?.split(' ')[1];
         if (!token) {

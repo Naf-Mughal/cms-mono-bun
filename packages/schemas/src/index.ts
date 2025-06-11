@@ -1,6 +1,11 @@
 import { z, ZodType, type ZodTypeDef } from 'zod';
 const phoneRegex = /^$|^\+?[1-9]\d{1,14}$/;
 
+export enum LangEnum {
+    En = "en",
+    Ar = "ar"
+}
+
 export const userSchema = z.object({
     name: z.string({ required_error: "Name is required" }).max(100).nonempty("Name is required").min(3, "Name must be at least 3 characters"),
     phone: z.string({ required_error: "Phone number is required" }).max(20).refine(
@@ -12,6 +17,7 @@ export const userSchema = z.object({
     organizationName: z.string({ required_error: "Organization Name is required" }).max(100),
     userType: z.enum(["individual", "organization"]),
     confirmPassword: z.string({ required_error: "Confirm Password is required" }).min(6).max(42),
+    lang: z.nativeEnum(LangEnum).default(LangEnum.En),
 }).superRefine((data, ctx) => {
     if (data.userType === "organization" && (!data.organizationName?.trim() || data.organizationName?.trim().length < 3)) {
         ctx.addIssue({

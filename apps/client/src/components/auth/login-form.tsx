@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Client } from "@/lib/eden"
 import { useToken } from "@/providers/token"
+import { useLang, useTranslations } from "@/providers/language"
 
 interface LoginCredentials {
     email: string
@@ -24,6 +25,8 @@ export function LoginForm() {
     const router = useRouter()
     const client = Client()
     const { setToken } = useToken()
+    const t = useTranslations('LoginPage');
+    const { dir } = useLang();
 
     const formConfig = useAppForm({
         defaultValues: {
@@ -92,10 +95,10 @@ export function LoginForm() {
     }
 
     return (
-        <div className="max-w-xl w-full space-y-8">
+        <div className="max-w-xl w-full space-y-8" dir={dir}>
             <div className="space-y-3">
-                <h1 className="text-2xl font-bold text-[#525355]">Welcome Back</h1>
-                <p className="text-[#9A9AA7]">Please enter your email and password to login</p>
+                <h1 className="text-2xl font-bold text-[#525355]">{t('title')}</h1>
+                <p className="text-[#9A9AA7]">{t('subtitle')}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -110,7 +113,7 @@ export function LoginForm() {
                     name="email"
                     children={({ AuthTextField }) => (
                         <AuthTextField
-                            label="Email"
+                            label={t('email')}
                             name="email"
                             disabled={loginMutation.isPending}
                         />
@@ -122,13 +125,13 @@ export function LoginForm() {
                     children={({ AuthPasswordField }) => (
                         <div className="space-y-2">
                             <AuthPasswordField
-                                label="Password"
+                                label={t('password')}
                                 name="password"
                                 disabled={loginMutation.isPending}
                             />
                             <div className="flex justify-end">
                                 <a href="#" className="text-[#007EA7]">
-                                    Forgot Password
+                                    {t('forgot')}
                                 </a>
                             </div>
                         </div>
@@ -137,15 +140,15 @@ export function LoginForm() {
 
                 <AppForm>
                     <AuthSubmitButton>
-                        {loginMutation.isPending ? 'Logging in...' : 'Login'}
+                        {loginMutation.isPending ? t('logging') : t('login')}
                     </AuthSubmitButton>
                 </AppForm>
             </form>
 
             <div className="flex justify-center items-center gap-3 pt-4">
-                <span className="text-[#9A9AA7]">Don't have an account?</span>
+                <span className="text-[#9A9AA7]">{t('register')}</span>
                 <Link href="/register" className="text-[#007EA7] font-semibold">
-                    Sign Up
+                    {t('signUp')}
                 </Link>
             </div>
         </div>

@@ -8,6 +8,7 @@ import { RadioField } from "../custom-ui/form/radio-field"
 import Link from "next/link"
 import { SubmitButton } from "../custom-ui/form/home/submit-button"
 import { Client } from "@/lib/eden"
+import { useLang, useTranslations } from "@/providers/language"
 
 const BookletCityOptions = Object.values(BookletCitiesEnum).map((city) => ({ label: city, value: city }))
 const BookletCategoryOptions = Object.values(BookletCategoriesEnum).map((category) => ({ label: category, value: category }))
@@ -26,6 +27,8 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
     const router = useRouter()
     const queryClient = useQueryClient()
     const client = Client()
+    const t = useTranslations("CreateUpdataBookletForm");
+    const { dir } = useLang();
 
     const formConfig = useAppForm({
         defaultValues: {
@@ -128,16 +131,16 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                         <AppField
                             name="bookletType"
                             children={({ RadioGroupField, handleChange }) => (
-                                <RadioGroupField label="Booklet Type" required={true}>
+                                <RadioGroupField label={t("bookletType")} required={true}>
                                     <RadioField
                                         value="internal"
-                                        label="Internal"
+                                        label={t("internal")}
                                         selected={userType === "internal"}
                                         onClick={() => handleChange("internal")}
                                     />
                                     <RadioField
                                         value="external"
-                                        label="External"
+                                        label={t("external")}
                                         selected={userType === "external"}
                                         onClick={() => handleChange("external")}
                                     />
@@ -151,10 +154,11 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                     name="category"
                     children={({ SelectField }) => (
                         <SelectField
-                            label="Booklet Category"
+                            label={t("bookletCategory")}
                             required
-                            placeholder="Select Booklet Category"
+                            placeholder={t("select")}
                             options={BookletCategoryOptions}
+                            dir={dir}
                         />
                     )}
                 />
@@ -163,9 +167,9 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                     name="projectName"
                     children={({ TextField }) => (
                         <TextField
-                            label="Bid/Project Name"
+                            label={t("projectName")}
                             required
-                            placeholder="Bid/Project Name"
+                            placeholder={t("projectName")}
                         />
                     )}
                 />
@@ -174,9 +178,9 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                     name="bookletNumber"
                     children={({ TextField }) => (
                         <TextField
-                            label="Booklet Number"
+                            label={t("bookletNumber")}
                             required
-                            placeholder="Booklet Number"
+                            placeholder={t("bookletNumber")}
                         />
                     )}
                 />
@@ -185,9 +189,9 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                     name="issueDate"
                     children={({ TextField }) => (
                         <TextField
-                            label="Issue Day & Date"
+                            label={t("issueDate")}
                             required
-                            placeholder="Select Day & Date"
+                            placeholder={t("issueDate")}
                         />
                     )}
                 />
@@ -196,10 +200,11 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                     name="issueCity"
                     children={({ SelectField }) => (
                         <SelectField
-                            label="Issue City"
+                            label={t("issueCity")}
                             required
-                            placeholder="Select City"
+                            placeholder={t("selectCity")}
                             options={BookletCityOptions}
+                            dir={dir}
                         />
                     )}
                 />
@@ -209,11 +214,11 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                         href={"/booklets"}
                         className="w-28 h-12 flex items-center justify-center border border-[#D3D8E1] rounded-md"
                     >
-                        Cancel
+                        {t("cancel")}
                     </Link>
                     <AppForm>
                         <SubmitButton>
-                            {isLoading ? `${id ? 'Updating' : 'Creating'}...` : `${id ? 'Update' : 'Create'}`}
+                            {isLoading ? `${id ? t("updating") : t("creating")}...` : `${id ? t("update") : t("create")}`}
                         </SubmitButton>
                     </AppForm>
                 </div>

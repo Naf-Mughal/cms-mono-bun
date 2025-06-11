@@ -9,6 +9,7 @@ import { DeleteDialog } from "../custom-ui/dialogs/delete.dialog"
 import { Client } from "@/lib/eden"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
+import { useLang, useTranslations } from "@/providers/language"
 
 export interface TableData {
     _id: string
@@ -27,17 +28,19 @@ interface BookletTableProps {
 
 // Skeleton loader component
 const TableSkeleton = () => {
+    const t = useTranslations("BookletTable");
+    const { dir } = useLang();
     return (
-        <div className="w-full flex gap-1 flex-col overflow-x-auto">
+        <div className="w-full flex gap-1 flex-col overflow-x-auto" dir={dir}>
             <div style={{ overflowX: "auto" }}>
                 <TableHeader>
                     <h2 className="font-semibold px-2 flex-1">#</h2>
-                    <h2 className="font-semibold px-2 flex-3">Category</h2>
-                    <h2 className="font-semibold px-2 flex-2">Date of Creation</h2>
-                    <h2 className="font-semibold px-2 flex-3">Project Name</h2>
-                    <h2 className="font-semibold px-2 flex-1">No.</h2>
-                    <h2 className="font-semibold px-2 flex-4">Department</h2>
-                    <h2 className="font-semibold px-2 flex-3 max-w-44">Actions</h2>
+                    <h2 className="font-semibold px-2 flex-3">{t("category")}</h2>
+                    <h2 className="font-semibold px-2 flex-2">{t("dateOfCreation")}</h2>
+                    <h2 className="font-semibold px-2 flex-3">{t("projectName")}</h2>
+                    <h2 className="font-semibold px-2 flex-1">{t("bookletNumber")}</h2>
+                    <h2 className="font-semibold px-2 flex-4">{t("department")}</h2>
+                    <h2 className="font-semibold px-2 flex-3 max-w-44">{t("actions")}</h2>
                 </TableHeader>
             </div>
             {Array.from({ length: 5 }).map((_, index) => (
@@ -78,6 +81,8 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
     const client = Client()
     const router = useRouter()
     const queryClient = useQueryClient()
+    const t = useTranslations("BookletTable");
+    const { dir } = useLang();
 
     const deleteBookletMutation = useMutation({
         mutationFn: async (id: string) => {
@@ -100,16 +105,16 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
 
     return (
         <ScrollSync>
-            <div className="w-full flex gap-1 flex-col overflow-x-auto">
+            <div className="w-full flex gap-1 flex-col overflow-x-auto" dir={dir}>
                 <ScrollSyncPane>
                     <TableHeader style={{ overflowX: "auto" }}>
                         <h2 className="font-semibold px-2 flex-1">#</h2>
-                        <h2 className="font-semibold px-2 flex-3">Category</h2>
-                        <h2 className="font-semibold px-2 flex-2">Date of Creation</h2>
-                        <h2 className="font-semibold px-2 flex-3">Project Name</h2>
-                        <h2 className="font-semibold px-2 flex-1">No.</h2>
-                        <h2 className="font-semibold px-2 flex-4">Department</h2>
-                        <h2 className="font-semibold px-2 flex-3 max-w-44">Actions</h2>
+                        <h2 className="font-semibold px-2 flex-3">{t("category")}</h2>
+                        <h2 className="font-semibold px-2 flex-2">{t("dateOfCreation")}</h2>
+                        <h2 className="font-semibold px-2 flex-3">{t("projectName")}</h2>
+                        <h2 className="font-semibold px-2 flex-1">{t("bookletNumber")}</h2>
+                        <h2 className="font-semibold px-2 flex-4">{t("department")}</h2>
+                        <h2 className="font-semibold px-2 flex-3 max-w-44">{t("actions")}</h2>
                     </TableHeader>
                 </ScrollSyncPane>
                 {data &&

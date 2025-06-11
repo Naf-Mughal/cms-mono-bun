@@ -457,7 +457,7 @@ export const bookletTasksSeed: BookletTasks = [
         name: 'Writing Prices',
         inputName: 'writingPrices',
         data: {
-            value: "نعم يجوز إذا أجازت شروط المنافسة ذلك",
+            value: "yes",
             children: [
                 {
                     value: 'yes',

@@ -7,6 +7,7 @@ import { Eye, SquarePen } from "lucide-react"
 import Link from "next/link"
 import { BookletTaskTypesEnum, type GenaricBookletsTask } from "@schemas/index"
 import StatusBadges from "../custom-ui/status-badges"
+import { useLang, useTranslations } from "@/providers/language"
 
 export interface TableData extends GenaricBookletsTask {
     _id: string
@@ -33,15 +34,17 @@ const getTypeColor = (type: string) => {
 
 // Skeleton loader component
 const TasksTableSkeleton = () => {
+    const t = useTranslations("BookletTasksTable");
+    const { dir } = useLang();
     return (
-        <div className="w-full flex gap-1 flex-col overflow-x-auto">
+        <div className="w-full flex gap-1 flex-col overflow-x-auto" dir={dir}>
             <div style={{ overflowX: "auto" }}>
-                <TableHeader>
+                <TableHeader style={{ overflowX: "auto" }}>
                     <h2 className="font-semibold px-2 flex-1">#</h2>
-                    <h2 className="font-semibold px-2 flex-2">Status</h2>
-                    <h2 className="font-semibold px-2 flex-5">Task Name</h2>
-                    <h2 className="font-semibold px-2 flex-3">Task Type</h2>
-                    <h2 className="font-semibold px-2 flex-2 max-w-36">Actions</h2>
+                    <h2 className="font-semibold px-2 flex-2">{t("status")}</h2>
+                    <h2 className="font-semibold px-2 flex-5">{t("taskName")}</h2>
+                    <h2 className="font-semibold px-2 flex-3">{t("taskType")}</h2>
+                    <h2 className="font-semibold px-2 flex-2 max-w-36">{t("actions")}</h2>
                 </TableHeader>
             </div>
             {Array.from({ length: 6 }).map((_, index) => (
@@ -71,6 +74,8 @@ const TasksTableSkeleton = () => {
 }
 
 const BookletTasksTable: React.FC<BookletTasksTableProps> = ({ data, path, isLoading = false }) => {
+    const t = useTranslations("BookletTasksTable");
+    const { dir } = useLang();
     // Show skeleton loader when loading
     if (isLoading) {
         return <TasksTableSkeleton />
@@ -78,14 +83,14 @@ const BookletTasksTable: React.FC<BookletTasksTableProps> = ({ data, path, isLoa
 
     return (
         <ScrollSync>
-            <div className="w-full flex gap-1 flex-col overflow-x-auto">
+            <div className="w-full flex gap-1 flex-col overflow-x-auto" dir={dir}>
                 <ScrollSyncPane>
                     <TableHeader style={{ overflowX: "auto" }}>
                         <h2 className="font-semibold px-2 flex-1">#</h2>
-                        <h2 className="font-semibold px-2 flex-2">Status</h2>
-                        <h2 className="font-semibold px-2 flex-5">Task Name</h2>
-                        <h2 className="font-semibold px-2 flex-3">Task Type</h2>
-                        <h2 className="font-semibold px-2 flex-2 max-w-36">Actions</h2>
+                        <h2 className="font-semibold px-2 flex-2">{t("status")}</h2>
+                        <h2 className="font-semibold px-2 flex-5">{t("taskName")}</h2>
+                        <h2 className="font-semibold px-2 flex-3">{t("taskType")}</h2>
+                        <h2 className="font-semibold px-2 flex-2 max-w-36">{t("actions")}</h2>
                     </TableHeader>
                 </ScrollSyncPane>
                 {data &&

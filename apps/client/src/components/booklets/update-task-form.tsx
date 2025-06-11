@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useMutation, useQueryClient } from "@tanstack/react-query" // Import useQueryClient
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { type GenaricBookletsTask, genaricBookletsTaskSchema } from "@schemas/index"
 import { useAppForm } from "../custom-ui/form"
 import Link from "next/link"
@@ -15,6 +15,7 @@ import { Toaster } from "sonner"
 import { MultiUpload } from "../ui/multi-upload"
 import { Client } from "@/lib/eden"
 import RowsTable from "../ui/rows-table"
+import { useLang, useTranslations } from "@/providers/language"
 
 interface UpdateBookletTaskResponse {
     success: boolean
@@ -26,12 +27,15 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
     const [error, setError] = useState<string | null>(null)
     const [dynamicTable, setDynamicTable] = useState<any>(data?.tableData || {})
     const [updatedData, setUpdatedData] = useState<any>(data?.data || {})
+    const [listData, setListData] = useState<any>({})
     const [radioValue, setRadioValue] = useState<string>(
         typeof data?.data?.value === 'string' ? data.data.value : ""
     )
-    const router = useRouter()
     const client = Client()
-    const queryClient = useQueryClient() // Initialize queryClient
+    const queryClient = useQueryClient()
+
+    const t = useTranslations("TaskForm")
+    const { dir } = useLang();
 
     const formConfig = useAppForm({
         defaultValues: {
@@ -48,6 +52,80 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
 
     const { AppField, AppForm, Subscribe } = formConfig
 
+    // Helper function to extract and format list data
+    const getListDataForChild = (child: any, childIndex: number) => {
+        const listKey = `child-${childIndex}`;
+
+        if (listData[listKey]) {
+            return listData[listKey];
+        }
+
+        const childValue = (child?.children as any)?.value;
+        if (Array.isArray(childValue)) {
+            const formattedData = {
+                value: childValue,
+                children: childValue.map((item: string) => ({
+                    value: item,
+                    children: { value: [], children: [] }
+                }))
+            };
+
+            return formattedData;
+        }
+
+        return { value: [], children: [] };
+    };
+
+    // Initialize list data when updatedData changes
+    useEffect(() => {
+        if (updatedData?.children && Array.isArray(updatedData.children)) {
+            const newListData: any = {};
+
+            updatedData.children.forEach((child: any, index: number) => {
+                const listKey = `child-${index}`;
+                const childValue = (child?.children as any)?.value;
+
+                if (Array.isArray(childValue)) {
+                    newListData[listKey] = {
+                        value: childValue,
+                        children: childValue.map((item: string) => ({
+                            value: item,
+                            children: { value: [], children: [] }
+                        }))
+                    };
+                }
+            });
+
+            setListData(newListData);
+        }
+    }, [updatedData]);
+
+    // Helper function to update the overall updatedData when list changes
+    const handleListDataChange = (childIndex: number, newListData: any) => {
+        const listKey = `child-${childIndex}`;
+
+        setListData((prev: any) => ({
+            ...prev,
+            [listKey]: newListData
+        }));
+
+        const updatedChildren = [...(updatedData?.children || [])];
+        if (updatedChildren[childIndex]) {
+            updatedChildren[childIndex] = {
+                ...updatedChildren[childIndex],
+                children: {
+                    ...updatedChildren[childIndex].children,
+                    value: newListData.value || []
+                }
+            };
+
+            setUpdatedData({
+                ...updatedData,
+                children: updatedChildren
+            });
+        }
+    };
+
     const updateBookletTaskMutation = useMutation({
         mutationFn: async (formDataObj: any): Promise<UpdateBookletTaskResponse> => {
             if (!client) {
@@ -56,7 +134,6 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
 
             const { data, error } = await client.api.booklets({ id }).tasks({ taskId }).perform.post({
                 ...formDataObj,
-                ...(Object.keys(formDataObj).length === 0 && { data: updatedData }),
                 tableData: dynamicTable
             })
 
@@ -68,11 +145,8 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
         },
         onSuccess: () => {
             setError(null)
-            // Invalidate queries to trigger refetch in PerformTask
-            queryClient.invalidateQueries({ queryKey: ['booklet', id, taskId] }) // Invalidate specific task
-            queryClient.invalidateQueries({ queryKey: ['booklet', 'tasks', id] }) // Invalidate task list
-            // Optionally show success toast
-            // toast.success('Task updated successfully!')
+            queryClient.invalidateQueries({ queryKey: ['booklet', id, taskId] })
+            queryClient.invalidateQueries({ queryKey: ['booklet', 'tasks', id] })
         },
         onError: (err: Error) => {
             setError(err.message || 'An error occurred during update')
@@ -100,35 +174,68 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
             }
         }
 
-        // Handle data.value specifically
-        const dataValue = formData.get('data.value')
-        if (dataValue !== null) {
-            formDataObj.data = { value: dataValue }
-        }
+        // Handle different input types
+        if (data?.inputType === "radio") {
+            // For radio inputs, use the current state data which includes all nested structures
+            const currentRadioValue = formData.get('data.value') || radioValue
 
-        // Special handling for radio input type
-        if (data?.inputType === "radio" && radioValue) {
-            const children = data?.data?.children
-            if (Array.isArray(children)) {
+            if (data?.data?.children && Array.isArray(data.data.children)) {
+                const processedChildren = data.data.children.map((child: any, index: number) => {
+                    const listKey = `child-${index}`;
+
+                    if (child.type === "list" && listData[listKey]) {
+                        // Use the list data from state
+                        return {
+                            ...child,
+                            children: {
+                                ...child.children,
+                                value: listData[listKey].value || []
+                            }
+                        };
+                    } else if (child.type === "text") {
+                        // Get text input value from form
+                        const textValue = formData.get(`data.children.${index}.children.value`)
+                        return {
+                            ...child,
+                            children: {
+                                ...child.children,
+                                value: textValue || child.children?.value || ""
+                            }
+                        };
+                    } else if (child.type === "readonly") {
+                        // Keep readonly value as is
+                        return child;
+                    }
+
+                    return child;
+                });
+
                 formDataObj.data = {
-                    value: formData.get('data.value') || radioValue,
-                    children: children.map((child: any, index: number) => ({
-                        ...child,
-                        children: {
-                            ...child.children,
-                            value: formData.get(`data.children.${index}.children.value`) || child.children?.value
-                        }
-                    }))
-                }
+                    value: currentRadioValue,
+                    children: processedChildren
+                };
+            } else {
+                formDataObj.data = { value: currentRadioValue };
+            }
+        } else {
+            // Handle other input types
+            const dataValue = formData.get('data.value')
+            if (dataValue !== null) {
+                formDataObj.data = { value: dataValue }
+            } else if (data?.inputType === 'list' || data?.inputType === 'table' || data?.inputType === 'rows-table') {
+                // For list/table types, use the updatedData state
+                formDataObj.data = updatedData
             }
         }
 
-        // Submit with proper structure
-        updateBookletTaskMutation.mutate({
-            ...formDataObj,
-            ...(Object.keys(formDataObj).length === 0 && { data: updatedData }),
-            tableData: dynamicTable
-        })
+        // If no form data was processed, use the current state
+        if (!formDataObj.data && updatedData) {
+            formDataObj.data = updatedData;
+        }
+
+        console.log('Submitting data:', formDataObj); // Debug log
+
+        updateBookletTaskMutation.mutate(formDataObj)
     }
 
     const getAppFieldBasedOnType = (type: string) => {
@@ -193,8 +300,11 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                                         data?.data && Array.isArray(data?.data?.children) && data?.data?.children?.map((child, index) => {
                                             return radioValue === child.value && (
                                                 <Fragment key={index}>
-                                                    {child?.type === "list" && (
-                                                        <List data={updatedData} onChange={setUpdatedData} />
+                                                    {child?.type === "list" && Array.isArray((child?.children as any)?.value) && (
+                                                        <List
+                                                            data={getListDataForChild(child, index)}
+                                                            onChange={(newListData) => handleListDataChange(index, newListData)}
+                                                        />
                                                     )}
                                                     {child?.type === "text" && (
                                                         <AppField
@@ -270,11 +380,11 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                         href={"/booklets"}
                         className="w-28 h-12 flex items-center justify-center border bg-[#007EA7] text-white border-[#D3D8E1] rounded-md"
                     >
-                        Save
+                        {t("save")}
                     </Link>
                     <AppForm>
                         <SubmitButton>
-                            {updateBookletTaskMutation.isPending ? 'Submitting...' : 'Submit'}
+                            {updateBookletTaskMutation.isPending ? t("submitting") : t("submit")}
                         </SubmitButton>
                     </AppForm>
                 </div>

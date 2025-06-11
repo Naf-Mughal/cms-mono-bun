@@ -2,6 +2,7 @@ import React from 'react'
 import { ReadonlyList } from '../../components/readonly-list'
 
 const TwelfthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+  console.log(tasks)
   return (
     <div className="w-full text-black">
       <div className="py-6 space-y-4 ">
@@ -9,9 +10,9 @@ const TwelfthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold text-lg text-gray-900 mb-2">22. <span className="text-green-700">التضامن</span></h3>
           {
-            typeof tasks?.confirmationOfParticipationInTheCompetition === "string" ?
+            typeof tasks?.confirmationOfParticipationInTheCompetition.value === "string" ?
               (
-                <p>{tasks?.confirmationOfParticipationInTheCompetition}</p>
+                <p>{tasks?.confirmationOfParticipationInTheCompetition.value}</p>
               ) : (
                 <ReadonlyList data={tasks?.confirmationOfParticipationInTheCompetition} />
               )

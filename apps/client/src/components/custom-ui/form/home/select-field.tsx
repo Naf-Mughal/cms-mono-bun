@@ -13,24 +13,27 @@ type SelectFieldProps = {
   options: SelectOption[];
   placeholder?: string;
   required?: boolean;
+  dir?: string;
 };
 
 export const SelectField = ({
   label,
   options,
   placeholder,
-  required
+  required,
+  dir
 }: SelectFieldProps) => {
   const field = useFieldContext<string>();
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2" dir={dir}>
       <div className="flex flex-col md:flex-row items-center gap-2 w-full">
         <Label htmlFor={field.name} className="font-semibold min-w-[220px] flex items-center gap-1">{label} {required && <span className="text-[#3C9E19]">*</span>}</Label>
         <Select
           value={field.state.value}
           onValueChange={(value) => field.handleChange(value)}
           name={field.name}
+          dir={dir as any}
         >
           <SelectTrigger id={field.name} onBlur={field.handleBlur} className="w-full bg-[#F6F8FC] !h-12 border-0">
             <SelectValue placeholder={placeholder} />

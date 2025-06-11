@@ -1,3 +1,4 @@
+import { LangEnum } from '@schemas/index';
 import { Document, Schema, Model, model } from 'mongoose';
 
 interface IUser extends Document {
@@ -6,6 +7,7 @@ interface IUser extends Document {
   password: string;
   email: string;
   userType: 'individual' | 'organization';
+  lang: LangEnum;
   organizationName?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -37,6 +39,11 @@ const userSchema: Schema<IUser> = new Schema(
     userType: {
       type: String,
       enum: ['individual', 'organization'],
+      required: true,
+    },
+    lang: {
+      type: String,
+      enum: Object.values(LangEnum),
       required: true,
     },
     organizationName: {

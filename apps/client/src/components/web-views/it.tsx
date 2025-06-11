@@ -103,7 +103,8 @@ const IT = ({ tasks, currentPageNumber }: { tasks: any, currentPageNumber: numbe
     const filteredTasks: any = {}
     tasks?.filter((item: any) => item.pageNumber === currentPageNumber).forEach((item: any) => {
         if (item.inputType === 'radio') {
-            filteredTasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children?.value || item.data?.children?.find((child: any) => child.value === item.data.value)?.value
+            filteredTasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children || item.data?.children?.find((child: any) => child.value === item.data.value)?.value
+            console.log(filteredTasks[item.inputName])
         }
         else if (item.inputType === 'table' || item.inputType === 'list' || item.inputType === 'rows-table') {
             filteredTasks[item.inputName] = item.data
