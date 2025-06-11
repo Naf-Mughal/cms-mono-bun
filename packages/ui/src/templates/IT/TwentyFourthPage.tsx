@@ -1,3 +1,4 @@
+import { ReadonlyList } from '../../components/readonly-list'
 import ReadonlyTable from '../../components/readonly-table'
 import React from 'react'
 
@@ -15,14 +16,7 @@ const TwentyFourthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <ol className="pr-6 space-y-1 mt-2 text-black" dir="rtl" lang="ar-sa">
                         <li className="text-black"><span>١.</span> ‌يجب على المتعاقد الالتزام بتمكين السعوديين من العمل في وظائف المشروع مع الالتزام بتطبيق دليل توطين عقود التشغيل والصيانة بالجهات العامة الصادر بموجب قرار معالي وزير الموارد البشرية والتنمية الاجتماعية رقم (73483) وتاريخ 30/4/1444هـ وجميع الأوامر والأنظمة والتعليمات الصادرة في هذا الشأن من وزارة الموارد البشرية والتنمية الاجتماعية.</li>
                         <li className="text-black"><span>٢.</span> ‌يلتزم المتعاقد بنقل جميع الموظفين السعوديين الموجودين في العقد القائم إلى هذا العقد، على ألا تقل الأجور والمزايا عن التي يتقاضونها في العقد  القائم أو الحد الأدنى للأجور أيهما أعلى.</li>
-                        {tasks.labor?.map((item: any, index: number) => {
-                            const arabicNumber = (index + 3).toLocaleString('ar-EG');
-                            return (
-                                <li key={index}>
-                                    <span className="ml-2">{arabicNumber}.</span> {item}
-                                </li>
-                            );
-                        })}
+                        <ReadonlyList data={tasks?.labor} />
                     </ol>
                 </div>
             </div>
