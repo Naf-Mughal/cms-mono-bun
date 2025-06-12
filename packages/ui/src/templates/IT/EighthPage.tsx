@@ -14,11 +14,11 @@ const EighthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
               </tr>
             </thead>
             <tbody>
-              <tr><td className="border p-2">العنوان</td><td className="border p-2 text-red-600">{tasks?.address || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">المبنى</td><td className="border p-2 text-red-600">{tasks?.building || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">الطابق</td><td className="border p-2 text-red-600">{tasks?.floor || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">الغرفة/اسم الإدارة</td><td className="border p-2 text-red-600">{tasks?.roomNameOfDepartment || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">وقت التسليم</td><td className="border p-2 text-red-600">{tasks?.deliveryTime || "تحدده الجهة الحكومية."}</td></tr>
+              <tr><td className="border p-2">العنوان</td><td className="border p-2">{tasks?.address || "تحدده الجهة الحكومية."}</td></tr>
+              <tr><td className="border p-2">المبنى</td><td className="border p-2">{tasks?.building || "تحدده الجهة الحكومية."}</td></tr>
+              <tr><td className="border p-2">الطابق</td><td className="border p-2">{tasks?.floor || "تحدده الجهة الحكومية."}</td></tr>
+              <tr><td className="border p-2">الغرفة/اسم الإدارة</td><td className="border p-2">{tasks?.roomNameOfDepartment || "تحدده الجهة الحكومية."}</td></tr>
+              <tr><td className="border p-2">وقت التسليم</td><td className="border p-2">{tasks?.deliveryTime || "تحدده الجهة الحكومية."}</td></tr>
             </tbody>
           </table>
         </div>

@@ -4,6 +4,7 @@ import { bookletRouter } from './app/booklets/booklet.routes';
 import { configureDb } from './config';
 import { uploadRouter } from './app/uploads/upload.routes';
 import cors from '@elysiajs/cors';
+import { staticPlugin } from '@elysiajs/static'
 
 configureDb();
 export const app = new Elysia({ prefix: '/api' })
@@ -17,6 +18,10 @@ export const app = new Elysia({ prefix: '/api' })
         }
     })
     .use(cors())
+    .use(staticPlugin({
+        prefix: '/',
+        assets: 'public',
+    }))
     .use(authRouter)
     .use(bookletRouter)
     .use(uploadRouter)

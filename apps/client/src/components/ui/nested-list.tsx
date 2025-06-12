@@ -133,9 +133,9 @@ export const List = ({ data, onChange, depth = 1 }: ListProps) => {
     }, []);
 
     // Fallback for empty data
-    if (!data?.value?.length) {
-        return <div className="text-gray-500">لا توجد عناصر لعرضها</div>;
-    }
+    // if (!data?.value?.length) {
+    //     return <div className="text-gray-500">لا توجد عناصر لعرضها</div>;
+    // }
 
     return (
         <div>
@@ -145,7 +145,7 @@ export const List = ({ data, onChange, depth = 1 }: ListProps) => {
                 dir="rtl"
                 lang="ar"
             >
-                {data.value.map((item, index) => {
+                {data?.value?.map((item, index) => {
                     const Number =
                         depth === NUMBERING_DEPTH
                             ? (index + 1)

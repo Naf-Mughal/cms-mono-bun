@@ -38,11 +38,11 @@ const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td className="border p-2">الاسم</td><td className="border p-2 text-red-600">{tasks?.governmentRepresentativeName || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">الوظيفة</td><td className="border p-2 text-red-600">{tasks?.governmentRepresentativeJob || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">الهاتف</td><td className="border p-2 text-red-600">{tasks?.governmentRepresentativePhone || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">الفاكس</td><td className="border p-2 text-red-600">{tasks?.governmentRepresentativeFax || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">البريد الإلكتروني</td><td className="border p-2 text-red-600">{tasks?.governmentRepresentativeEmailAddress || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr><td className="border p-2">الاسم</td><td className="border p-2">{tasks?.governmentRepresentativeName || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr><td className="border p-2">الوظيفة</td><td className="border p-2">{tasks?.governmentRepresentativeJob || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr><td className="border p-2">الهاتف</td><td className="border p-2">{tasks?.governmentRepresentativePhone || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr><td className="border p-2">الفاكس</td><td className="border p-2">{tasks?.governmentRepresentativeFax || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr><td className="border p-2">البريد الإلكتروني</td><td className="border p-2">{tasks?.governmentRepresentativeEmailAddress || "تحدده الجهة الحكومية."}</td></tr>
                         </tbody>
                     </table>
                 </div>
