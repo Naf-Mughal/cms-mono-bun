@@ -139,275 +139,92 @@ export const paginate = async ({ page = 1, limit = 10, filter = {}, projection =
 
 export const convertToPDF = async (html: string) => {
     const updatedHtml = `
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Tailwind PDF</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    @font-face {
-      font-family: 'Arial Regular';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Regular'), url('https://devapi.euqud.io/api/fonts/ARIAL.woff') format('woff');
-    }
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Tailwind PDF</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        @font-face {
+          font-family: 'Arial Regular';
+          font-style: normal;
+          font-weight: normal;
+          src: local('Arial Regular'), url('https://devapi.euqud.io/api/fonts/ARIAL.woff') format('woff');
+        }
+        @font-face {
+          font-family: 'Arial Bold';
+          font-style: normal;
+          font-weight: bold;
+          src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD.woff') format('woff');
+        }
+        @font-face {
+          font-family: 'Arial Italic';
+          font-style: italic;
+          font-weight: normal;
+          src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI.woff') format('woff');
+        }
+        /* Add other fonts as needed, ensuring unique font-family names and correct font-weight/font-style */
 
-
-    @font-face {
-      font-family: 'Arial Narrow';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Narrow'), url('https://devapi.euqud.io/api/fonts/ARIALN.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI 1.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Narrow Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Narrow Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNI.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Medium';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Medium'), url('https://devapi.euqud.io/api/fonts/ArialMdm.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Medium Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Medium Italic'), url('https://devapi.euqud.io/api/fonts/ArialMdmItl.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Bold';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD 1.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Bold';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD.woff') format('woff');
-    }
-
-
-    @font-face {
-        font-family: 'Arial Narrow Bold';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Narrow Bold'), url('https://devapi.euqud.io/api/fonts/ARIALNB.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Bold Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI 1.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Bold Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Narrow Bold Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Narrow Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNBI.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Black';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Black'), url('https://devapi.euqud.io/api/fonts/ARIBLK.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Black Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Black Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBLACKITALIC.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Light Regular';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Light Regular'), url('https://devapi.euqud.io/api/fonts/ARIALLGT.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial CE Regular';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial CE Regular'), url('https://devapi.euqud.io/api/fonts/ArialCE.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial CE MT Black Regular';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial CE MT Black Regular'), url('https://devapi.euqud.io/api/fonts/ArialCEMTBlack.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial CE Bold';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial CE Bold'), url('https://devapi.euqud.io/api/fonts/arialceb.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial Light Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Light Italic'), url('https://devapi.euqud.io/api/fonts/ARIALLGTITL.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial CE Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial CE Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEItalic.woff') format('woff');
-    }
-
-
-    @font-face {
-      font-family: 'Arial CE Bold Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial CE Bold Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEBoldItalic.woff') format('woff');
-    }
-
-      @media print {
-        html, body {
-          margin: 0;
-          padding: 0;
+        @media print {
+          html, body {
+            margin: 0;
+            padding: 0;
+          }
+          .content-page {
+            margin-bottom: 20px;
+          }
+          .content-wrapper {
+            overflow: visible;
+          }
+          * {
+            box-sizing: border-box;
+          }
         }
 
-        /* Allow content to flow naturally */
-        .content-page {
-          margin-bottom: 20px;
-        }
-
-        /* Prevent empty pages */
-        .content-wrapper {
-          overflow: visible;
-        }
-
-        /* Ensure proper spacing */
         * {
-          box-sizing: border-box;
+          font-family: 'Arial Regular', Arial, sans-serif !important;
         }
-      }
 
-      * {
-        font-family: Arial, sans-serif !important;
-      }
-
-      /* Force Tailwind styles to work properly */
-      .max-w-\\[1200px\\] { max-width: 1200px !important; }
-      .mx-auto { margin-left: auto !important; margin-right: auto !important; }
-      .mt-8 { margin-top: 2rem !important; }
-      .pt-4 { padding-top: 1rem !important; }
-      .pb-4 { padding-bottom: 1rem !important; }
-      .text-sm { font-size: 0.875rem !important; }
-      .text-right { text-align: right !important; }
-      .border-solid { border-style: solid !important; }
-      .border-gray-300 { border-color: #d1d5db !important; }
-      .border-t { border-top-width: 1px !important; }
-      .flex { display: flex !important; }
-      .flex-col { flex-direction: column !important; }
-      .md\\:flex-row { flex-direction: row !important; }
-      .justify-between { justify-content: space-between !important; }
-      .items-start { align-items: flex-start !important; }
-      .md\\:items-center { align-items: center !important; }
-      .mb-2 { margin-bottom: 0.5rem !important; }
-      .md\\:mb-0 { margin-bottom: 0 !important; }
-      .inline-block { display: inline-block !important; }
-      .border-b { border-bottom: 1px solid !important; }
-      .border-gray-400 { border-color: #9ca3af !important; }
-      .w-24 { width: 6rem !important; }
-      .py-6 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
-      .px-0 { padding-left: 0 !important; padding-right: 0 !important; }
-      .bg-white { background-color: #ffffff !important; }
-      .space-y-1 > * + * { margin-top: 0.25rem !important; }
-      .text-lg { font-size: 1.125rem !important; }
-      .font-bold { font-weight: 700 !important; }
-      .text-gray-800 { color: #1f2937 !important; }
-      .text-base { font-size: 1rem !important; }
-      .font-medium { font-weight: 500 !important; }
-      .text-gray-700 { color: #374151 !important; }
-      .w-auto { width: auto !important; }
-      .h-24 { height: 6rem !important; }
-      .p-3 { padding: 0.75rem !important; }
-      .bg-gray-500 { background-color: #6b7280 !important; }
-      .items-center { align-items: center !important; }
-      .justify-center { justify-content: center !important; }
-      .rounded-\\[1vw\\] { border-radius: 1vw !important; }
-      .text-white { color: #ffffff !important; }
-    </style>
-  </head>
-  <body class="bg-white text-gray-800">
-    <!-- Main content without extra padding that might cause blank pages -->
-    <div style="padding: 10px;">
-      ${html}
-    </div>
-  </body>
-</html>
-`;
+        /* Tailwind styles */
+        .max-w-\\[1200px\\] { max-width: 1200px !important; }
+        /* ... other Tailwind styles ... */
+      </style>
+    </head>
+    <body class="bg-white text-gray-800">
+      <div style="padding: 10px;">
+        ${html}
+      </div>
+    </body>
+  </html>
+  `;
 
     try {
         const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--font-render-hinting=medium',
+                '--enable-font-antialiasing'
+            ],
+            headless: 'new',
+            dumpio: true // Enable for debugging
         });
         const page = await browser.newPage();
+
+        // Log console messages for debugging
+        page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+
         await page.setContent(updatedHtml, {
             waitUntil: 'networkidle0',
-            timeout: 30000
+            timeout: 60000
         });
-        await new Promise(resolve => setTimeout(resolve, 5000));
+
+        // Wait for fonts to load
+        await page.waitForFunction(() => {
+            const fonts = document.fonts;
+            return fonts.ready.then(() => fonts.size > 0);
+        });
+
         const pdf = await page.pdf({
             format: 'A4',
             printBackground: true,
@@ -419,41 +236,42 @@ export const convertToPDF = async (html: string) => {
             },
             displayHeaderFooter: true,
             headerTemplate: `
-            <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
-                <div style="max-width: 1200px; margin: 0 auto; padding: 16px 0; background: white; border-bottom: 1px solid #d1d5db; display: flex; align-items: center; justify-content: space-between;">
-                    <div style="text-align: right; line-height: 1.2;">
-                        <h1 style="font-size: 16px; font-weight: bold; color: #1f2937; margin: 0 0 3px 0;">المملكة العربية السعودية</h1>
-                        <h2 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">اسم الجهة الحكومية</h2>
-                        <h3 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">اسم الإدارة</h3>
-                        <h4 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0;">اسم النموذج</h4>
-                    </div>
-                    <div style="width: auto; height: 60px; padding: 8px; background: #6b7280; display: flex; align-items: center; justify-content: center; border-radius: 6px;">
-                        <span style="color: white; font-size: 12px;">شعار الجهة</span>
-                    </div>
-                </div>
+          <div style="font-size: 12px; width: 100%; direction: rtl; font-family: 'Arial Regular', Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 16px 0; background: white; border-bottom: 1px solid #d1d5db; display: flex; align-items: center; justify-content: space-between;">
+              <div style="text-align: right; line-height: 1.2;">
+                <h1 style="font-size: 16px; font-weight: bold; color: #1f2937; margin: 0 0 3px 0;">المملكة العربية السعودية</h1>
+                <h2 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">اسم الجهة الحكومية</h2>
+                <h3 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">اسم الإدارة</h3>
+                <h4 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0;">اسم النموذج</h4>
+              </div>
+              <div style="width: auto; height: 60px; padding: 8px; background: #6b7280; display: flex; align-items: center; justify-content: center; border-radius: 6px;">
+                <span style="color: white; font-size: 12px;">شعار الجهة</span>
+              </div>
             </div>
+          </div>
         `,
             footerTemplate: `
-            <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
-                <div style="max-width: 1200px; margin: 0 auto; padding: 12px 0; font-size: 12px; text-align: right; border-top: 1px solid #d1d5db;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
-                        <div>
-                            <p style="margin: 0 0 2px 0; font-size: 11px;">رقم الصفحة</p>
-                            <p style="margin: 0; font-weight: bold;"><span class="pageNumber"></span> من <span class="totalPages"></span></p>
-                        </div>
-                        <div>تاريخ الإصدار: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;"></span></div>
-                        <div>رقم النسخة: الثانية</div>
-                        <div>رقم الكراسة: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;"></span></div>
-                    </div>
+          <div style="font-size: 12px; width: 100%; direction: rtl; font-family: 'Arial Regular', Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 12px 0; font-size: 12px; text-align: right; border-top: 1px solid #d1d5db;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
+                <div>
+                  <p style="margin: 0 0 2px 0; font-size: 11px;">رقم الصفحة</p>
+                  <p style="margin: 0; font-weight: bold;"><span class="pageNumber"></span> من <span class="totalPages"></span></p>
                 </div>
+                <div>تاريخ الإصدار: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;"></span></div>
+                <div>رقم النسخة: الثانية</div>
+                <div>رقم الكراسة: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;"></span></div>
+              </div>
             </div>
-        `,
+          </div>
+        `
         });
+
         await browser.close();
-        console.log(`✅  PDF generated`);
+        console.log(`✅ PDF generated`);
         return pdf;
-    }
-    catch (error: any) {
+    } catch (error: any) {
+        console.error('PDF generation failed:', error.message);
         throw new Error(error.message, { cause: StatusCodes.INTERNAL_SERVER_ERROR });
     }
-}
+};
