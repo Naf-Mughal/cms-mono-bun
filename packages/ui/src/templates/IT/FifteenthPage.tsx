@@ -14,7 +14,7 @@ const FifteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold mb-2">36. وثائق العرض المالي</h3>
           <p className="mb-2">يشمل العرض المالي المتطلبات التالية:</p>
-          <ReadonlyList data={tasks.financialOfferDocuments || {}} />
+          <ReadonlyList data={tasks.finacialOfferDocuments || {}} />
         </div>
 
         <div className="border-b border-gray-300 pb-4">
