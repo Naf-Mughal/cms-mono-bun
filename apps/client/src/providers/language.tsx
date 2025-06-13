@@ -120,44 +120,44 @@ const AR = {
         "password": "كلمة المرور",
         "confirmPassword": "تاكيد كلمة المرور",
         "phone": "رقم الجوال",
-        "organizationName": "اسم المؤسسة",
-        "organization": "مؤسسة",
+        "organizationName": "اسم المؤسسة",
+        "organization": "مؤسسة",
         "individual": "فرد",
         "userType": "نوع المستخدم",
         "register": "تسجيل",
         "registering": "جارٍ التسجيل...",
         "already": "هل لديك حساب؟",
-        "login": "تسجيل الدخول",
+        "login": "تسجيل الدخول"
     },
     "Header": {
         "hello": "مرحبًا",
         "logout": "تسجيل الخروج",
-        "profile": "الملف الشخصي",
+        "profile": "الملف الشخصي"
     },
     "SideNav": {
-        "booklets": "الكتابات",
+        "booklets": "النموذج"
     },
     "NavHeader": {
-        "create": "انشاء كتابة",
-        "update": "تعديل الكتابة",
-        "tasks": "اجراءات الكتابة",
-        "view": "عرض الكتابة",
-        "perform": "اجراء الكتابة",
-        "view-task": "عرض اجراء الكتابة",
-        "booklets": "الكتابات",
-        "preview": "عرض الكتابة",
-        "hide": "اخفاء عرض الكتابة"
+        "create": "انشاء نموذج",
+        "update": "تعديل النموذج",
+        "tasks": "اجراءات النموذج",
+        "view": "عرض النموذج",
+        "perform": "اجراء ",
+        "view-task": "عرض اجراء النموذج",
+        "booklets": "النماذج",
+        "preview": "عرض النموذج",
+        "hide": "اخفاء عرض النموذج"
     },
     "CreateUpdataBookletForm": {
-        "bookletType": "نوع الكتابة",
-        "bookletCategory": "فئة الكتابة",
-        "select": "حدد فئة الكتابة",
+        "bookletType": "نوع النموذج",
+        "bookletCategory": "فئة النموذج",
+        "select": "حدد فئة النموذج",
         "projectName": "اسم المشروع",
-        "bookletNumber": "رقم الكتابة",
-        "issueDate": "تاريخ الصدور",
-        "selectDate": "حدد تاريخ الصدور",
-        "issueCity": "مدينة الصدور",
-        "selectCity": "حدد مدينة الصدور",
+        "bookletNumber": "رقم النموذج",
+        "issueDate": "تاريخ الاصدار",
+        "selectDate": "حدد تاريخ الاصدار",
+        "issueCity": "مدينة الاصدار",
+        "selectCity": "حدد مدينة الاصدار",
         "create": "انشاء",
         "creating": "جارٍ الانشاء...",
         "update": "تعديل",
@@ -167,27 +167,27 @@ const AR = {
         "external": "خارجي"
     },
     "BookletTable": {
-        "category": "فئة الكتابة",
+        "category": "فئة النموذج",
         "dateOfCreation": "تاريخ الانشاء",
         "projectName": "اسم المشروع",
-        "bookletNumber": "رقم الكتابة",
-        "department": "قسم الكتابة",
-        "actions": "الاجراءات",
+        "bookletNumber": "رقم النموذج",
+        "department": "قسم النموذج",
+        "actions": "الاجراءات"
     },
     "BookletTasksTable": {
         "status": "الحالة",
         "taskName": "اسم الاجراء",
         "taskType": "نوع الاجراء",
-        "actions": "الاجراءات",
+        "actions": "الاجراءات"
     },
     "TaskForm": {
-        "submit": "تاكيد",
+        "submit": "تنفيذ",
         "Submitting": "جارٍ التاكيد...",
-        "save": "حفظ",
+        "save": "حفظ"
     },
     "DeleteDialog": {
         "title": "هل انت متاكد؟",
-        "description": "لا يمكن التراجع عن هذا الاجراء. سوف يتم حذف هذا السجل بشكل دائم.",
+        "description": "لا يمكن التراجع عن هذا الاجراء. سوف يتم حذف هذا السجل بشكل دائم.",
         "cancel": "الغاء",
         "continue": "موافق"
     }
