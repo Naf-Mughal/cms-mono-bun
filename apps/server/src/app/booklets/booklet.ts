@@ -152,22 +152,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Regular'), url('https://devapi.euqud.io/api/fonts/ARIAL.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial Narrow';
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow'), url('https://devapi.euqud.io/api/fonts/ARIALN.woff') format('woff');
     }
-
-
-    @font-face {
-      font-family: 'Arial Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI 1.woff') format('woff');
-    }
-
 
     @font-face {
       font-family: 'Arial Italic';
@@ -176,14 +166,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial Narrow Italic';
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNI.woff') format('woff');
     }
-
 
     @font-face {
       font-family: 'Arial Medium';
@@ -192,22 +180,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Medium'), url('https://devapi.euqud.io/api/fonts/ArialMdm.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial Medium Italic';
       font-style: normal;
       font-weight: normal;
       src: local('Arial Medium Italic'), url('https://devapi.euqud.io/api/fonts/ArialMdmItl.woff') format('woff');
     }
-
-
-    @font-face {
-      font-family: 'Arial Bold';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD 1.woff') format('woff');
-    }
-
 
     @font-face {
       font-family: 'Arial Bold';
@@ -216,22 +194,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD.woff') format('woff');
     }
 
-
     @font-face {
         font-family: 'Arial Narrow Bold';
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow Bold'), url('https://devapi.euqud.io/api/fonts/ARIALNB.woff') format('woff');
     }
-
-
-    @font-face {
-      font-family: 'Arial Bold Italic';
-      font-style: normal;
-      font-weight: normal;
-      src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI 1.woff') format('woff');
-    }
-
 
     @font-face {
       font-family: 'Arial Bold Italic';
@@ -240,14 +208,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial Narrow Bold Italic';
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNBI.woff') format('woff');
     }
-
 
     @font-face {
       font-family: 'Arial Black';
@@ -256,14 +222,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Black'), url('https://devapi.euqud.io/api/fonts/ARIBLK.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial Black Italic';
       font-style: normal;
       font-weight: normal;
       src: local('Arial Black Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBLACKITALIC.woff') format('woff');
     }
-
 
     @font-face {
       font-family: 'Arial Light Regular';
@@ -272,14 +236,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Light Regular'), url('https://devapi.euqud.io/api/fonts/ARIALLGT.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial CE Regular';
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Regular'), url('https://devapi.euqud.io/api/fonts/ArialCE.woff') format('woff');
     }
-
 
     @font-face {
       font-family: 'Arial CE MT Black Regular';
@@ -288,14 +250,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial CE MT Black Regular'), url('https://devapi.euqud.io/api/fonts/ArialCEMTBlack.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial CE Bold';
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Bold'), url('https://devapi.euqud.io/api/fonts/arialceb.woff') format('woff');
     }
-
 
     @font-face {
       font-family: 'Arial Light Italic';
@@ -304,14 +264,12 @@ export const convertToPDF = async (html: string) => {
       src: local('Arial Light Italic'), url('https://devapi.euqud.io/api/fonts/ARIALLGTITL.woff') format('woff');
     }
 
-
     @font-face {
       font-family: 'Arial CE Italic';
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEItalic.woff') format('woff');
     }
-
 
     @font-face {
       font-family: 'Arial CE Bold Italic';
@@ -326,17 +284,14 @@ export const convertToPDF = async (html: string) => {
           padding: 0;
         }
 
-        /* Allow content to flow naturally */
         .content-page {
           margin-bottom: 20px;
         }
 
-        /* Prevent empty pages */
         .content-wrapper {
           overflow: visible;
         }
 
-        /* Ensure proper spacing */
         * {
           box-sizing: border-box;
         }
@@ -388,9 +343,29 @@ export const convertToPDF = async (html: string) => {
       .rounded-\\[1vw\\] { border-radius: 1vw !important; }
       .text-white { color: #ffffff !important; }
     </style>
+    <script>
+      // Wait for fonts and Tailwind to load
+      window.addEventListener('load', function() {
+        // Check if Tailwind is loaded
+        const tailwindLoaded = window.tailwind !== undefined;
+
+        // Check if fonts are loaded using FontFace API
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function() {
+            document.body.setAttribute('data-fonts-loaded', 'true');
+          });
+        }
+
+        // Fallback timeout
+        setTimeout(function() {
+          document.body.setAttribute('data-fonts-loaded', 'true');
+        }, 2000);
+
+        document.body.setAttribute('data-page-loaded', 'true');
+      });
+    </script>
   </head>
   <body class="bg-white text-gray-800">
-    <!-- Main content without extra padding that might cause blank pages -->
     <div style="padding: 10px;">
       ${html}
     </div>
@@ -403,12 +378,44 @@ export const convertToPDF = async (html: string) => {
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
+
+        // Set content and wait for initial load
         await page.setContent(updatedHtml, {
             waitUntil: 'networkidle0',
             timeout: 30000
         });
-        await page.evaluateHandle('document.fonts.ready');
-        await new Promise(resolve => setTimeout(resolve, 3000));
+
+        // Wait for fonts to load specifically
+        await page.evaluateOnNewDocument(() => {
+            return new Promise((resolve) => {
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(resolve);
+                } else {
+                    // Fallback for older browsers
+                    setTimeout(resolve, 2000);
+                }
+            });
+        });
+
+        // Wait for our custom data attributes to be set
+        await page.waitForFunction(() => {
+            return document.body.getAttribute('data-fonts-loaded') === 'true' &&
+                document.body.getAttribute('data-page-loaded') === 'true';
+        }, { timeout: 10000 });
+
+        // Additional wait to ensure everything is rendered
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // Force a repaint to ensure fonts are applied
+        await page.evaluate(() => {
+            document.body.style.display = 'none';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.display = '';
+        });
+
+        // Wait a bit more after repaint
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         const pdf = await page.pdf({
             format: 'A4',
             printBackground: true,
@@ -433,7 +440,7 @@ export const convertToPDF = async (html: string) => {
                     </div>
                 </div>
             </div>
-        `,
+            `,
             footerTemplate: `
             <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
                 <div style="max-width: 1200px; margin: 0 auto; padding: 12px 0; font-size: 12px; text-align: right; border-top: 1px solid #d1d5db;">
@@ -448,10 +455,11 @@ export const convertToPDF = async (html: string) => {
                     </div>
                 </div>
             </div>
-        `,
+            `,
         });
+
         await browser.close();
-        console.log(`✅  PDF generated`);
+        console.log('✅ PDF generated');
         return pdf;
     }
     catch (error: any) {
