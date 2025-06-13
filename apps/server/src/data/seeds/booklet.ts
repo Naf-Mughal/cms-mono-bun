@@ -494,6 +494,50 @@ export const bookletTasksSeed: BookletTasks = [
         pageNumber: 16
     },
     {
+        name: 'Alternative offers',
+        inputName: 'alternativeOffers',
+        data: {
+            value: "yes",
+            children: [
+                {
+                    value: 'yes',
+                    children: {
+                        value: 'نعم كما ذُكر في الملحق الخاص بها رقم',
+                        children: [
+                            {
+                                value: 'نعم كما ذُكر في الملحق الخاص بها رقم',
+                                children: {
+                                    value: null,
+                                },
+                                type: BookletInputTypesEnum.Text
+                            },
+                            {
+                                value: 'نعم، العروض البديلة مقبولة  على أن تلتزم في الإجراءات الاعتماد والتقييم التالية',
+                                children: {
+                                    value: [],
+                                },
+                                type: BookletInputTypesEnum.List
+                            }
+                        ]
+                    },
+                    type: BookletInputTypesEnum.Radio
+                },
+                {
+                    value: 'no',
+                    children: {
+                        value: 'لا العروض البديلة غير مقبولة',
+                    },
+                    type: BookletInputTypesEnum.Readonly
+                }
+            ]
+        },
+        status: BookletTaskStatusesEnum.Pending,
+        type: BookletTaskTypesEnum.Add,
+        inputType: BookletInputTypesEnum.Radio,
+        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        pageNumber: 16,
+    },
+    {
         name: 'Font size',
         inputName: 'fontSize',
         data: {

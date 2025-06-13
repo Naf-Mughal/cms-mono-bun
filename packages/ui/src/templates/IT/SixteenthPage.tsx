@@ -25,7 +25,7 @@ const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                         <li><span>ج.</span> التعاقد مع المنشآت الصغيرة والمتوسطة المحلية.</li>
 
                     </ul>
-                    <p className="mb-2 pt-6 text-green-700">الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية <span className="text-sm text-blue-700">[على الجهة الحكومية التي تقوم بتنفيذ أعمالها أو تأمين مشترياتها خارج المملكة العربية السعودية إضافة هذه الفقرة أو حذفها بحسب ما تراه محققًا للمصلحة.]</span></p>
+                    <p className="mb-2 pt-6 text-green-700">الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية</p>
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="font-semibold mb-2">42. مصادرة الضمانات</h3>
@@ -33,16 +33,14 @@ const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="mb-2 pt-6">المترتبة على المصادرة ومدة سريان الضمان. ويجوز للجهة طلب تمديد الضمان مدة معقولة إذا كانت إجراءات اتخاذ قرار المصادرة تتطلب ذلك. </p>
                     <p className="mb-2"><span className="font-semibold">ثانيًا:</span> لا يجوز مصادرة الضمان إلّا للأسباب التي تم تقديم الضمان لأجلها، ويكون طلب المصادرة مقتصراً على الضمان الخاص بالعملية التي أخل المتعاقد فيها بالتزاماته، ولا يمتد إلى مصادرة الضمانات الخاصة بالعمليات الأخرى سواء كانت لدى جهة واحدة أو عدة جهات.</p>
                     <p className="mb-2"><span className="font-semibold">ثالثًا:</span> عند مصادرة الضمان الابتدائي في المنافسات المجزأة، تقتصر المصادرة على جزء من قيمة الضمان منسوبة إلى قيمة الأعمال التي تمت ترسيتها على المتعاقد.</p>
-                    <p className="mb-2 border-b border-gray-300 pb-4"><span className="font-semibold">رابعًا:</span> إذا قررت الجهة الحكومية مصادرة الضمان، فتطلب مصادرته من البنك مصدر الضمان مباشرة وباستخدام عبارة "مصادرة الضمان" بشكل صريح، وعلى البنك الاستجابة لطلب المصادرة فوراً.</p>
+                    <p className="mb-2"><span className="font-semibold">رابعًا:</span> إذا قررت الجهة الحكومية مصادرة الضمان، فتطلب مصادرته من البنك مصدر الضمان مباشرة وباستخدام عبارة "مصادرة الضمان" بشكل صريح، وعلى البنك الاستجابة لطلب المصادرة فوراً.</p>
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="font-semibold mb-2">43	العروض البديلة</h3>
-                    <p className="mb-2 text-blue-700">[تحدد الجهة الحكومية إذا كانت العروض البديلة مقبولة في المنافسة وإجراءات تقييم وقبول هذه العروض.]</p>
-                </div>
-                <div className="border-b border-gray-300 pb-4">
-                    <h3 className="font-semibold mb-2">44	متطلبات تنسيق العروض</h3>
+                    <p className="mb-2">{tasks?.alternativeOffers?.value || tasks?.alternativeOffers || ""}</p>
                 </div>
                 <div className="pb-4">
+                    <h3 className="font-semibold mb-2">44	متطلبات تنسيق العروض</h3>
                     <ul className="pr-5 space-y-2">
                         <li><span>أ.</span> {tasks?.fontSize || "‌حجم الخط."}</li>
                         <li><span>ب.</span> {tasks?.fileType || "نوع وامتدادات الملفات الإلكترونية"}</li>
