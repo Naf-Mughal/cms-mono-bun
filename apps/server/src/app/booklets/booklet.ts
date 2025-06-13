@@ -150,6 +150,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Regular'), url('https://devapi.euqud.io/api/fonts/ARIAL.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -157,6 +158,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow'), url('https://devapi.euqud.io/api/fonts/ARIALN.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -164,6 +166,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -171,6 +174,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNI.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -178,6 +182,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Medium'), url('https://devapi.euqud.io/api/fonts/ArialMdm.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -185,6 +190,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Medium Italic'), url('https://devapi.euqud.io/api/fonts/ArialMdmItl.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -192,6 +198,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -199,6 +206,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow Bold'), url('https://devapi.euqud.io/api/fonts/ARIALNB.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -206,6 +214,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -213,6 +222,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Narrow Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNBI.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -220,6 +230,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Black'), url('https://devapi.euqud.io/api/fonts/ARIBLK.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -227,6 +238,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Black Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBLACKITALIC.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -234,6 +246,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Light Regular'), url('https://devapi.euqud.io/api/fonts/ARIALLGT.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -241,6 +254,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Regular'), url('https://devapi.euqud.io/api/fonts/ArialCE.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -248,6 +262,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE MT Black Regular'), url('https://devapi.euqud.io/api/fonts/ArialCEMTBlack.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -255,6 +270,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Bold'), url('https://devapi.euqud.io/api/fonts/arialceb.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -262,6 +278,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial Light Italic'), url('https://devapi.euqud.io/api/fonts/ARIALLGTITL.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -269,6 +286,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEItalic.woff') format('woff');
+      font-display: swap;
     }
 
     @font-face {
@@ -276,6 +294,7 @@ export const convertToPDF = async (html: string) => {
       font-style: normal;
       font-weight: normal;
       src: local('Arial CE Bold Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEBoldItalic.woff') format('woff');
+      font-display: swap;
     }
 
       @media print {
@@ -343,26 +362,150 @@ export const convertToPDF = async (html: string) => {
       .rounded-\\[1vw\\] { border-radius: 1vw !important; }
       .text-white { color: #ffffff !important; }
     </style>
-    <script>
-      // Wait for fonts and Tailwind to load
-      window.addEventListener('load', function() {
-        // Check if Tailwind is loaded
-        const tailwindLoaded = window.tailwind !== undefined;
 
-        // Check if fonts are loaded using FontFace API
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(function() {
-            document.body.setAttribute('data-fonts-loaded', 'true');
-          });
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://devapi.euqud.io/api/fonts/ARIAL.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="https://devapi.euqud.io/api/fonts/ARIALBD.woff" as="font" type="font/woff" crossorigin>
+
+    <script>
+      // Enhanced font and resource loading detection
+      let fontsLoaded = false;
+      let tailwindLoaded = false;
+      let resourcesLoaded = false;
+
+      function checkAllLoaded() {
+        if (fontsLoaded && tailwindLoaded && resourcesLoaded) {
+          document.body.setAttribute('data-all-loaded', 'true');
+          console.log('All resources loaded successfully');
+        }
+      }
+
+      // Check Tailwind loading
+      function checkTailwind() {
+        // Try multiple ways to detect Tailwind
+        const hasTailwindClasses = document.querySelector('.bg-white') !== null;
+        const hasTailwindScript = document.querySelector('script[src*="tailwindcss"]') !== null;
+        const tailwindExists = window.tailwind !== undefined || hasTailwindClasses;
+
+        if (tailwindExists || hasTailwindScript) {
+          tailwindLoaded = true;
+          console.log('Tailwind detected');
+          checkAllLoaded();
         }
 
-        // Fallback timeout
-        setTimeout(function() {
-          document.body.setAttribute('data-fonts-loaded', 'true');
-        }, 2000);
+        // Fallback timeout for Tailwind
+        setTimeout(() => {
+          if (!tailwindLoaded) {
+            tailwindLoaded = true;
+            console.log('Tailwind loading timeout reached');
+            checkAllLoaded();
+          }
+        }, 5000);
+      }
 
-        document.body.setAttribute('data-page-loaded', 'true');
-      });
+      // Enhanced font loading detection
+      function checkFonts() {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function() {
+            // Additional check to verify fonts are actually applied
+            const testElement = document.createElement('div');
+            testElement.style.fontFamily = 'Arial, sans-serif';
+            testElement.style.position = 'absolute';
+            testElement.style.visibility = 'hidden';
+            testElement.innerHTML = 'Test';
+            document.body.appendChild(testElement);
+
+            setTimeout(() => {
+              document.body.removeChild(testElement);
+              fontsLoaded = true;
+              console.log('Fonts loaded via FontFace API');
+              checkAllLoaded();
+            }, 100);
+          }).catch(() => {
+            fontsLoaded = true;
+            console.log('Font loading failed, proceeding anyway');
+            checkAllLoaded();
+          });
+        } else {
+          // Fallback for browsers without FontFace API
+          setTimeout(() => {
+            fontsLoaded = true;
+            console.log('Fonts loaded via timeout fallback');
+            checkAllLoaded();
+          }, 3000);
+        }
+      }
+
+      // Check if all external resources are loaded
+      function checkResources() {
+        const scripts = document.querySelectorAll('script[src]');
+        const links = document.querySelectorAll('link[href]');
+        let loadedCount = 0;
+        const totalResources = scripts.length + links.length;
+
+        function resourceLoaded() {
+          loadedCount++;
+          if (loadedCount >= totalResources) {
+            resourcesLoaded = true;
+            console.log('All external resources loaded');
+            checkAllLoaded();
+          }
+        }
+
+        scripts.forEach(script => {
+          if (script.complete) {
+            resourceLoaded();
+          } else {
+            script.addEventListener('load', resourceLoaded);
+            script.addEventListener('error', resourceLoaded);
+          }
+        });
+
+        links.forEach(link => {
+          if (link.sheet || link.complete) {
+            resourceLoaded();
+          } else {
+            link.addEventListener('load', resourceLoaded);
+            link.addEventListener('error', resourceLoaded);
+          }
+        });
+
+        // Fallback timeout
+        setTimeout(() => {
+          if (!resourcesLoaded) {
+            resourcesLoaded = true;
+            console.log('Resource loading timeout reached');
+            checkAllLoaded();
+          }
+        }, 8000);
+
+        // If no external resources, mark as loaded
+        if (totalResources === 0) {
+          resourcesLoaded = true;
+          checkAllLoaded();
+        }
+      }
+
+      // Start checks when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          checkTailwind();
+          checkFonts();
+          checkResources();
+        });
+      } else {
+        checkTailwind();
+        checkFonts();
+        checkResources();
+      }
+
+      // Final fallback timeout
+      setTimeout(() => {
+        if (!document.body.getAttribute('data-all-loaded')) {
+          document.body.setAttribute('data-all-loaded', 'true');
+          console.log('Final timeout reached, proceeding with PDF generation');
+        }
+      }, 15000);
     </script>
   </head>
   <body class="bg-white text-gray-800">
@@ -375,46 +518,103 @@ export const convertToPDF = async (html: string) => {
 
     try {
         const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--no-first-run',
+                '--no-zygote',
+                '--single-process',
+                '--disable-extensions',
+                '--disable-background-timer-throttling',
+                '--disable-backgrounding-occluded-windows',
+                '--disable-renderer-backgrounding'
+            ],
+            headless: true,
+            timeout: 60000
         });
+
         const page = await browser.newPage();
 
-        // Set content and wait for initial load
-        await page.setContent(updatedHtml, {
-            waitUntil: 'networkidle0',
-            timeout: 30000
+        // Set longer timeouts for remote environments
+        page.setDefaultNavigationTimeout(60000);
+        page.setDefaultTimeout(60000);
+
+        // Set user agent to avoid potential blocking
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+
+        // Enable request interception to handle failures gracefully
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+            if (req.resourceType() === 'font' || req.resourceType() === 'stylesheet' || req.resourceType() === 'script') {
+                // Add headers for CORS and caching
+                req.continue({
+                    headers: {
+                        ...req.headers(),
+                        'Accept': '*/*',
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+            } else {
+                req.continue();
+            }
         });
 
-        // Wait for fonts to load specifically
-        await page.evaluateOnNewDocument(() => {
-            return new Promise((resolve) => {
-                if (document.fonts && document.fonts.ready) {
-                    document.fonts.ready.then(resolve);
-                } else {
-                    // Fallback for older browsers
-                    setTimeout(resolve, 2000);
-                }
+        page.on('requestfailed', (req) => {
+            console.warn(\`Request failed: \${req.url()} - \${req.failure()?.errorText}\`);
+        });
+
+        console.log('Setting page content...');
+
+        // Set content with extended timeout
+        await page.setContent(updatedHtml, {
+            waitUntil: 'networkidle0',
+            timeout: 60000
+        });
+
+        console.log('Waiting for resources to load...');
+
+        // Wait for our custom loading indicator with extended timeout
+        try {
+            await page.waitForFunction(() => {
+                return document.body.getAttribute('data-all-loaded') === 'true';
+            }, {
+                timeout: 20000,
+                polling: 500
+            });
+            console.log('All resources loaded successfully');
+        } catch (error) {
+            console.warn('Timeout waiting for resources, proceeding anyway:', error.message);
+        }
+
+        // Additional stabilization wait
+        console.log('Stabilization wait...');
+        await new Promise(resolve => setTimeout(resolve, 3000));
+
+        // Force repaint multiple times for remote environments
+        await page.evaluate(() => {
+            // Force multiple repaints
+            for (let i = 0; i < 3; i++) {
+                document.body.style.display = 'none';
+                document.body.offsetHeight; // Trigger reflow
+                document.body.style.display = '';
+            }
+
+            // Force font rendering
+            const elements = document.querySelectorAll('*');
+            elements.forEach(el => {
+                const style = window.getComputedStyle(el);
+                const fontFamily = style.fontFamily;
+                // This forces font computation
+                el.style.fontFamily = fontFamily;
             });
         });
 
-        // Wait for our custom data attributes to be set
-        await page.waitForFunction(() => {
-            return document.body.getAttribute('data-fonts-loaded') === 'true' &&
-                document.body.getAttribute('data-page-loaded') === 'true';
-        }, { timeout: 10000 });
-
-        // Additional wait to ensure everything is rendered
+        // Final wait after repaint
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        // Force a repaint to ensure fonts are applied
-        await page.evaluate(() => {
-            document.body.style.display = 'none';
-            document.body.offsetHeight; // Trigger reflow
-            document.body.style.display = '';
-        });
-
-        // Wait a bit more after repaint
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        console.log('Generating PDF...');
 
         const pdf = await page.pdf({
             format: 'A4',
@@ -426,7 +626,7 @@ export const convertToPDF = async (html: string) => {
                 left: '15mm'
             },
             displayHeaderFooter: true,
-            headerTemplate: `
+            headerTemplate: \`
             <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
                 <div style="max-width: 1200px; margin: 0 auto; padding: 16px 0; background: white; border-bottom: 1px solid #d1d5db; display: flex; align-items: center; justify-content: space-between;">
                     <div style="text-align: right; line-height: 1.2;">
@@ -440,8 +640,8 @@ export const convertToPDF = async (html: string) => {
                     </div>
                 </div>
             </div>
-            `,
-            footerTemplate: `
+            \`,
+            footerTemplate: \`
             <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
                 <div style="max-width: 1200px; margin: 0 auto; padding: 12px 0; font-size: 12px; text-align: right; border-top: 1px solid #d1d5db;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
@@ -455,14 +655,18 @@ export const convertToPDF = async (html: string) => {
                     </div>
                 </div>
             </div>
-            `,
+            \`,
+            timeout: 60000
         });
 
         await browser.close();
-        console.log('✅ PDF generated');
+        console.log('✅ PDF generated successfully');
         return pdf;
-    }
-    catch (error: any) {
-        throw new Error(error.message, { cause: StatusCodes.INTERNAL_SERVER_ERROR });
+
+    } catch (error: any) {
+        console.error('PDF generation error:', error);
+        throw new Error(\`PDF generation failed: \${error.message}\`, {
+            cause: StatusCodes.INTERNAL_SERVER_ERROR
+        });
     }
 }
