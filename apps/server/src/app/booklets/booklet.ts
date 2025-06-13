@@ -562,7 +562,7 @@ export const convertToPDF = async (html: string) => {
         });
 
         page.on('requestfailed', (req) => {
-            console.warn(\`Request failed: \${req.url()} - \${req.failure()?.errorText}\`);
+            console.warn(`Request failed: ${req.url()} - ${req.failure()?.errorText}`);
         });
 
         console.log('Setting page content...');
@@ -584,7 +584,7 @@ export const convertToPDF = async (html: string) => {
                 polling: 500
             });
             console.log('All resources loaded successfully');
-        } catch (error) {
+        } catch (error: any) {
             console.warn('Timeout waiting for resources, proceeding anyway:', error.message);
         }
 
@@ -607,7 +607,7 @@ export const convertToPDF = async (html: string) => {
                 const style = window.getComputedStyle(el);
                 const fontFamily = style.fontFamily;
                 // This forces font computation
-                el.style.fontFamily = fontFamily;
+                (el as any).style.fontFamily = fontFamily;
             });
         });
 
@@ -626,7 +626,7 @@ export const convertToPDF = async (html: string) => {
                 left: '15mm'
             },
             displayHeaderFooter: true,
-            headerTemplate: \`
+            headerTemplate: `
             <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
                 <div style="max-width: 1200px; margin: 0 auto; padding: 16px 0; background: white; border-bottom: 1px solid #d1d5db; display: flex; align-items: center; justify-content: space-between;">
                     <div style="text-align: right; line-height: 1.2;">
@@ -640,8 +640,8 @@ export const convertToPDF = async (html: string) => {
                     </div>
                 </div>
             </div>
-            \`,
-            footerTemplate: \`
+            `,
+            footerTemplate: `
             <div style="font-size: 12px; width: 100%; direction: rtl; font-family: Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
                 <div style="max-width: 1200px; margin: 0 auto; padding: 12px 0; font-size: 12px; text-align: right; border-top: 1px solid #d1d5db;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
@@ -655,7 +655,7 @@ export const convertToPDF = async (html: string) => {
                     </div>
                 </div>
             </div>
-            \`,
+            `,
             timeout: 60000
         });
 
@@ -665,7 +665,7 @@ export const convertToPDF = async (html: string) => {
 
     } catch (error: any) {
         console.error('PDF generation error:', error);
-        throw new Error(\`PDF generation failed: \${error.message}\`, {
+        throw new Error(`PDF generation failed: ${error.message}`, {
             cause: StatusCodes.INTERNAL_SERVER_ERROR
         });
     }
