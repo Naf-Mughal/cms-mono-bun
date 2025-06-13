@@ -32,9 +32,9 @@ const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="font-bold text-black">7. ممثل الجهة الحكومية</p>
                     <p className="text-black">يتم التواصل مع ممثل الجهة الحكومية المذكور أدناه في حال تعذر استخدام البوابة الإلكترونية أو الوسيلة البديلة.</p>
                     <table className="w-full text-right border border-gray-300 text-sm my-4 text-black">
-                        <thead className="bg-gray-600 font-semibold">
+                        <thead className="font-semibold" style={{ backgroundColor: "#595959" }}>
                             <tr>
-                                <th className="border border-gray-300 p-2 text-white">معلومات اتصال ممثل الجهة الحكومية</th>
+                                <th className="p-2 text-white" colSpan={2}>معلومات اتصال ممثل الجهة الحكومية</th>
                             </tr>
                         </thead>
                         <tbody>

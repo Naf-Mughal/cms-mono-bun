@@ -8,9 +8,9 @@ const EighthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
           <p className="font-semibold text-black">8. مكان التسليم</p>
           <p className="text-black">يتم تسليم العروض وجميع ما يتعلق بالمنافسة لممثل الجهة الحكومية في العنوان المذكور أدناه في حال تعذر تسليم العروض من خلال البوابة الإلكترونية أو الوسيلة البديلة.</p>
           <table className="w-full border mt-4 text-sm text-black">
-            <thead className="bg-gray-600 font-semibold">
+            <thead className="font-semibold" style={{ backgroundColor: "#595959" }}>
               <tr>
-                <th className="border border-gray-300 p-2 text-white text-right">مكان تسليم العروض</th>
+                <th className="p-2 text-white text-right" colSpan={2}>مكان تسليم العروض</th>
               </tr>
             </thead>
             <tbody>

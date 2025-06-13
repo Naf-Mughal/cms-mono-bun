@@ -146,179 +146,179 @@ export const convertToPDF = async (html: string) => {
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
     @font-face {
-  font-family: 'Arial Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Regular'), url('/fonts/ARIAL.woff') format('woff');
-}
+      font-family: 'Arial Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Regular'), url('https://devapi.euqud.io/api/fonts/ARIAL.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Narrow';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Narrow'), url('/fonts/ARIALN.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Narrow';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Narrow'), url('https://devapi.euqud.io/api/fonts/ARIALN.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Italic'), url('/fonts/ARIALI 1.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI 1.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Italic'), url('/fonts/ARIALI.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Italic'), url('https://devapi.euqud.io/api/fonts/ARIALI.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Narrow Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Narrow Italic'), url('/fonts/ARIALNI.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Narrow Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Narrow Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNI.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Medium';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Medium'), url('/fonts/ArialMdm.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Medium';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Medium'), url('https://devapi.euqud.io/api/fonts/ArialMdm.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Medium Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Medium Italic'), url('/fonts/ArialMdmItl.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Medium Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Medium Italic'), url('https://devapi.euqud.io/api/fonts/ArialMdmItl.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Bold'), url('/fonts/ARIALBD 1.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Bold';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD 1.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Bold'), url('/fonts/ARIALBD.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Bold';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Bold'), url('https://devapi.euqud.io/api/fonts/ARIALBD.woff') format('woff');
+    }
 
 
-@font-face {
-    font-family: 'Arial Narrow Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Narrow Bold'), url('/fonts/ARIALNB.woff') format('woff');
-}
+    @font-face {
+        font-family: 'Arial Narrow Bold';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Narrow Bold'), url('https://devapi.euqud.io/api/fonts/ARIALNB.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Bold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Bold Italic'), url('/fonts/ARIALBI 1.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Bold Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI 1.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Bold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Bold Italic'), url('/fonts/ARIALBI.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Bold Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBI.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Narrow Bold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Narrow Bold Italic'), url('/fonts/ARIALNBI.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Narrow Bold Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Narrow Bold Italic'), url('https://devapi.euqud.io/api/fonts/ARIALNBI.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Black';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Black'), url('/fonts/ARIBLK.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Black';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Black'), url('https://devapi.euqud.io/api/fonts/ARIBLK.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Black Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Black Italic'), url('/fonts/ARIALBLACKITALIC.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Black Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Black Italic'), url('https://devapi.euqud.io/api/fonts/ARIALBLACKITALIC.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Light Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Light Regular'), url('/fonts/ARIALLGT.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Light Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Light Regular'), url('https://devapi.euqud.io/api/fonts/ARIALLGT.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial CE Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial CE Regular'), url('/fonts/ArialCE.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial CE Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial CE Regular'), url('https://devapi.euqud.io/api/fonts/ArialCE.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial CE MT Black Regular';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial CE MT Black Regular'), url('/fonts/ArialCEMTBlack.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial CE MT Black Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial CE MT Black Regular'), url('https://devapi.euqud.io/api/fonts/ArialCEMTBlack.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial CE Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial CE Bold'), url('/fonts/arialceb.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial CE Bold';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial CE Bold'), url('https://devapi.euqud.io/api/fonts/arialceb.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial Light Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial Light Italic'), url('/fonts/ARIALLGTITL.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial Light Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial Light Italic'), url('https://devapi.euqud.io/api/fonts/ARIALLGTITL.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial CE Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial CE Italic'), url('/fonts/ArialCEItalic.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial CE Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial CE Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEItalic.woff') format('woff');
+    }
 
 
-@font-face {
-  font-family: 'Arial CE Bold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Arial CE Bold Italic'), url('/fonts/ArialCEBoldItalic.woff') format('woff');
-}
+    @font-face {
+      font-family: 'Arial CE Bold Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Arial CE Bold Italic'), url('https://devapi.euqud.io/api/fonts/ArialCEBoldItalic.woff') format('woff');
+    }
 
       @media print {
         html, body {
@@ -366,7 +366,7 @@ export const convertToPDF = async (html: string) => {
       .mb-2 { margin-bottom: 0.5rem !important; }
       .md\\:mb-0 { margin-bottom: 0 !important; }
       .inline-block { display: inline-block !important; }
-      .border-b { border-bottom-width: 1px !important; }
+      .border-b { border-bottom: 1px solid !important; }
       .border-gray-400 { border-color: #9ca3af !important; }
       .w-24 { width: 6rem !important; }
       .py-6 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }

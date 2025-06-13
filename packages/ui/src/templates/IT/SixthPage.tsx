@@ -2,7 +2,7 @@ import React from 'react'
 
 const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
   const baseBorder = '1px solid #D1D5DB' // Tailwind gray-300 border color
-  const headerBg = '#4B5563' // Tailwind gray-600 background
+  const headerBg = '#595959' // Tailwind gray-600 background
   const headerTextColor = 'white'
   const redText = '#DC2626' // Tailwind red-600
   const greenText = '#047857' // Tailwind green-700
