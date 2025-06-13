@@ -325,27 +325,27 @@ export const convertToPDF = async (html: string) => {
           margin: 0;
           padding: 0;
         }
-        
+
         /* Allow content to flow naturally */
         .content-page {
           margin-bottom: 20px;
         }
-        
+
         /* Prevent empty pages */
         .content-wrapper {
           overflow: visible;
         }
-        
+
         /* Ensure proper spacing */
         * {
           box-sizing: border-box;
         }
       }
-      
+
       * {
         font-family: Arial, sans-serif !important;
       }
-      
+
       /* Force Tailwind styles to work properly */
       .max-w-\\[1200px\\] { max-width: 1200px !important; }
       .mx-auto { margin-left: auto !important; margin-right: auto !important; }
@@ -407,6 +407,7 @@ export const convertToPDF = async (html: string) => {
             waitUntil: 'networkidle0',
             timeout: 30000
         });
+        await page.evaluateHandle('document.fonts.ready');
         await new Promise(resolve => setTimeout(resolve, 3000));
         const pdf = await page.pdf({
             format: 'A4',
