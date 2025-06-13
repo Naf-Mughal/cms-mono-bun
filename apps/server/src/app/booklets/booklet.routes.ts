@@ -20,9 +20,9 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
             const tasks: any = {}
             data.data.bookletTasks.forEach((item: any) => {
                 if (item.inputType === 'radio') {
-                    tasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children?.value
+                    tasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)?.children || item.data?.children?.find((child: any) => child.value === item.data.value)?.value
                 }
-                else if (item.inputType === 'table' || item.inputType === 'nested-list', item.inputType === 'rows-table') {
+                else if (item.inputType === 'table' || item.inputType === 'list' || item.inputType === 'rows-table') {
                     tasks[item.inputName] = item.data
                 }
                 else if (item.inputType === 'dynamic-table') {
