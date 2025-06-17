@@ -63,7 +63,7 @@ export const TextField = ({
           value={value}
           onChange={handleChange}
           className={cn(
-            "bg-[#F6F8FC] h-12 border-0 pr-12",
+            "bg-[#F6F8FC] h-12 border-0",
             field.state.meta.isTouched && field.state.meta.errors.length > 0
               ? "border-red-600 focus-visible:border-red-600 focus-visible:ring-red-300/40"
               : "",

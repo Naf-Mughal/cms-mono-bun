@@ -21,7 +21,7 @@ export const AuthTextField = ({ label, className, ...inputProps }: TextFieldProp
           value={field.state.value}
           onChange={(e) => field.handleChange(e.target.value)}
           className={cn(
-            "bg-white h-12 border-[#EAEDF3] pr-12",
+            "bg-white h-12 border-[#EAEDF3]",
             field.state.meta.isTouched && field.state.meta.errors.length > 0 ? "border-red-600 focus-visible:border-red-600 focus-visible:ring-red-300/40" : "",
             className
           )}

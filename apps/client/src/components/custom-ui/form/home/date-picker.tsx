@@ -59,7 +59,7 @@ export function DatePicker({ className }: { className?: string }) {
                     <Button
                         variant={"outline"}
                         className={cn(
-                            "bg-[#F6F8FC] h-12 border-0 pr-12 w-full text-start justify-start",
+                            "bg-[#F6F8FC] h-12 border-0 w-full text-start justify-start",
                             field.state.meta.isTouched && field.state.meta.errors.length > 0
                                 ? "border-red-600 focus-visible:border-red-600 focus-visible:ring-red-300/40"
                                 : "",

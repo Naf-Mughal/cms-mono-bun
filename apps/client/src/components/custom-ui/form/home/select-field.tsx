@@ -1,7 +1,9 @@
+'use client'
 import { Label } from "@/components/ui/label";
 import { useFieldContext } from "..";
 import { FieldErrors } from "../field-errors";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useTranslations } from "@/providers/language";
 
 type SelectOption = {
   value: string;
@@ -24,7 +26,7 @@ export const SelectField = ({
   dir
 }: SelectFieldProps) => {
   const field = useFieldContext<string>();
-
+  const t = useTranslations("SelectOptions")
   return (
     <div className="space-y-2" dir={dir}>
       <div className="flex flex-col md:flex-row items-center gap-2 w-full">
@@ -41,7 +43,7 @@ export const SelectField = ({
           <SelectContent className="w-full border-0" position="item-aligned">
             {options.map((option) => (
               <SelectItem key={option.value} value={option.value} className="hover:!bg-[#F6F8FC] h-12">
-                {option.label}
+                {t(option.label)}
               </SelectItem>
             ))}
           </SelectContent>

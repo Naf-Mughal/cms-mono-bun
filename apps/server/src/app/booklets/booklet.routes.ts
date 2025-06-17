@@ -96,8 +96,9 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
         set.status = status;
         return { ...data };
     })
-    .get('/:id/tasks', async ({ params, set }: Context & { params: { id: string } }) => {
+    .get('/:id/tasks', async ({ params, set, user }: Context & { params: { id: string }, user: any }) => {
         const projection = { _id: 1, projectName: 1, bookletTasks: 1 };
+        console.log(user)
         const { data, status } = await findOne(params.id, projection);
         set.status = status;
         return { ...data };

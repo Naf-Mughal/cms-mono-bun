@@ -206,8 +206,7 @@ export const convertToPDF = async (html: string) => {
                 '--font-render-hinting=medium',
                 '--enable-font-antialiasing'
             ],
-            headless: 'new',
-            dumpio: true // Enable for debugging
+            headless: true,
         });
         const page = await browser.newPage();
 

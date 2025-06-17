@@ -2,7 +2,7 @@ import { BookletInputTypesEnum, BookletTaskStatusesEnum, BookletTaskTypesEnum, t
 
 export const bookletTasksSeed: BookletTasks = [
     {
-        name: 'Name of Government Orgnization',
+        name: ['Name of Government Orgnization', 'اسم الجهة الحكومية'],
         inputName: 'nameOfGovtEntity',
         data: {
             value: null,
@@ -10,11 +10,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity is required. The paragraph is removed if it does not apply.',
+        description: ['Here, write the name of the ministry or government agency.', 'هنا قم بكتابة إسم الوزارة أو الجهة الحكومية'],
         pageNumber: 6
     },
     {
-        name: 'To Receive Bidding Offers',
+        name: ['To Receive Bidding Offers', 'إستلام عروض المناقصة عبر'],
         inputName: 'toReceiveBiddingOffers',
         data: {
             value: null,
@@ -22,11 +22,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions the site where you should recive bidding. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions the site where you should recive bidding. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Values in numbers (Saudi Riyal)',
+        name: ['Values in numbers (Saudi Riyal)', 'القيمة بالأرقام (... ريال سعودي)'],
         inputName: 'valueInNumber',
         data: {
             value: null,
@@ -34,11 +34,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'The value in words',
+        name: ['The value in words', 'القيمة بالتفقيط'],
         inputName: 'valueInWords',
         data: {
             value: null,
@@ -46,11 +46,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Payment Method',
+        name: ['Payment Method', 'آلية الدفع'],
         inputName: 'paymentMethod',
         data: {
             value: "Certified Cheque",
@@ -76,11 +76,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Letter of confirmation of participation',
+        name: ['Letter of confirmation of participation', 'خطاب تأكيد المشاركة'],
         inputName: 'letterOfConfirmationOfParticipation',
         data: {
             value: null,
@@ -88,11 +88,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Date,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Send questions and inquiries',
+        name: ['Send questions and inquiries', 'إرسال الأسئلة والاستفسارات'],
         inputName: 'sendQuestionsAndInquiries',
         data: {
             value: null,
@@ -100,11 +100,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Date,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Submit offers',
+        name: ['Submit offers', 'تقديم العروض'],
         inputName: 'submitOffers',
         data: {
             value: null,
@@ -112,11 +112,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Date,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Open offers',
+        name: ['Open offers', 'فتح العروض'],
         inputName: 'openOffers',
         data: {
             value: null,
@@ -124,11 +124,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Date,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'The award day',
+        name: ['The award day', 'الترسية'],
         inputName: 'theAwardDay',
         data: {
             value: null,
@@ -136,11 +136,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Date,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Start work',
+        name: ['Start work', 'بدء الأعمال'],
         inputName: 'startWork',
         data: {
             value: null,
@@ -148,11 +148,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Date,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
     {
-        name: 'Regulatory records and licenses',
+        name: ['Regulatory records and licenses', 'السجلات والتراخيص النظامية'],
         inputName: 'regulatoryRecordsAndLicenses',
         data: {
             value: [
@@ -172,11 +172,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 7
     },
     {
-        name: 'Government Representative Name',
+        name: ['Government Representative Name', 'اسم ممثل الجهة الحكومية'],
         inputName: 'governmentRepresentativeName',
         data: {
             value: null,
@@ -184,11 +184,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 7
     },
     {
-        name: 'Government Representative Job',
+        name: ['Government Representative Job', 'وظيفة ممثل الجهة الحكومية'],
         inputName: 'governmentRepresentativeJob',
         data: {
             value: null,
@@ -196,11 +196,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 7
     },
     {
-        name: 'Government Representative Phone',
+        name: ['Government Representative Phone', 'هاتف ممثل الجهة الحكومية'],
         inputName: 'governmentRepresentativePhone',
         data: {
             value: null,
@@ -208,11 +208,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 7
     },
     {
-        name: 'Government Representative Fax',
+        name: ['Government Representative Fax', 'فاكس ممثل الجهة الحكومية'],
         inputName: 'governmentRepresentativeFax',
         data: {
             value: null,
@@ -220,11 +220,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 7
     },
     {
-        name: 'Government Representative Email Address',
+        name: ['Government Representative Email Address', 'البريد الإلكتروني لممثل الجهة الحكومية'],
         inputName: 'governmentRepresentativeEmailAddress',
         data: {
             value: null,
@@ -232,11 +232,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 7
     },
     {
-        name: 'Address',
+        name: ['Address', 'مكان تسليم العروض - العنوان'],
         inputName: 'address',
         data: {
             value: null,
@@ -244,11 +244,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 8
     },
     {
-        name: 'Building',
+        name: ['Building', 'مكان تسليم العروض - المبنى'],
         inputName: 'building',
         data: {
             value: null,
@@ -256,11 +256,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 8
     },
     {
-        name: 'Floor',
+        name: ['Floor', 'مكان تسليم العروض - الطابق'],
         inputName: 'floor',
         data: {
             value: null,
@@ -268,11 +268,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 8
     },
     {
-        name: 'Room or name of department',
+        name: ['Room or name of department', 'مكان تسليم العروض - الغرفة/ اسم الإدارة'],
         inputName: 'roomNameOfDepartment',
         data: {
             value: null,
@@ -280,11 +280,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 8
     },
     {
-        name: 'Delivery Time',
+        name: ['Delivery Time', 'وقت التسليم'],
         inputName: 'deliveryTime',
         data: {
             value: null,
@@ -292,11 +292,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 8
     },
     {
-        name: 'Competition Segmentation',
+        name: ['Competition Segmentation', 'تجزئة المنافسة'],
         inputName: 'competitionSegmentation',
         data: {
             value: "no",
@@ -320,11 +320,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 10,
     },
     {
-        name: 'Confirmation of participation in the competition',
+        name: ['Confirmation of participation in the competition', 'التضامن'],
         inputName: 'confirmationOfParticipationInTheCompetition',
         data: {
             value: 'no',
@@ -357,11 +357,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 12,
     },
     {
-        name: 'Post qualification',
+        name: ['Post qualification', 'التأهيل اللاحق'],
         inputName: 'postQualification',
         data: {
             value: null,
@@ -369,11 +369,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 13
     },
     {
-        name: 'Authrised Currency',
+        name: ['Authrised Currency', 'العملة المعتمدة'],
         inputName: 'authrisedCurrency',
         data: {
             value: null,
@@ -381,11 +381,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 14
     },
     {
-        name: 'Timeline to send the inquiries',
+        name: ['Timeline to send the inquiries', 'الأسئلة والاستفسارات - الفترة المحددة لتقديم الاستفسارات'],
         inputName: 'timelineToSendInquiries',
         data: {
             value: null,
@@ -393,11 +393,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 14
     },
     {
-        name: 'Timeline to answer the inquiries',
+        name: ['Timeline to answer the inquiries', 'الأسئلة والاستفسارات - الفترة المحددة للرد على الاستفسارات'],
         inputName: 'timelineToAnswerInquiries',
         data: {
             value: null,
@@ -405,11 +405,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 14
     },
     {
-        name: 'Official email',
+        name: ['Official email', 'البريد الرسمي'],
         inputName: 'officialEmail',
         data: {
             value: null,
@@ -417,11 +417,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 14
     },
     {
-        name: 'Technical offer documents',
+        name: ['Technical offer documents', 'وثائق العرض الفني'],
         inputName: 'technicalOfferDocuments',
         data: {
             value: [
@@ -434,11 +434,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 15
     },
     {
-        name: 'Finacial offer documents',
+        name: ['Finacial offer documents', ' وثائق العرض المالي'],
         inputName: 'finacialOfferDocuments',
         data: {
             value: [
@@ -450,11 +450,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 15
     },
     {
-        name: 'Writing Prices',
+        name: ['Writing Prices', 'كتابة الأسعار'],
         inputName: 'writingPrices',
         data: {
             value: "yes",
@@ -478,11 +478,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 15,
     },
     {
-        name: 'Inatial guarantee percentage ',
+        name: ['Inatial guarantee percentage ', 'نسبة الضمان الابتدائي'],
         inputName: 'inatialGuaranteePercentage',
         data: {
             value: null,
@@ -490,11 +490,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 16
     },
     {
-        name: 'Alternative offers',
+        name: ['Alternative offers', 'العروض البديلة'],
         inputName: 'alternativeOffers',
         data: {
             value: "yes",
@@ -534,11 +534,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 16,
     },
     {
-        name: 'Font size',
+        name: ['Font size', 'متطلبات تنسيق العروض - حجم الخط'],
         inputName: 'fontSize',
         data: {
             value: null,
@@ -546,11 +546,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 16
     },
     {
-        name: 'File type',
+        name: ['File type', 'متطلبات تنسيق العروض - نوع وامتدادات الملفات الإلكترونية'],
         inputName: 'fileType',
         data: {
             value: null,
@@ -558,11 +558,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 16
     },
     {
-        name: 'Submit offers Mechanism',
+        name: ['Submit offers Mechanism', 'آلية تقديم العروض'],
         inputName: 'twoFiles',
         data: {
             value: 'تقدم العروض في مظروفين أو ملفين فني ومالي ويجوز للجهة الحكومية اشتراط ذلك في الأعمال والمشتريات التي تقل قيمتها عن (خمسة ملايين) ريال، وفق ما تراه محققاً للمصلحة.',
@@ -570,11 +570,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 17
     },
     {
-        name: 'Submit offers Mechanism',
+        name: ['Submit offers Mechanism', 'آلية تقديم العروض'],
         inputName: 'twoPresentations',
         data: {
             value: 'ملف مشفر، أو ملفين مشفرين إذا تطلب الأمر تقديم عرضين فني ومالي'
@@ -582,11 +582,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 17
     },
     {
-        name: 'Submit offers Mechanism',
+        name: ['Submit offers Mechanism', 'آلية تقديم العروض'],
         inputName: 'externalMechanism',
         data: {
             value: 'لا تطبق البنود الفرعية (ب، ه ،و) من البند (أولاً) عند تحديد الوسيلة البديلة من قبل الجهة الحكومية في الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية، على أن تلتزم الجهة بالإعلان عن أسماء المتنافسين الذين تقدموا بعروضهم بعد انتهاء موعد تقديم العروض وفتحها من خلال الوسيلة البديلة.'
@@ -594,11 +594,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 17
     },
     {
-        name: 'Criteria for evaluating offers',
+        name: ['Criteria for evaluating offers', 'معايير تقييم العروض'],
         inputName: 'criteriaForEvaluatingOffers',
         data: {
             value: [
@@ -612,11 +612,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 19
     },
     {
-        name: 'Pause time after announcing the results',
+        name: ['Pause time after announcing the results', 'الوقت التوقف بعد إعلان النتائج'],
         inputName: 'downtime',
         data: {
             value: null,
@@ -624,11 +624,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 20
     },
     {
-        name: 'Final guarantee percentage',
+        name: ['Final guarantee percentage', 'نسبة الضمان النهائي'],
         inputName: 'finalGuaranteePercentage',
         data: {
             value: null,
@@ -636,11 +636,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 21
     },
     {
-        name: 'Final guarantee days',
+        name: ['Final guarantee days', 'مدة الضمان النهائي بالأيام'],
         inputName: 'finalGuaranteeDays',
         data: {
             value: null,
@@ -648,11 +648,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 21
     },
     {
-        name: 'Outside of Kingdom of Saudi Arabia',
+        name: ['Outside of Kingdom of Saudi Arabia', 'الأعمال والمشتريات التي تم تنفيذها خارج المملكة العربية السعودية'],
         inputName: 'outsideOfKingdomOfSaudiArabia',
         data: {
             value: 'الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية.'
@@ -660,11 +660,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 21
     },
     {
-        name: 'Fines',
+        name: ['Fines List', 'غرامات التأخير'],
         inputName: 'finesList',
         data: {
             value: []
@@ -672,11 +672,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 22
     },
     {
-        name: 'Fines',
+        name: ['Fines', 'نسبة إجمالي الغرامة المنصوص عليها في هذا البند'],
         inputName: 'fines',
         data: {
             value: null,
@@ -684,23 +684,23 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 22
     },
     {
-        name: 'Fines (national product quota)',
+        name: ['Fines (national product quota)', 'غرامات مخالفة أحكام لائحة تفضيل المحتوى المحلي'],
         inputName: 'finesNationalProductQuota',
         data: {
-            value: null,
+            value: [],
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        inputType: BookletInputTypesEnum.List,
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 22
     },
     {
-        name: 'Fines (local content percentage)',
+        name: ['Fines (local content percentage)', 'نسبة الغرامة عند مخالفة أحكام لائحة تفضيل المحتوى المحلي'],
         inputName: 'finesLocalContentPercentage',
         data: {
             value: null,
@@ -708,11 +708,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 22
     },
     {
-        name: 'Insurance',
+        name: ['Insurance', 'قائمة شروط التأمين'],
         inputName: 'insuranceList',
         data: {
             value: []
@@ -720,11 +720,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 22
     },
     {
-        name: 'Project Scope of Work',
+        name: ['Project Scope of Work', 'نطاق عمل المشروع'],
         inputName: 'projectScopeOfWork',
         data: {
             value: [
@@ -805,11 +805,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
     {
-        name: 'Work Programme',
+        name: ['Work Programme', 'برنامج العمل'],
         inputName: 'workProgramme',
         data: {
             value: ['مرحلة تطوير نظام إلكتروني للتدريب', 'مرحلة الدعم الفني'],
@@ -837,11 +837,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
     {
-        name: 'Place of work',
+        name: ['Place of work', 'مكان تنفيذ الأعمال'],
         inputName: 'placeOfWork',
         data: {
             value: 'تطوير منظومة الأمن الرقمي السيبراني للجهة الحكومية في موقع الوزارة الرسمي في منطقة جدة',
@@ -849,11 +849,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
     {
-        name: 'Training and Knowledge Transfer',
+        name: ['Training and Knowledge Transfer', 'التدريب ونقل المعرفة'],
         inputName: 'trainingAndKnowledgeTransfer',
         data: {
             value: 'يلتزم المتعاقد بتدريب فريق عمل الجهة الحكومية ونقل المعرفة والخبرة لموظفيها بكافة الوسائل الممكنة ومن ذلك [ التدريب على رأس العمل / العمل جنبًا إلى جنب معهم / ورش العمل التدريبية]، وذلك بما يكفل حصولهم على المعرفة والخبرة اللازمة لمخرجات المشروع.',
@@ -861,11 +861,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
     {
-        name: 'Building Government Software',
+        name: ['Building Government Software', 'بناء البرمجيات الحكومية'],
         inputName: 'buildingGovernmentSoftware',
         data: {
             value: 'يلتزم المتنافس -عند التعاقد لبناء البرمجيات الحكومية- بالفقرة (ه) من قواعد تنظيم البرمجيات الحكومية الحرة ومفتوحة المصدر الصادرة بموجب قرار مجلس الوزراء رقم (14) وتاريخ 2/1/1443هـ، وجميع الأوامر والقرارات والأنظمة والتعليمات الصادرة في هذا الشأن.',
@@ -873,11 +873,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
     {
-        name: 'Quantity and price table',
+        name: ['Quantity and price table', 'جدول الكميات والأسعار'],
         inputName: 'quantityAndPriceTable',
         data: {
             value: '',
@@ -885,11 +885,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.DynamicTable,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
     {
-        name: 'Labor',
+        name: ['Labor', 'فريق العمل - الشروط الخاصة بفريق العمل'],
         inputName: 'labor',
         data: {
             value: [
@@ -909,11 +909,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 24
     },
     {
-        name: 'Labor Table',
+        name: ['Labor Specification Table', 'جدول مواصفات فريق العمل'],
         inputName: 'laborTable',
         data: {
             value: ["الرقم", "مسمى الوظيفة", "أقل مؤهل للقبول", "الحد الأدنى لسنوات الخبرة"],
@@ -947,11 +947,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Table,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 24
     },
     {
-        name: 'Materials',
+        name: ['Materials', 'الأصناف والمواد'],
         inputName: 'materials',
         data: {
             value: 'يقيم المتعاقد المواد المستخدمة في تنفيذ الأعمال للتأكد من مطابقتها لمواصفات العرض والمقاييس العالمية كما يطلع على نتائج الاختبارات المعمولة للمواد وإعطاء الموافقة (أو عدمها) عليها وتسجيلها والاحتفاظ بنسخة منها، ويجب كذلك أن 	تكون المواد المستخدمة سواء المحلية أو المستوردة لتنفيذ العقد مطابقة للمواصفات القياسية السعودية وما لم تشمله منها هذه المواصفات فيجب أن يكون مطابقة لإحدى المواصفات العالمية المعروفة والتي تحددها الجهة أو من يمثلها. \n ويجوز لممثل الجهة أن يطلب من المتعاقد إعداد بيان واضح ومفصل عن ماهية المواد المستخدمة وعن كل مادة على حدة يرى ممثل الجهة ضرورة استبيانها، وعلى المتعاقد إعداد ذلك البيان كتابةً خلال فترة (10) عشرة أيام من تاريخ طلبها. \n وإذا أخل المتعاقد بتوضيح ماهية المواد المستخدمة في الموعد المحدد فتعتبر تلك المواد خلاف ما تم الاتفاق عليه بالعقد، ولممثل الجهة اتخاذ ما يلزم حسب تقديره من تعليمات أو إجراءات لمعالجة ذلك.',
@@ -959,11 +959,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 24
     },
     {
-        name: 'Materials Table',
+        name: ['Material Specification Table', 'جدول مواصفات المواد'],
         inputName: 'materialsTable',
         data: {
             value: ["الرقم", "المادة", "المواصفات", "وحدة القياس"],
@@ -997,11 +997,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Table,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 24
     },
     {
-        name: 'Equipment Terms',
+        name: ['Equipment Terms', 'المعدات - الشروط الخاصة بالمعدات'],
         inputName: 'equipment',
         data: {
             value: 'ويفحص المتعاقد جميع المعدات ويوصي باعتمادها في حال كانت مطابقة من جميع النواحي للمواصفات والمقاييس العالمية كما يجب عليه فحص جميع شهادات اختبار هذه المعدات التي أجريت في المصنع ومراقبة وتصديق اختباراتها في الموقع أو مكان الصنع وفي جميع الحالات التي تنص فيها شروط توريد المعدات أو المقاييس العالمية على إجراء هذه الاختبارات كما يجب عليه أن يحتفظ بشهادات الاختبارات التي تجري بهذا الخصوص ويجوز إعادة الاختبارات لمرة واحدة فقط.',
@@ -1009,11 +1009,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 24
     },
     {
-        name: 'Equipment Table',
+        name: ['Equipment Table', 'المعدات - الشروط الخاصة بالمعدات'],
         inputName: 'equipmentTable',
         data: {
             value: ["الرقم", "الآلة", "المواصفات", "وحدة القياس"],
@@ -1047,11 +1047,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Table,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 24
     },
     {
-        name: 'How to perform business and services',
+        name: ['How to perform business and services', 'طريقة تنفيذ الأعمال والخدمات'],
         inputName: 'howToPerformBusinessAndServices',
         data: {
             value: [],
@@ -1059,11 +1059,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.RowsTable,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 25
     },
     {
-        name: 'Quality Specifications',
+        name: ['Quality Specifications', 'مواصفات الجودة'],
         inputName: 'qualitySpecifications',
         data: {
             value: [
@@ -1074,11 +1074,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 25
     },
     {
-        name: 'Preference for national products.',
+        name: ['Preference for national products.', 'تفضيل المنتجات الوطنية'],
         inputName: 'preferenceForNationalProducts',
         data: {
             value: [
@@ -1092,11 +1092,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 26
     },
     {
-        name: 'Requirements for local content mechanisms',
+        name: ['Requirements for local content mechanisms', 'اشتراطات آليات المحتوى المحلي (نسبة المحتوى المحلي)'],
         inputName: 'requirementsForLocalContentMechanisms',
         data: {
             value: [
@@ -1109,11 +1109,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 26
     },
     {
-        name: 'Economic Participation Program Requirements',
+        name: ['Economic Participation Program Requirements', 'متطلبات برنامج المشاركة الاقتصادية (التوازن الاقتصادي)'],
         inputName: 'economicParticipationProgramRequirements',
         data: {
             value: [
@@ -1124,11 +1124,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 27
     },
     {
-        name: 'Special Terms',
+        name: ['Special Terms', 'الشروط الخاصة'],
         inputName: 'specialTerms',
         data: {
             value: [],
@@ -1136,11 +1136,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 28
     },
     {
-        name: 'Attachments',
+        name: ['Attachments', 'الملحقات'],
         inputName: 'attachments',
         data: {
             value: [],
@@ -1148,7 +1148,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.MultiUpload,
-        description: 'In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.',
+        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 0
     },
 ]

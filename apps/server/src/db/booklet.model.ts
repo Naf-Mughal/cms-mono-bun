@@ -41,7 +41,7 @@ const bookletSchema: Schema<IBooklet> = new Schema(
     bookletTasks: [
       {
         name: {
-          type: String,
+          type: [{ type: String }],
           required: true,
         },
         inputName: {
@@ -74,7 +74,7 @@ const bookletSchema: Schema<IBooklet> = new Schema(
           default: 'Text',
         },
         description: {
-          type: String,
+          type: [{ type: String }],
           required: true,
         },
         pageNumber: {

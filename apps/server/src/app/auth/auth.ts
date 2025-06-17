@@ -9,7 +9,7 @@ export const login = async ({ email, password }: LoginData) => {
         const user = await Users.findOne({ email: email });
         if (!user) return { data: makeApiResponse("User not found", StatusCodes.NOT_FOUND, {}), status: StatusCodes.NOT_FOUND };
         if (!(await user.matchPassword(password))) return { data: makeApiResponse("Invalid password", StatusCodes.UNAUTHORIZED, {}), status: StatusCodes.UNAUTHORIZED };
-        const resUser = { id: user._id, name: user.name, email: user.email };
+        const resUser = { id: user._id, name: user.name, email: user.email, lang: user.lang };
         const token = await getJWTToken(resUser)
         return { data: makeApiResponse("Login successful", StatusCodes.OK, { ...resUser, token }), status: StatusCodes.OK };
     }

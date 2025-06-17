@@ -102,7 +102,7 @@ const BookletTasksTable: React.FC<BookletTasksTableProps> = ({ data, path, isLoa
                                     <StatusBadges status={item.status} />
                                 </h2>
                                 <h2 className="font-semibold px-2 flex-5">{item.name}</h2>
-                                <h2 className={`font-semibold px-2 flex-3 ${getTypeColor(item.type)}`}>{item.type}</h2>
+                                <h2 className={`font-semibold px-2 flex-3 ${getTypeColor(item.type)}`}>{t(item.type)}</h2>
                                 <h2 className="font-semibold px-2 flex-2 flex gap-3.5 items-center max-w-36">
                                     <Eye />
                                     <Link href={{ pathname: `${path}/${item._id}/perform` }}>

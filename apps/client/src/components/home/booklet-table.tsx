@@ -82,6 +82,7 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
     const router = useRouter()
     const queryClient = useQueryClient()
     const t = useTranslations("BookletTable");
+    const ts = useTranslations("SelectOptions");
     const { dir } = useLang();
 
     const deleteBookletMutation = useMutation({
@@ -122,11 +123,11 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
                         <ScrollSyncPane key={item._id}>
                             <TableRow style={{ overflowX: "auto" }}>
                                 <h2 className="font-semibold px-2 flex-1">{item.index}</h2>
-                                <h2 className="font-semibold px-2 flex-3">{item.category}</h2>
+                                <h2 className="font-semibold px-2 flex-3">{ts(item.category)}</h2>
                                 <h2 className="font-semibold px-2 flex-2">{item.issueDate}</h2>
                                 <h2 className="font-semibold px-2 flex-3">{item.projectName}</h2>
                                 <h2 className="font-semibold px-2 flex-1">{item.bookletNumber}</h2>
-                                <h2 className="font-semibold px-2 flex-4">{item.department}</h2>
+                                <h2 className="font-semibold px-2 flex-4">{t(item.department)}</h2>
                                 <h2 className="font-semibold px-2 flex-3 flex gap-3.5 items-center max-w-44">
                                     <Link prefetch href={`/booklets/${item._id}/tasks`}>
                                         <Eye />

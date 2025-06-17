@@ -1,4 +1,5 @@
 'use client';
+import { BookletCategoriesEnum, BookletCitiesArabicEnum, BookletCitiesEnum } from '@schemas/index';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const EN = {
@@ -68,7 +69,8 @@ const EN = {
         "updating": "Updating",
         "cancel": "Cancel",
         "internal": "Internal",
-        "external": "External"
+        "external": "External",
+        "description": "Description"
     },
     "BookletTable": {
         "category": "Category",
@@ -76,13 +78,28 @@ const EN = {
         "projectName": "Project Name",
         "bookletNumber": "No.",
         "department": "Department",
-        "actions": "Actions"
+        "actions": "Actions",
+        "IT Department": "IT Department"
     },
     "BookletTasksTable": {
         "status": "Status",
         "taskName": "Task Name",
         "taskType": "Task Type",
-        "actions": "Actions"
+        "actions": "Actions",
+        "Pending": "Pending",
+        "Completed": "Completed",
+        "InProgress": "In Progress",
+        "Add": "Add"
+    },
+    "SelectOptions": {
+        [BookletCategoriesEnum.IT]: BookletCategoriesEnum.IT as string,
+        [BookletCitiesEnum.Abha]: BookletCitiesEnum.Abha as string,
+        [BookletCitiesEnum.Dammam]: BookletCitiesEnum.Dammam as string,
+        [BookletCitiesEnum.Jeddah]: BookletCitiesEnum.Jeddah as string,
+        [BookletCitiesEnum.Madina]: BookletCitiesEnum.Madina as string,
+        [BookletCitiesEnum.Mecca]: BookletCitiesEnum.Mecca as string,
+        [BookletCitiesEnum.Riyadh]: BookletCitiesEnum.Riyadh as string,
+        [BookletCitiesEnum.Taif]: BookletCitiesEnum.Taif as string,
     },
     "TaskForm": {
         "submit": "Submit",
@@ -164,7 +181,8 @@ const AR = {
         "updating": "جارٍ التعديل...",
         "cancel": "الغاء",
         "internal": "داخلي",
-        "external": "خارجي"
+        "external": "خارجي",
+        "description": "وصف"
     },
     "BookletTable": {
         "category": "فئة النموذج",
@@ -172,13 +190,28 @@ const AR = {
         "projectName": "اسم المشروع",
         "bookletNumber": "رقم النموذج",
         "department": "قسم النموذج",
-        "actions": "الاجراءات"
+        "actions": "الاجراءات",
+        "IT Department": "قسم تقنية المعلومات"
     },
     "BookletTasksTable": {
         "status": "الحالة",
         "taskName": "اسم الاجراء",
         "taskType": "نوع الاجراء",
-        "actions": "الاجراءات"
+        "actions": "الاجراءات",
+        "Pending": "قيد الانتظار",
+        "Completed": "مكتمل",
+        "InProgress": "في تَقَدم",
+        "Add": "يضيف"
+    },
+    "SelectOptions": {
+        [BookletCategoriesEnum.IT]: "تقنية المعلومات",
+        [BookletCitiesEnum.Abha]: BookletCitiesEnum.Abha as string,
+        [BookletCitiesEnum.Dammam]: BookletCitiesArabicEnum.Dammam as string,
+        [BookletCitiesEnum.Jeddah]: BookletCitiesArabicEnum.Jeddah as string,
+        [BookletCitiesEnum.Madina]: BookletCitiesArabicEnum.Madina as string,
+        [BookletCitiesEnum.Mecca]: BookletCitiesArabicEnum.Mecca as string,
+        [BookletCitiesEnum.Riyadh]: BookletCitiesArabicEnum.Riyadh as string,
+        [BookletCitiesEnum.Taif]: BookletCitiesArabicEnum.Taif as string,
     },
     "TaskForm": {
         "submit": "تنفيذ",

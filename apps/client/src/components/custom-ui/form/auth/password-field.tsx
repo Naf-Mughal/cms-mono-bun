@@ -26,7 +26,7 @@ export const AuthPasswordField = ({ label, className, ...inputProps }: TextField
             onChange={(e) => field.handleChange(e.target.value)}
             type={showPassword ? "text" : "password"}
             className={cn(
-              "bg-white h-12 border-[#EAEDF3] pr-12",
+              "bg-white h-12 border-[#EAEDF3]",
               field.state.meta.isTouched && field.state.meta.errors.length > 0 ? "border-red-600 focus-visible:border-red-600 focus-visible:ring-red-300/40" : "",
               className
             )}

@@ -38,13 +38,13 @@ export const loginSchema = z.object({
 export type LoginData = z.infer<typeof loginSchema>
 
 export enum BookletCategoriesEnum {
-    HS = "Healthcare Services",
+    // HS = "Healthcare Services",
     IT = "Information Technology",
-    UP = "Urban Planning",
-    EDU = "Education",
-    MRH = "Municipal, Rural Affairs and Housing",
-    IMR = "Industry and Mineral Resources",
-    EWA = "Environment, Water and Agriculture",
+    // UP = "Urban Planning",
+    // EDU = "Education",
+    // MRH = "Municipal, Rural Affairs and Housing",
+    // IMR = "Industry and Mineral Resources",
+    // EWA = "Environment, Water and Agriculture",
 }
 
 export enum BookletCitiesEnum {
@@ -146,14 +146,14 @@ export const RootSchema = z.object({
 });
 
 export const genaricBookletsTaskSchema = z.object({
-    name: z.string({ required_error: "Name is required" }),
+    name: z.array(z.string({ required_error: "Name is required" })).length(2),
     inputName: z.string({ required_error: "Name is required" }),
     data: valueSchema,
     tableData: RootSchema.optional(),
     status: z.nativeEnum(BookletTaskStatusesEnum, { required_error: "Status is required" }).default(BookletTaskStatusesEnum.Pending),
     type: z.nativeEnum(BookletTaskTypesEnum, { required_error: "Task type is required" }).default(BookletTaskTypesEnum.Add),
     inputType: z.nativeEnum(BookletInputTypesEnum, { required_error: "Input type is required" }).default(BookletInputTypesEnum.Text),
-    description: z.string({ required_error: "Description is required" }),
+    description: z.array(z.string({ required_error: "Description is required" })).length(2),
     pageNumber: z.number({ required_error: "Page number is required" })
 })
 
