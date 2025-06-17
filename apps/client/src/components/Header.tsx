@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useRouter, usePathname } from 'next/navigation'
 import { Button } from './ui/button'
@@ -39,56 +39,54 @@ const Header: React.FC = () => {
     const { lang, setLang, dir } = useLang()
     const t = useTranslations('Header');
 
-    // Determine if we should fetch profile based on pathname
     const shouldFetchProfile = pathname !== '/' && pathname !== '/register'
 
-    // React Query for fetching profile - FIXED: Include token in query key and add proper refetch logic
+    const fetchProfile = useCallback(async () => {
+        if (!token) throw new Error('No token available')
+        return client.api.auth.profile.get()
+    }, [client, token])
+
     const profileQuery = useQuery({
-        queryKey: ['profile', token], // Include token in query key so it refetches when token changes
-        queryFn: () => client.api.auth.profile.get(),
-        enabled: shouldFetchProfile && !!token, // Only fetch if we should and have token
+        queryKey: ['profile', token],
+        queryFn: fetchProfile,
+        enabled: shouldFetchProfile && !!token,
         retry: (failureCount, error) => {
-            // Don't retry on auth errors
             if (error.message.includes('Unauthorized') ||
-                error.message.includes('Invalid token')) {
+                error.message.includes('Invalid token') ||
+                error.message.includes('403') ||
+                error.message.includes('401')) {
                 return false
             }
             return failureCount < 2
         },
         retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
-        staleTime: 5 * 60 * 1000, // 5 minutes
+        staleTime: 10 * 60 * 1000,
+        gcTime: 15 * 60 * 1000,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: true,
+        refetchOnMount: false,
     })
 
-    // FIXED: Add useEffect to handle token changes
     useEffect(() => {
-        if (token && shouldFetchProfile) {
-            // Refetch profile when token is set (login)
-            profileQuery.refetch()
-        } else if (!token) {
-            // Clear profile data when token is removed (logout)
+        if (!token) {
             queryClient.setQueryData(['profile', token], null)
+            queryClient.removeQueries({ queryKey: ['profile'] })
         }
-    }, [token, shouldFetchProfile, profileQuery, queryClient])
+    }, [token, queryClient])
 
-    // React Query mutation for logout - FIXED: Proper cache management
     const logoutMutation = useMutation({
         mutationFn: async (): Promise<void> => {
-            // Remove token from localStorage first
             localStorage.removeItem('token')
-            // Then update token state
             setToken(null)
         },
         onSuccess: () => {
             setError(null)
-            // FIXED: Clear all queries related to authentication
             queryClient.removeQueries({ queryKey: ['profile'] })
-            queryClient.clear() // Optional: clear entire cache for complete reset
+            queryClient.clear()
             router.push('/')
         },
         onError: (err: Error) => {
-            // Even if server logout fails, we still redirect since token is cleared
             console.error('Logout error:', err)
-            // Still clear the cache and redirect
             queryClient.removeQueries({ queryKey: ['profile'] })
             router.push('/')
         },
@@ -109,16 +107,7 @@ const Header: React.FC = () => {
     const currentLanguage = languages.find(l => l.code === lang) || languages[0]
     const profile = profileQuery.data?.data
 
-    // FIXED: Add debug logging (remove in production)
-    useEffect(() => {
-        console.log('Header Debug:', {
-            token: !!token,
-            shouldFetchProfile,
-            profileLoading: profileQuery.isLoading,
-            profileData: !!profile,
-            pathname
-        })
-    }, [token, shouldFetchProfile, profileQuery.isLoading, profile, pathname])
+    // REMOVED: Debug logging useEffect to prevent unnecessary re-renders
 
     return (
         <header className="h-24 border-b border-[#EAEDF3] flex items-center justify-between" dir={dir}>
