@@ -348,7 +348,7 @@ export const bookletTasksSeed: BookletTasks = [
                 {
                     value: 'no',
                     children: {
-                        value: 'لا,لا يجوز للمنافسين التضامن فيما بينهم',
+                        value: 'لا يجوز للمنافسين التضامن فيما بينهم',
                     },
                     type: BookletInputTypesEnum.Readonly
                 }
@@ -357,7 +357,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Is it permissible for competitors to act in solidarity with each other?', 'هل يجوز للمنافسين التضامن فيما بينهم ؟'],
         pageNumber: 12,
     },
     {
@@ -469,7 +469,7 @@ export const bookletTasksSeed: BookletTasks = [
                 {
                     value: 'no',
                     children: {
-                        value: 'لا يجوز  يجوز لمقدم العرض ترك أي بند من بنود المنافسة دون تسعير',
+                        value: '.لا يجوز لمقدم العرض ترك أي بند من بنود المنافسة دون تسعير ',
                     },
                     type: BookletInputTypesEnum.Readonly
                 }
@@ -478,7 +478,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['Is it permissible for the bidder to leave any of the tender items unpriced ?', 'هل يجوز لمقدم العرضترك أي من بنود المنافسة دون تسعير ؟'],
+        description: ['Is it permissible for the bidder to leave any of the tender items unpriced?', 'هل يجوز لمقدم العرض ترك أي من بنود المنافسة دون تسعير؟'],
         pageNumber: 15,
     },
     {
@@ -522,11 +522,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['The government agency determines whether alternative bids are acceptable in the competition and the procedures for evaluating and accepting these bids.', 'تحدد الجهة الحكومية إذا كانت العروضالبديلة مقبولة في المنافسة وإجراءاتتقييم وقبول هذه العروض.'],
+        description: ['The government agency determines whether alternative bids are acceptable in the competition and the procedures for evaluating and accepting these bids.', 'تحدد الجهة الحكومية إذا كانت العروض البديلة مقبولة في المنافسة وإجراءات تقييم وقبول هذه العروض.'],
         pageNumber: 16,
     },
     {
-        name: ['Offers Formatting Requirements', 'تطلبات تنسيق العروض'],
+        name: ['Offers Formatting Requirements', 'متطلبات تنسيق العروض'],
         inputName: 'offersFormattingRequirements',
         data: {
             value: [],
@@ -546,7 +546,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['The entity has the right to delete this paragraph if the estimated cost is less than five million riyals.', 'يحق للجهة حذف هذه الفقرة إذا كانت التكلفةالتقديرية أقل من خمسة ماليين ريال'],
+        description: ['The entity has the right to delete this paragraph if the estimated cost is less than five million riyals.', 'يحق للجهة حذف هذه الفقرة إذا كانت التكلفة التقديرية أقل من خمسة ملايين ريال.'],
         pageNumber: 17
     },
     {

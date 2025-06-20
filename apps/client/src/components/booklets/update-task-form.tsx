@@ -37,6 +37,8 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
     const t = useTranslations("TaskForm")
     const gt = useTranslations("RadioGroup")
 
+    const { dir } = useLang();
+
     const formConfig = useAppForm({
         defaultValues: {
             name: data?.name || "",
@@ -250,6 +252,7 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                                 labelClass="text-[#525355] font-semibold text-lg"
                                 isInline={false}
                                 name="data.value"
+                                dir={dir}
                                 disabled={updateBookletTaskMutation.isPending}
                             />
                         )}
@@ -265,6 +268,7 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                                 labelClass="text-[#525355] font-semibold text-lg"
                                 isInline={false}
                                 isNumaric={true}
+                                dir={dir}
                                 name="data.value"
                                 disabled={updateBookletTaskMutation.isPending}
                             />
