@@ -393,6 +393,11 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                 {getAppFieldBasedOnType(data?.inputType || "text")}
 
                 <div className="flex justify-end items-center gap-4">
+                    <AppForm>
+                        <SubmitButton>
+                            {updateBookletTaskMutation.isPending ? t("submitting") : t("submit")}
+                        </SubmitButton>
+                    </AppForm>
                     {
                         nextTaskId && (
                             <Link
@@ -403,11 +408,6 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                             </Link>
                         )
                     }
-                    <AppForm>
-                        <SubmitButton>
-                            {updateBookletTaskMutation.isPending ? t("submitting") : t("submit")}
-                        </SubmitButton>
-                    </AppForm>
                 </div>
             </form>
             <Toaster position="bottom-left" expand={true} richColors closeButton />
