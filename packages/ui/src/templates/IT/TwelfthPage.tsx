@@ -8,7 +8,7 @@ const TwelfthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
       <div className="py-6 space-y-4 ">
 
         <div className="border-b border-gray-300 pb-4">
-          <h3 className="font-semibold text-lg text-gray-900 mb-2">22. <span className="text-green-700">التضامن</span></h3>
+          <h3 className="font-semibold text-lg text-gray-900 mb-2">22. <span>التضامن</span></h3>
           {
             typeof tasks?.confirmationOfParticipationInTheCompetition.value === "string" ?
               (
