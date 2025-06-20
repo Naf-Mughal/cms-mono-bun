@@ -4,7 +4,6 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
   const baseBorder = '1px solid #D1D5DB' // Tailwind gray-300 border color
   const headerBg = '#595959' // Tailwind gray-600 background
   const headerTextColor = 'white'
-  const redText = '#DC2626' // Tailwind red-600
   const greenText = '#047857' // Tailwind green-700
   const blackText = '#000000'
 
@@ -28,7 +27,7 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                   style={{
                     border: baseBorder,
                     padding: 8,
-                    color: tasks?.nameOfGovtEntity ? blackText : redText,
+                    color: tasks?.nameOfGovtEntity ? blackText : blackText,
                   }}
                 >
                   {tasks?.nameOfGovtEntity || "تحدده الجهة الحكومية."}
@@ -73,7 +72,7 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
           <h3 style={{ fontSize: 20, fontWeight: 600, color: blackText }}>2. تعريف عن المنافسة</h3>
           <p>
             يكون طرح إجراءات هذه المنافسة بما في ذلك استلام العروض عن طريق وسيلة بديلة عن البوابة الإلكترونية؛ وهي{' '}
-            <span style={{ color: tasks?.toReceiveBiddingOffers ? blackText : redText }}>
+            <span style={{ color: tasks?.toReceiveBiddingOffers ? blackText : blackText }}>
               (الموقع الإلكتروني للجهة الحكومية: https://{tasks?.toReceiveBiddingOffers || "_____"}.gov.sa/)
             </span>{' '}
             ويشار إليها في هذه الكراسة بـ"الوسيلة البديلة".
@@ -86,20 +85,19 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
           <table style={{ width: '100%', textAlign: 'right', border: baseBorder, fontSize: 14, marginTop: 8, borderCollapse: 'collapse' }}>
             <thead style={{ backgroundColor: headerBg, fontWeight: 600 }}>
               <tr>
-                <th style={{ border: baseBorder, padding: 8, color: headerTextColor }}>تكاليف وثائق المنافسة</th>
-                <th style={{ border: baseBorder, padding: 8 }}></th>
+                <th style={{ border: baseBorder, padding: 8, color: headerTextColor }} colSpan={2}>تكاليف وثائق المنافسة</th>
                 <th style={{ border: baseBorder, padding: 8, color: headerTextColor }}>آلية الدفع</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style={{ border: baseBorder, padding: 8, color: tasks?.valueInNumber ? blackText : redText }}>
+                <td style={{ border: baseBorder, padding: 8, color: tasks?.valueInNumber ? blackText : blackText }}>
                   {tasks?.valueInNumber || "القيمة بالأرقام (...  ريال سعودي)"}
                 </td>
-                <td style={{ border: baseBorder, padding: 8, color: tasks?.valueInWords ? blackText : redText }}>
+                <td style={{ border: baseBorder, padding: 8, color: tasks?.valueInWords ? blackText : blackText }}>
                   {tasks?.valueInWords || "القيمة بالتفقيط"}
                 </td>
-                <td style={{ border: baseBorder, padding: 8, color: tasks?.paymentMethod ? blackText : redText }}>
+                <td style={{ border: baseBorder, padding: 8, color: tasks?.paymentMethod ? blackText : blackText }}>
                   {tasks?.paymentMethod?.value || tasks?.paymentMethod || "شيك مصدق / حوالة بنكية / نظام سداد"}
                 </td>
               </tr>
@@ -113,7 +111,7 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
           <p style={{ color: greenText }}>
             اللائحة التنفيذية لنظام المنافسات والمشتريات الحكومية. وإن استمر العطل التقني لمدة تزيد على ثلاثة أيام متصلة تعين تنفيذه بشكل ورقي، على أن ترفع الجهة الحكومية ما تم عمله من إجراءات إلى البوابة فور زوال العطل.
           </p>
-          <table style={{ width: '100%', textAlign: 'right', border: baseBorder, fontSize: 14, marginTop: 16, borderCollapse: 'collapse', color: redText }}>
+          <table style={{ width: '100%', textAlign: 'right', border: baseBorder, fontSize: 14, marginTop: 16, borderCollapse: 'collapse', color: blackText }}>
             <thead style={{ backgroundColor: headerBg, fontWeight: 600 }}>
               <tr>
                 <th style={{ border: baseBorder, padding: 8, color: headerTextColor }}>المرحلة</th>

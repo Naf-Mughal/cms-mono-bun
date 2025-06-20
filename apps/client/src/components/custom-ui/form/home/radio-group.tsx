@@ -1,24 +1,28 @@
-import { Checkbox } from "@/components/ui/checkbox";
+"use client"
 import { useFieldContext } from "..";
 import { FieldErrors } from "../field-errors";
 import { Label } from "@/components/ui/label";
 import { RadioGroup } from "@/components/ui/radio-group";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
+import { useLang } from "@/providers/language";
+import { cn } from "@/lib/utils";
 
 type CheckboxFieldProps = {
-    label: string;
+    label?: string;
     children: ReactNode;
     required?: boolean;
+    className?: string;
 };
 
-export const RadioGroupField = ({ label, children, required = false }: CheckboxFieldProps) => {
+export const RadioGroupField = ({ label, children, required = false, className }: CheckboxFieldProps) => {
     const field = useFieldContext<string>();
+    const { dir } = useLang();
 
     return (
         <div className="space-y-2 w-full">
-            <div className="flex flex-col md:flex-row items-center gap-2">
-                <Label htmlFor={field.name} className="font-semibold w-[220px] flex items-center gap-1">{label} {required && <span className="text-[#3C9E19]">*</span>}</Label>
-                <RadioGroup name={field.name} className="flex gap-2 w-full md:max-w-[320px]" defaultValue={field.state.value} onValueChange={(value) => field.handleChange(value)}>
+            <div className="flex flex-col md:flex-row items-center gap-2 w-full">
+                <Label htmlFor={field.name} className={`font-semibold w-[220px] flex items-center gap-1 ${label ? "" : "hidden"}`}>{label} {required && <span className="text-[#3C9E19]">*</span>}</Label>
+                <RadioGroup name={field.name} className={cn("flex gap-2 w-full", dir === "rtl" ? "flex-row-reverse" : "flex-row", className)} defaultValue={field.state.value} onValueChange={(value) => field.handleChange(value)}>
                     {children}
                 </RadioGroup>
             </div>

@@ -61,7 +61,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
             const mergedPdfBuffer = await mergedPdf.save();
 
             set.headers['Content-Type'] = 'application/pdf';
-            set.headers['Content-Disposition'] = `attachment; filename="${data.data.bookletNumber}_merged.pdf"`;
+            set.headers['Content-Disposition'] = `attachment; filename="${new Date().getTime()}.pdf"`;
             set.headers['Content-Length'] = mergedPdfBuffer.length.toString();
 
             return Buffer.from(mergedPdfBuffer);

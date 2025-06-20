@@ -25,7 +25,7 @@ const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                         <li><span>ج.</span> التعاقد مع المنشآت الصغيرة والمتوسطة المحلية.</li>
 
                     </ul>
-                    <p className="mb-2 pt-6 text-green-700">الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية</p>
+                    <p className="mb-2 pt-6">الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية</p>
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="font-semibold mb-2">42. مصادرة الضمانات</h3>

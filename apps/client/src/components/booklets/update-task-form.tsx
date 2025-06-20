@@ -23,7 +23,7 @@ interface UpdateBookletTaskResponse {
     data?: any
 }
 
-export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId: string, data?: GenaricBookletsTask }) {
+export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: string, taskId: string, data?: GenaricBookletsTask, nextTaskId?: string }) {
     const [error, setError] = useState<string | null>(null)
     const [dynamicTable, setDynamicTable] = useState<any>(data?.tableData || {})
     const [updatedData, setUpdatedData] = useState<any>(data?.data || {})
@@ -35,7 +35,7 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
     const queryClient = useQueryClient()
 
     const t = useTranslations("TaskForm")
-    const { dir } = useLang();
+    const gt = useTranslations("RadioGroup")
 
     const formConfig = useAppForm({
         defaultValues: {
@@ -274,20 +274,20 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                             children={(radioValue) => (
                                 <AppField
                                     name="data.value"
-                                    children={({ AuthRadioGroupField, handleChange }) => (
-                                        <AuthRadioGroupField>
+                                    children={({ RadioGroupField, handleChange }) => (
+                                        <RadioGroupField label="">
                                             {
                                                 data?.data && Array.isArray(data?.data?.children) && data?.data?.children?.map((child, index) => (
                                                     <RadioField
                                                         key={index}
                                                         value={child.value as string}
-                                                        label={`${child.value} ${child?.type === 'readonly' && (child?.children as any)?.value ? `(${(child?.children as any)?.value || ""})` : ''}`}
+                                                        label={`${gt(child.value as string)} ${child?.type === 'readonly' && (child?.children as any)?.value ? `(${(child?.children as any)?.value || ""})` : ''}`}
                                                         selected={radioValue === child.value}
                                                         onClick={() => { setRadioValue(child.value as string); handleChange(child.value as string) }}
                                                     />
                                                 ))
                                             }
-                                        </AuthRadioGroupField>
+                                        </RadioGroupField>
                                     )}
                                 />
                             )}
@@ -376,12 +376,16 @@ export function UpdataBookletTaskForm({ id, taskId, data }: { id: string, taskId
                 {getAppFieldBasedOnType(data?.inputType || "text")}
 
                 <div className="flex justify-end items-center gap-4">
-                    <Link
-                        href={"/booklets"}
-                        className="w-28 h-12 flex items-center justify-center border bg-[#007EA7] text-white border-[#D3D8E1] rounded-md"
-                    >
-                        {t("save")}
-                    </Link>
+                    {
+                        nextTaskId && (
+                            <Link
+                                href={`/booklets/${id}/tasks/${nextTaskId}/perform`}
+                                className="w-28 h-12 flex items-center justify-center border bg-[#007EA7] text-white border-[#D3D8E1] rounded-md"
+                            >
+                                {t("next")}
+                            </Link>
+                        )
+                    }
                     <AppForm>
                         <SubmitButton>
                             {updateBookletTaskMutation.isPending ? t("submitting") : t("submit")}

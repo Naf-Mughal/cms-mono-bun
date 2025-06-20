@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import { Edit, Trash2, Plus, Check, X } from "lucide-react"
 import { toast } from "sonner"
 import { Client } from "@/lib/eden"
+import { usePreview } from "@/providers/preview"
 
 interface MultiUploadProps {
     data: { value: string[] }
@@ -53,6 +54,11 @@ export const MultiUpload = ({ data, prefix, onChange }: MultiUploadProps) => {
     const [files, setFiles] = useState<{ [index: number]: { file: File; path: string; prefix?: string } | null }>({})
     const fileInputRefs = useRef<{ [index: number]: HTMLInputElement | null }>({})
     const client = Client()
+    const { setPreview } = usePreview()
+
+    useEffect(() => {
+        setPreview(false)
+    }, [])
 
     // React Query for checking files on server
     const fileCheckQuery = useQuery({

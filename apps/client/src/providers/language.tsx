@@ -103,14 +103,44 @@ const EN = {
     },
     "TaskForm": {
         "submit": "Submit",
-        "Submitting": "Submitting",
-        "save": "Save",
+        "submitting": "Submitting",
+        "next": "Next",
     },
     "DeleteDialog": {
         "title": "Are you sure?",
         "description": "This action cannot be undone. This will permanently delete this record.",
         "cancel": "Cancel",
         "continue": "Continue"
+    },
+    "ProfilePage": {
+        "accountSetting": "Account Setting",
+        "changePassword": "Change Password",
+        "loggingOut": "Logging out...",
+        "logout": "Logout",
+    },
+    "UserPasswordForm": {
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "changePassword": "Change Password",
+        "changePasswording": "Changing Password...",
+        "cancel": "Cancel",
+        "continue": "Continue"
+    },
+    "UserSettingForm": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "update": "Update",
+        "updating": "Updating",
+        "cancel": "Cancel",
+    },
+    "RadioGroup": {
+        "Other": "Other",
+        "Cash": "Cash",
+        "Certified Cheque": "Certified Cheque",
+        "yes": "Yes",
+        "no": "No"
     }
 }
 
@@ -155,11 +185,11 @@ const AR = {
         "booklets": "النموذج"
     },
     "NavHeader": {
-        "create": "انشاء نموذج",
-        "update": "تعديل النموذج",
-        "tasks": "اجراءات النموذج",
-        "view": "عرض النموذج",
-        "perform": "اجراء ",
+        "create": "إنشاء كتيب",
+        "update": "تعديل الكتيب",
+        "tasks": "مهام الكتيب",
+        "view": "عرض الكتيب",
+        "perform": "تنفيذ مهمة الكتيب",
         "view-task": "عرض اجراء النموذج",
         "booklets": "النماذج",
         "preview": "عرض النموذج",
@@ -215,14 +245,44 @@ const AR = {
     },
     "TaskForm": {
         "submit": "تنفيذ",
-        "Submitting": "جارٍ التاكيد...",
-        "save": "حفظ"
+        "submitting": "جارٍ التاكيد...",
+        "next": "التالي"
     },
     "DeleteDialog": {
         "title": "هل انت متاكد؟",
         "description": "لا يمكن التراجع عن هذا الاجراء. سوف يتم حذف هذا السجل بشكل دائم.",
         "cancel": "الغاء",
         "continue": "موافق"
+    },
+    "ProfilePage": {
+        "accountSetting": "إعدادات الحساب",
+        "changePassword": "تغيير كلمة المرور",
+        "loggingOut": "جارٍ الخروج...",
+        "logout": "خروج"
+    },
+    "UserPasswordForm": {
+        "currentPassword": "كلمة المرور الحالية",
+        "newPassword": "كلمة المرور الجديدة",
+        "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+        "changePassword": "تغيير كلمة المرور",
+        "changePasswording": "جارٍ تغيير كلمة المرور...",
+        "cancel": "الغاء",
+        "continue": "موافق"
+    },
+    "UserSettingForm": {
+        "name": "الاسم",
+        "email": "البريد الالكتروني",
+        "phone": "رقم الهاتف",
+        "update": "تحديث",
+        "updating": "جارٍ التحديث...",
+        "cancel": "الغاء",
+    },
+    "RadioGroup": {
+        "Other": "أخرى",
+        "Cash": "نقدي",
+        "Certified Cheque": "شيك مصدق",
+        "yes": "نعم",
+        "no": "لا"
     }
 }
 

@@ -1,8 +1,7 @@
 "use client"
-import React from 'react'
-import { useState, useEffect, useCallback } from 'react'
+import React, { useMemo, useTransition, useState, useEffect, useCallback } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useSelectedLayoutSegment } from 'next/navigation'
 import { Button } from './ui/button'
 import { ChevronDown, Globe, LogOut, User, Check } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
@@ -10,6 +9,8 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Client } from '@/lib/eden'
 import { useToken } from '@/providers/token'
 import { useLang, useTranslations } from '@/providers/language'
+import Link from 'next/link'
+import { usePathname as useNextPathname } from 'next/navigation'
 
 interface ProfileData {
     name?: string
@@ -31,15 +32,21 @@ const languages: Language[] = [
 const Header: React.FC = () => {
     const [error, setError] = useState<string | null>(null)
     const [isLangPopoverOpen, setIsLangPopoverOpen] = useState(false)
+    const [isPending, startTransition] = useTransition()
     const queryClient = useQueryClient()
     const router = useRouter()
     const pathname = usePathname()
+    const segment = useSelectedLayoutSegment()
     const client = Client()
     const { token, setToken } = useToken()
     const { lang, setLang, dir } = useLang()
-    const t = useTranslations('Header');
+    const t = useTranslations('Header')
 
-    const shouldFetchProfile = pathname !== '/' && pathname !== '/register'
+    // Memoize to prevent unnecessary re-renders
+    const shouldFetchProfile = useMemo(() =>
+        pathname !== '/' && pathname !== '/register',
+        [pathname]
+    )
 
     const fetchProfile = useCallback(async () => {
         if (!token) throw new Error('No token available')
@@ -60,11 +67,11 @@ const Header: React.FC = () => {
             return failureCount < 2
         },
         retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
-        staleTime: 10 * 60 * 1000,
-        gcTime: 15 * 60 * 1000,
-        refetchOnWindowFocus: false,
+        staleTime: 1000 * 60 * 60,
+        gcTime: 1000 * 60 * 60,
+        refetchOnWindowFocus: true,
         refetchOnReconnect: true,
-        refetchOnMount: false,
+        refetchOnMount: true,
     })
 
     useEffect(() => {
@@ -95,7 +102,16 @@ const Header: React.FC = () => {
     const handleLogout = async (e: React.FormEvent) => {
         e.preventDefault()
         setError(null)
-        logoutMutation.mutate()
+        startTransition(() => {
+            logoutMutation.mutate()
+        })
+    }
+
+    const handleNavigation = (path: string) => (e: React.MouseEvent) => {
+        e.preventDefault()
+        startTransition(() => {
+            router.push(path)
+        })
     }
 
     const handleLanguageChange = (languageCode: "en" | "ar") => {
@@ -103,11 +119,9 @@ const Header: React.FC = () => {
         setIsLangPopoverOpen(false)
     }
 
-    // Get current language display info
     const currentLanguage = languages.find(l => l.code === lang) || languages[0]
-    const profile = profileQuery.data?.data
-
-    // REMOVED: Debug logging useEffect to prevent unnecessary re-renders
+    const { data } = profileQuery
+    const profile: ProfileData | undefined = data?.data
 
     return (
         <header className="h-24 border-b border-[#EAEDF3] flex items-center justify-between" dir={dir}>
@@ -135,7 +149,6 @@ const Header: React.FC = () => {
                 </div>
 
                 <div className="flex gap-4">
-                    {/* Language Switch Popover */}
                     <Popover open={isLangPopoverOpen} onOpenChange={setIsLangPopoverOpen}>
                         <PopoverTrigger asChild>
                             <Button variant="ghost" className="flex items-center gap-2 !p-0 hover:bg-gray-100/50 transition-colors">
@@ -197,10 +210,10 @@ const Header: React.FC = () => {
                                 )}
 
                                 <div className="w-full flex flex-col rounded-xl p-1">
-                                    <div className="p-3 flex gap-3 items-center h-11 cursor-pointer hover:bg-gray-200/70 rounded-md transition-all duration-300">
+                                    <Link href="/profile" className="p-3 flex gap-3 items-center h-11 cursor-pointer hover:bg-gray-200/70 rounded-md transition-all duration-300">
                                         <User size={24} />
                                         <span>{t('profile')}</span>
-                                    </div>
+                                    </Link>
 
                                     <form onSubmit={handleLogout}>
                                         <button
@@ -208,7 +221,7 @@ const Header: React.FC = () => {
                                             disabled={logoutMutation.isPending}
                                             className="p-3 flex gap-3 items-center h-11 cursor-pointer hover:bg-gray-200/70 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed w-full text-left"
                                         >
-                                            <LogOut size={24} className='rotate-180' />
+                                            <LogOut size={24} className={dir === "rtl" ? "" : "rotate-180"} />
                                             <span>
                                                 {logoutMutation.isPending ? t('loggingOut') : t('logout')}
                                             </span>

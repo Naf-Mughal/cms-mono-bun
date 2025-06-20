@@ -133,8 +133,8 @@ export function RegisterForm() {
                     children={(userType) => (
                         <AppField
                             name="userType"
-                            children={({ AuthRadioGroupField, handleChange }) => (
-                                <AuthRadioGroupField label={t('userType')}>
+                            children={({ RadioGroupField, handleChange }) => (
+                                <RadioGroupField label={t('userType')}>
                                     <RadioField
                                         value="organization"
                                         label="Organization"
@@ -147,7 +147,7 @@ export function RegisterForm() {
                                         selected={userType === "individual"}
                                         onClick={() => { setUserType("individual"); handleChange("individual") }}
                                     />
-                                </AuthRadioGroupField>
+                                </RadioGroupField>
                             )}
                         />
                     )}

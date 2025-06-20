@@ -691,11 +691,11 @@ export const bookletTasksSeed: BookletTasks = [
         name: ['Fines (national product quota)', 'غرامات مخالفة أحكام لائحة تفضيل المحتوى المحلي'],
         inputName: 'finesNationalProductQuota',
         data: {
-            value: [],
+            value: "عند عدم التزام المتعاقد بحصة المنتجات الوطنية فسيتم إيقاع غرامة مالية وفقاً لملحق الشروط والأحكام الخاص بـآلية التفضيل السعري للمنتج الوطني.",
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.List,
+        inputType: BookletInputTypesEnum.Text,
         description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 22
     },

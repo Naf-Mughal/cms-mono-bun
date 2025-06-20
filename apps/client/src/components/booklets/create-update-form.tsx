@@ -131,7 +131,7 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                         <AppField
                             name="bookletType"
                             children={({ RadioGroupField, handleChange }) => (
-                                <RadioGroupField label={t("bookletType")} required={true}>
+                                <RadioGroupField label={t("bookletType")} required={true} className="md:max-w-[320px]">
                                     <RadioField
                                         value="internal"
                                         label={t("internal")}

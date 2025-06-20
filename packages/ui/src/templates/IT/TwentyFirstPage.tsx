@@ -28,7 +28,7 @@ const TwentyFirstPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                         <li><span>ج.</span> ‌التعاقد مع مؤسسة أو جمعية أهلية أو كيان غير هادف إلى الربح.</li>
                         <li><span>د.</span> ‌التعاقد مع الشركات التي تملك الدولة فيها نسبة لا تقل عن (51%) من رأس مالها.</li>
                         <li><span>ه.</span> ‌إذا كُلف المتعاقد بأعمال إضافية.</li>
-                        <li ><span>و.</span> ‌{tasks?.outsideOfKingdomOfSaudiArabia || ""} </li>
+                        <li ><span style={{ display: tasks?.outsideOfKingdomOfSaudiArabia ? "block" : "none" }}>و.</span> ‌{tasks?.outsideOfKingdomOfSaudiArabia || ""} </li>
                     </ul>
                 </div>
 

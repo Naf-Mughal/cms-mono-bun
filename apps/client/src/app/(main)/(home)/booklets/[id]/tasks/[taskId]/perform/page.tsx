@@ -41,6 +41,14 @@ const PerformTask = () => {
     }
 
     const tasks = tasksRes.data.data.bookletTasks;
+    
+    const nextTaskMap = tasks.reduce((acc: any, task: any, index: number) => {
+        if (index < tasks.length - 1) {
+            acc[task._id] = tasks[index + 1]._id;
+        }
+        return acc;
+    }, {} as Record<string, string>);
+
     const task = res.data.data;
 
     return (
@@ -53,7 +61,7 @@ const PerformTask = () => {
                     <h2 className="text-[#525355] font-semibold text-lg">{t("description")}</h2>
                     <p className="text-[#9A9AA7]">{task.description[lang === "ar" ? 1 : 0]}</p>
                 </div>
-                <UpdataBookletTaskForm id={id as string} taskId={taskId as string} data={task} />
+                <UpdataBookletTaskForm id={id as string} taskId={taskId as string} data={task} nextTaskId={nextTaskMap[taskId as string]} />
             </div>
             <div
                 className={`h-[calc(100vh-176px)] overflow-y-auto bg-white rounded-md p-4 ${preview ? 'block grow-1 max-w-1/2' : 'hidden grow-0'}`}

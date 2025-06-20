@@ -4,7 +4,6 @@ import { CheckboxField } from "./checkbox-field";
 import { SelectField } from "./home/select-field";
 import { AuthSubmitButton } from "./auth/submit-button";
 import { AuthPasswordField } from "./auth/password-field";
-import { AuthRadioGroupField } from "./auth/radio-group";
 import { TextField } from "./home/text-field";
 import { RadioGroupField } from "./home/radio-group";
 import { DatePicker } from "./home/date-picker";
@@ -19,7 +18,6 @@ export const { useAppForm } = createFormHook({
     CheckboxField,
     SelectField,
     AuthPasswordField,
-    AuthRadioGroupField,
     RadioGroupField,
     TextField,
     DatePicker,

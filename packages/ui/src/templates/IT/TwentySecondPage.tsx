@@ -16,8 +16,8 @@ const TwentySecondPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2">61	غرامات مخالفة أحكام لائحة تفضيل المحتوى المحلي </h3>
                     <p className="mb-3"><span className="font-semibold">أولاً:</span> عند عدم التزام المتعاقد -أو متعاقديه من الباطن- بإعطاء الأفضلية للمنتجات الوطنية عند شراء ما يحتاجه من مواد أو أدوات، فسيتم إيقاع غرامة مالية مقدارها (30%) من قيمة المشتريات محل التقصير. </p>
-                    <ReadonlyList data={tasks?.finesNationalProductQuota || {}} />
-                    <p className="mb-3"><span className="font-semibold">ثالثاً:</span> {tasks?.finesLocalContentPercentage || ""}</p>
+                    <p className="mb-3"><span className="font-semibold" style={{ display: tasks?.finesNationalProductQuota || tasks?.finesLocalContentPercentage ? "block" : "none" }}>ثانياً:</span> {tasks?.finesNationalProductQuota || tasks?.finesLocalContentPercentage || ""}</p>
+                    <p className="mb-3"><span className="font-semibold" style={{ display: tasks?.finesNationalProductQuota && tasks?.finesLocalContentPercentage ? "block" : "none" }}>ثالثاً:</span> {tasks?.finesLocalContentPercentage || ""}</p>
                 </div>
 
 

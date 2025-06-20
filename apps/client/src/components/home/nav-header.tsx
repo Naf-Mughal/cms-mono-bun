@@ -26,7 +26,6 @@ const NavHeader: React.FC = () => {
     }
     const filteredPaths = paths.filter((path) => rawPaths[path]!);
     const currentPath: string = filteredPaths?.[filteredPaths?.length - 1] || "booklets";
-    console.log(paths?.slice(0, -2).length > 1)
 
     return (
         <nav className="bg-white border border-[#EAEDF3] h-14 border-t-0 border-l-0 flex items-center justify-between px-6">
