@@ -187,11 +187,11 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
 
                 <AppField
                     name="issueDate"
-                    children={({ TextField }) => (
-                        <TextField
+                    children={({ DatePicker }) => (
+                        <DatePicker
                             label={t("issueDate")}
-                            required
-                            placeholder={t("issueDate")}
+                            required={true}
+                            inline={true}
                         />
                     )}
                 />

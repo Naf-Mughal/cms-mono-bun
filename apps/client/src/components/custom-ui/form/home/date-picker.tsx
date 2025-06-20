@@ -7,10 +7,19 @@ import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
+import { FieldErrors } from "../field-errors"
+import { Label } from "@/components/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { useFieldContext } from ".."
 
-export function DatePicker({ className }: { className?: string }) {
+export interface DatePickerProps {
+    className?: string
+    label?: string
+    inline?: boolean
+    required?: boolean
+}
+
+export function DatePicker({ className, label, inline = false, required = false }: DatePickerProps) {
     const field = useFieldContext<string>()
 
     // Parse the string date from field value when available
@@ -52,7 +61,14 @@ export function DatePicker({ className }: { className?: string }) {
     }
 
     return (
-        <>
+        <div className={cn({ "flex items-center gap-2": inline })}>
+            <Label
+                htmlFor={field.name}
+                className={cn("font-semibold min-w-[220px] flex items-center gap-1")}
+            >
+                {label}
+                {required && <span className="text-[#3C9E19]">*</span>}
+            </Label>
             <input type="hidden" name={field.name} value={date && !isNaN(date.getTime()) ? format(date, "yyyy-MM-dd") : ""} />
             <Popover>
                 <PopoverTrigger asChild>
@@ -71,10 +87,10 @@ export function DatePicker({ className }: { className?: string }) {
                         {date && !isNaN(date.getTime()) ? format(date, "PPP") : <span>Pick a date</span>}
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
+                <PopoverContent align="start" className="w-auto p-0">
                     <Calendar mode="single" selected={date} onSelect={handleSelect} initialFocus />
                 </PopoverContent>
             </Popover>
-        </>
+        </div>
     )
 }

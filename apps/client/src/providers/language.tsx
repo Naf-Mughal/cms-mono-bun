@@ -79,7 +79,10 @@ const EN = {
         "bookletNumber": "No.",
         "department": "Department",
         "actions": "Actions",
-        "IT Department": "IT Department"
+        "IT Department": "IT Department",
+        "viewTasks": "View Tasks",
+        "download": "Download Booklet",
+        "update": "Update Tasks",
     },
     "BookletTasksTable": {
         "status": "Status",
@@ -110,7 +113,8 @@ const EN = {
         "title": "Are you sure?",
         "description": "This action cannot be undone. This will permanently delete this record.",
         "cancel": "Cancel",
-        "continue": "Continue"
+        "continue": "Continue",
+        "delete": "Delete Booklet"
     },
     "ProfilePage": {
         "accountSetting": "Account Setting",
@@ -221,7 +225,10 @@ const AR = {
         "bookletNumber": "رقم النموذج",
         "department": "قسم النموذج",
         "actions": "الاجراءات",
-        "IT Department": "قسم تقنية المعلومات"
+        "IT Department": "قسم تقنية المعلومات",
+        "viewTasks": "عرض المهام",
+        "download": "تحميل الكراسة",
+        "update": "تعديل الاجراءات"
     },
     "BookletTasksTable": {
         "status": "الحالة",
@@ -252,7 +259,8 @@ const AR = {
         "title": "هل انت متاكد؟",
         "description": "لا يمكن التراجع عن هذا الاجراء. سوف يتم حذف هذا السجل بشكل دائم.",
         "cancel": "الغاء",
-        "continue": "موافق"
+        "continue": "موافق",
+        "delete": "حذف الكراسة"
     },
     "ProfilePage": {
         "accountSetting": "إعدادات الحساب",

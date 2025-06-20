@@ -10,6 +10,7 @@ import { Client } from "@/lib/eden"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 import { useLang, useTranslations } from "@/providers/language"
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
 
 export interface TableData {
     _id: string
@@ -129,20 +130,42 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
                                 <h2 className="font-semibold px-2 flex-1">{item.bookletNumber}</h2>
                                 <h2 className="font-semibold px-2 flex-4">{t(item.department)}</h2>
                                 <h2 className="font-semibold px-2 flex-3 flex gap-3.5 items-center max-w-44">
-                                    <Link prefetch href={`/booklets/${item._id}/tasks`}>
-                                        <Eye />
-                                    </Link>
-                                    <Link
-                                        href={`${process.env.NEXT_PUBLIC_API_URL}/api/booklets/${item._id}/download`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        download={true}
-                                    >
-                                        <Download />
-                                    </Link>
-                                    <Link prefetch href={`/booklets/${item._id}/update`}>
-                                        <SquarePen />
-                                    </Link>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Link prefetch href={`/booklets/${item._id}/tasks`}>
+                                                <Eye />
+                                            </Link>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>{t("viewTasks")}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Link
+                                                href={`${process.env.NEXT_PUBLIC_API_URL}/api/booklets/${item._id}/download`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                download={true}
+                                            >
+                                                <Download />
+                                            </Link>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>{t("download")}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                    <Tooltip>
+
+                                        <TooltipTrigger>
+                                            <Link prefetch href={`/booklets/${item._id}/update`}>
+                                                <SquarePen />
+                                            </Link>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>{t("update")}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
                                     <DeleteDialog action={deleteBookletMutation.mutateAsync.bind(null, item._id)} />
                                 </h2>
                             </TableRow>

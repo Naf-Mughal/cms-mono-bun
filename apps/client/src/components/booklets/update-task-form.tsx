@@ -255,6 +255,22 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                         )}
                     />
                 )
+            case "number":
+                return (
+                    <AppField
+                        name="data.value"
+                        children={({ TextField }) => (
+                            <TextField
+                                label=""
+                                labelClass="text-[#525355] font-semibold text-lg"
+                                isInline={false}
+                                isNumaric={true}
+                                name="data.value"
+                                disabled={updateBookletTaskMutation.isPending}
+                            />
+                        )}
+                    />
+                )
             case "date":
                 return (
                     <AppField
@@ -281,7 +297,7 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                                                     <RadioField
                                                         key={index}
                                                         value={child.value as string}
-                                                        label={`${gt(child.value as string)} ${child?.type === 'readonly' && (child?.children as any)?.value ? `(${(child?.children as any)?.value || ""})` : ''}`}
+                                                        label={`${gt(child.value as string)} ${child?.type === 'readonly' && (child?.children as any)?.value && (child?.children as any)?.type !== "text" ? `(${(child?.children as any)?.value || ""})` : ''}`}
                                                         selected={radioValue === child.value}
                                                         onClick={() => { setRadioValue(child.value as string); handleChange(child.value as string) }}
                                                     />
@@ -311,9 +327,10 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                                                             name={`data.children.${index}.children.value`}
                                                             children={({ TextField }) => (
                                                                 <TextField
-                                                                    label=""
+                                                                    label={(child?.children as any)?.children?.value || ''}
                                                                     labelClass="text-[#525355] font-semibold text-lg"
                                                                     isInline={false}
+                                                                    dir={(child?.children as any)?.children?.value ? "rtl" : 'ltr'}
                                                                     name={`data.children.${index}.children.value`}
                                                                     disabled={updateBookletTaskMutation.isPending}
                                                                 />

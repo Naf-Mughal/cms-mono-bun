@@ -10,6 +10,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useLang, useTranslations } from "@/providers/language"
 import { Trash2 } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -21,7 +22,14 @@ export function DeleteDialog({ action }: { action?: () => void }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Trash2 className="cursor-pointer" />
+                <Tooltip>
+                    <TooltipTrigger>
+                        <Trash2 className="cursor-pointer" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p>{t("delete")}</p>
+                    </TooltipContent>
+                </Tooltip>
             </AlertDialogTrigger>
             <AlertDialogContent dir={dir}>
                 <AlertDialogHeader>

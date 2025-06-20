@@ -33,7 +33,7 @@ export const bookletTasksSeed: BookletTasks = [
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
+        inputType: BookletInputTypesEnum.Number,
         description: ['In this paragraph, the government entity mentions the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 6
     },
@@ -320,7 +320,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Can the competition be divided ?', 'هل يمكن تجزئة المنافسة ؟'],
         pageNumber: 10,
     },
     {
@@ -369,7 +369,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Write No.: The qualification criteria are attached in Appendix No.', 'كتابة رقم: معايير التأهيل مرفقة في ملحق رقم.'],
         pageNumber: 13
     },
     {
@@ -478,7 +478,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Is it permissible for the bidder to leave any of the tender items unpriced ?', 'هل يجوز لمقدم العرضترك أي من بنود المنافسة دون تسعير ؟'],
         pageNumber: 15,
     },
     {
@@ -502,25 +502,13 @@ export const bookletTasksSeed: BookletTasks = [
                 {
                     value: 'yes',
                     children: {
-                        value: 'نعم كما ذُكر في الملحق الخاص بها رقم',
-                        children: [
-                            {
-                                value: 'نعم كما ذُكر في الملحق الخاص بها رقم',
-                                children: {
-                                    value: null,
-                                },
-                                type: BookletInputTypesEnum.Text
-                            },
-                            {
-                                value: 'نعم، العروض البديلة مقبولة  على أن تلتزم في الإجراءات الاعتماد والتقييم التالية',
-                                children: {
-                                    value: [],
-                                },
-                                type: BookletInputTypesEnum.List
-                            }
-                        ]
+                        value: null,
+                        children: {
+                            value: 'نعم.  العروض البديلة مقبولة  على ان تلتزم في الاجراءات الاعتماد والتقييم كما ذُكر في الملحق الخاص بها رقم',
+                        },
+                        type: BookletInputTypesEnum.Readonly
                     },
-                    type: BookletInputTypesEnum.Radio
+                    type: BookletInputTypesEnum.Text
                 },
                 {
                     value: 'no',
@@ -534,30 +522,18 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['The government agency determines whether alternative bids are acceptable in the competition and the procedures for evaluating and accepting these bids.', 'تحدد الجهة الحكومية إذا كانت العروضالبديلة مقبولة في المنافسة وإجراءاتتقييم وقبول هذه العروض.'],
         pageNumber: 16,
     },
     {
-        name: ['Font size', 'متطلبات تنسيق العروض - حجم الخط'],
-        inputName: 'fontSize',
+        name: ['Offers Formatting Requirements', 'تطلبات تنسيق العروض'],
+        inputName: 'offersFormattingRequirements',
         data: {
-            value: null,
+            value: [],
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
-        pageNumber: 16
-    },
-    {
-        name: ['File type', 'متطلبات تنسيق العروض - نوع وامتدادات الملفات الإلكترونية'],
-        inputName: 'fileType',
-        data: {
-            value: null,
-        },
-        status: BookletTaskStatusesEnum.Pending,
-        type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
+        inputType: BookletInputTypesEnum.List,
         description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 16
     },
@@ -570,19 +546,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
-        pageNumber: 17
-    },
-    {
-        name: ['Submit offers Mechanism', 'آلية تقديم العروض'],
-        inputName: 'twoPresentations',
-        data: {
-            value: 'ملف مشفر، أو ملفين مشفرين إذا تطلب الأمر تقديم عرضين فني ومالي'
-        },
-        status: BookletTaskStatusesEnum.Pending,
-        type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['The entity has the right to delete this paragraph if the estimated cost is less than five million riyals.', 'يحق للجهة حذف هذه الفقرة إذا كانت التكلفةالتقديرية أقل من خمسة ماليين ريال'],
         pageNumber: 17
     },
     {

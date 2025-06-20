@@ -1,6 +1,8 @@
 import React from 'react'
+import { ReadonlyList } from 'src/components/readonly-list'
 
 const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+    console.log(tasks?.alternativeOffers)
     return (
         <div className="w-full text-black">
             <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -37,14 +39,11 @@ const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="font-semibold mb-2">43	العروض البديلة</h3>
-                    <p className="mb-2">{tasks?.alternativeOffers?.value || tasks?.alternativeOffers || ""}</p>
+                    <p className="mb-2">{tasks?.alternativeOffers?.children?.value ? `${tasks?.alternativeOffers?.children?.value} (${tasks?.alternativeOffers?.value})` : tasks?.alternativeOffers?.value || tasks?.alternativeOffers?.children?.value || ""}</p>
                 </div>
                 <div className="pb-4">
                     <h3 className="font-semibold mb-2">44	متطلبات تنسيق العروض</h3>
-                    <ul className="pr-5 space-y-2">
-                        <li><span>أ.</span> {tasks?.fontSize || "‌حجم الخط."}</li>
-                        <li><span>ب.</span> {tasks?.fileType || "نوع وامتدادات الملفات الإلكترونية"}</li>
-                    </ul>
+                    <ReadonlyList data={tasks?.offersFormattingRequirements || {}} />
                 </div>
             </div>
         </div>
