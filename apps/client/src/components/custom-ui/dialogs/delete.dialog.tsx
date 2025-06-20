@@ -21,16 +21,16 @@ export function DeleteDialog({ action }: { action?: () => void }) {
     const { dir } = useLang()
     return (
         <AlertDialog>
-            <AlertDialogTrigger asChild>
-                <Tooltip>
-                    <TooltipTrigger>
+            <Tooltip>
+                <TooltipTrigger>
+                    <AlertDialogTrigger asChild>
                         <Trash2 className="cursor-pointer" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                        <p>{t("delete")}</p>
-                    </TooltipContent>
-                </Tooltip>
-            </AlertDialogTrigger>
+                    </AlertDialogTrigger>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <p>{t("delete")}</p>
+                </TooltipContent>
+            </Tooltip>
             <AlertDialogContent dir={dir}>
                 <AlertDialogHeader>
                     <AlertDialogTitle>{t("title")}</AlertDialogTitle>
