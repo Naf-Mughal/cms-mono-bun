@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const EighthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const EighthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 space-y-4 ">
@@ -14,11 +17,11 @@ const EighthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
               </tr>
             </thead>
             <tbody>
-              <tr><td className="border p-2">العنوان</td><td className="border p-2">{tasks?.address || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">المبنى</td><td className="border p-2">{tasks?.building || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">الطابق</td><td className="border p-2">{tasks?.floor || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">الغرفة/اسم الإدارة</td><td className="border p-2">{tasks?.roomNameOfDepartment || "تحدده الجهة الحكومية."}</td></tr>
-              <tr><td className="border p-2">وقت التسليم</td><td className="border p-2">{tasks?.deliveryTime || "تحدده الجهة الحكومية."}</td></tr>
+              <tr ref={createRef('address')}><td className="border p-2">العنوان</td><td className="border p-2">{tasks?.address || "حدده الجهة الحكومية."}</td></tr>
+              <tr ref={createRef('building')}><td className="border p-2">المبنى</td><td className="border p-2">{tasks?.building || "حدده الجهة الحكومية."}</td></tr>
+              <tr ref={createRef('floor')}><td className="border p-2">الطابق</td><td className="border p-2">{tasks?.floor || "حدده الجهة الحكومية."}</td></tr>
+              <tr ref={createRef('roomNameOfDepartment')}><td className="border p-2">الغرفة/اسم الإدارة</td><td className="border p-2">{tasks?.roomNameOfDepartment || "حدده الجهة الحكومية."}</td></tr>
+              <tr ref={createRef('deliveryTime')}><td className="border p-2">وقت التسليم</td><td className="border p-2">{tasks?.deliveryTime || "حدده الجهة الحكومية."}</td></tr>
             </tbody>
           </table>
         </div>

@@ -14,7 +14,6 @@ const UpdateBooklet = () => {
         retry: false,
     });
     if (isError && !res) return "An error occured";
-    console.log(res)
     return (
         <div className='flex-1 flex p-3 justify-center items-center'>
             <div className="h-full w-full bg-white rounded-md p-4">

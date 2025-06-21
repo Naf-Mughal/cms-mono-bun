@@ -8,6 +8,7 @@ import { Providers } from '@/providers/query';
 import { TokenProvider } from "@/providers/token";
 import { PreviewProvider } from "@/providers/preview";
 import { LangProvider } from "@/providers/language";
+import { SearchProvider } from "@/providers/search";
 
 export default async function RootLayout({
   children,
@@ -24,7 +25,9 @@ export default async function RootLayout({
           <TokenProvider>
             <PreviewProvider>
               <LangProvider>
-                {children}
+                <SearchProvider>
+                  {children}
+                </SearchProvider>
               </LangProvider>
             </PreviewProvider>
           </TokenProvider>

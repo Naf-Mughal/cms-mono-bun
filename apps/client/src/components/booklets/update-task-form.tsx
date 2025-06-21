@@ -234,9 +234,6 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
         if (!formDataObj.data && updatedData) {
             formDataObj.data = updatedData;
         }
-
-        console.log('Submitting data:', formDataObj); // Debug log
-
         updateBookletTaskMutation.mutate(formDataObj)
     }
 

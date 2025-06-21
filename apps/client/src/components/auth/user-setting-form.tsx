@@ -25,7 +25,6 @@ interface UserSettingResponse {
 }
 
 export function UserSettingForm(data: any) {
-    console.log(data?.data?.name)
     const [error, setError] = useState<string | null>(null)
     const router = useRouter()
     const client = Client()

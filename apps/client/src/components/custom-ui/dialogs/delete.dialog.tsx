@@ -39,8 +39,8 @@ export function DeleteDialog({ action }: { action?: () => void }) {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => { action?.(); router.refresh() }}>{t("continue")}</AlertDialogAction>
+                    <AlertDialogCancel className="hover:cursor-pointer">{t("cancel")}</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => { action?.(); router.refresh() }} className="hover:cursor-pointer">{t("continue")}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

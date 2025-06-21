@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const TenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const TenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+  const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 space-y-4 ">
@@ -21,7 +24,7 @@ const TenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
 
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold text-lg text-gray-900">18. تجزئة المنافسة</h3>
-          <p>
+          <p ref={createRef('competitionSegmentation')}>
             {tasks?.competitionSegmentation?.value || ""}
           </p>
         </div>

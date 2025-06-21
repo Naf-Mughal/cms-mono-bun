@@ -15,7 +15,6 @@ interface ReadonlyTableProps {
 }
 
 export default function ReadonlyTable({ data }: ReadonlyTableProps) {
-    console.log(data)
     // Determine the number of rows based on the longest column
     const rowsCount = data.children && data.children.length > 0
         ? Math.max(...data.children.map(col => col.children.value.length))

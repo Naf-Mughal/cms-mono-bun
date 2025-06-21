@@ -16,7 +16,6 @@ const Dashboard: React.FC<any> = () => {
         retry: false,
     });
     if (isError && !isLoading && !res) return "An error occured";
-    console.log(res)
     const data = res?.data.data.bookletTasks.map((item: any) => {
         return { ...item, name: item.name[lang === "ar" ? 1 : 0] }
     })

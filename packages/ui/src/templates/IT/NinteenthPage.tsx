@@ -1,7 +1,10 @@
 import React from 'react'
 import { ReadonlyList } from '../../components/readonly-list'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const NinteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const NinteenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 mx-auto space-y-4 ">
@@ -21,7 +24,9 @@ const NinteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="mb-3">
                         يراعى في معايير تقييم العروض أن تكون واضحة وموضوعية ومحققة للمصلحة العامة وألا تهدف إلى ترسيه الخدمات على متنافسين محددين، على أن يؤخذ في الاعتبار عند إعدادها بما يلي:
                     </p>
-                    <ReadonlyList data={tasks.criteriaForEvaluatingOffers || {}} />
+                    <div ref={createRef('criteriaForEvaluatingOffers')}>
+                        <ReadonlyList data={tasks.criteriaForEvaluatingOffers || {}} />
+                    </div>
                 </div>
 
                 <div className="border-b border-gray-300 pb-4 mb-6">

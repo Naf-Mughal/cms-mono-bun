@@ -83,6 +83,10 @@ const EN = {
         "viewTasks": "View Tasks",
         "download": "Download Booklet",
         "update": "Update Tasks",
+        "filter": "Filter",
+        "selectFilter": "Select Filter",
+        "searchBooklets": "Search Booklets",
+        "index": "Index"
     },
     "BookletTasksTable": {
         "status": "Status",
@@ -228,7 +232,11 @@ const AR = {
         "IT Department": "قسم تقنية المعلومات",
         "viewTasks": "عرض المهام",
         "download": "تحميل الكراسة",
-        "update": "تعديل الاجراءات"
+        "update": "تعديل الاجراءات",
+        "filter": "فرز",
+        "selectFilter": "اختر الفرز",
+        "searchBooklets": "بحث عن الكراسات",
+        "index": "رقم"
     },
     "BookletTasksTable": {
         "status": "الحالة",

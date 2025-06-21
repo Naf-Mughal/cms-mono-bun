@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const SeventeenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const SeventeenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -13,14 +16,14 @@ const SeventeenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                     <p className="mb-2"><span className="font-semibold ">أولاً:</span> يقوم المتنافس بتقديم عرضه في الموعد المحدد من خلال البوابة الإلكترونية أو الوسيلة البديلة. وفي حال تعطل البوابة الإلكترونية أو الوسيلة البديلة لمدة تزيد على ثلاثة أيام فيجوز تقديم العروض بشكل ورقي لممثل الجهة الحكومية في الوقت والمكان المحددين ويتم تقديم العروض على النحو الآتي:</p>
 
                     <ul className="pr-5 space-y-2 mb-3">
-                        <li className={tasks?.twoFiles ? "" : "hidden"}><span>أ.</span> {tasks?.twoFiles}</li>
+                        <li ref={createRef('twoFiles')} className={tasks?.twoFiles ? "" : "hidden"}><span>أ.</span> {tasks?.twoFiles}</li>
                         <li><span>{tasks?.twoFiles ? "ب." : "أ."}</span> ‌يقدم العرض – وكافة مرفقاته - بموجب خطاب رسمي يوقع من مقدمه أو ممن يملك حق التمثيل النظامي.</li>
                         <li><span>{tasks?.twoFiles ? "ج." : "ب."}</span> ‌تقدم مع العرض الوثائق المذكورة في الفقرتين 35 و36 من هذه الكراسة.</li>
                         <li><span>{tasks?.twoFiles ? "د." : "ج."}</span> ‌في حال تعذر تقديم العروض من خلال البوابة الإلكترونية لأسباب فنية، يتم تقديمها في مظاريف مختومة بواسطة البريد الرسمي، أو تسليمها للجهة الحكومية في المكان المحدد لاستقبال العروض، مع أخذ إيصال يبين فيه تاريخ وساعة التسليم، وعلى الجهة الحكومية رفع العروض التي تقدم ورقياً على البوابة لحفظها في سجلاتها، وذلك بعد فتحها من قبل لجنة فتح العروض.</li>
                         <li><span>{tasks?.twoFiles ? "ه." : "د."}</span> ‌تعلن أسماء المتنافسين الذين تقدموا بعروضهم في البوابة، وذلك بعد انتهاء موعد تقديم العروض وفتحها، فإذا تعذر إعلانها في البوابة، تعلن في الموقع الإلكتروني للجهة الحكومية.</li>
                     </ul>
 
-                    <p className="mb-2 ">
+                    <p className="mb-2 " ref={createRef('externalMechanism')}>
                         <span className="font-semibold">ثانياً:</span> {tasks?.externalMechanism}
                     </p>
                 </div>

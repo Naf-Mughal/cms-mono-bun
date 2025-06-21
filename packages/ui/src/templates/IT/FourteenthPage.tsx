@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const FourteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const FourteenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+  const { elementRefs } = useTaskHighlight(currentTask)
+  const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -15,7 +18,7 @@ const FourteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
 
         <div className="border-b border-gray-300 pb-4 mb-6">
           <h3 className="font-semibold mb-2">28. العملة المعتمدة</h3>
-          <p>تعتبر العملة {tasks?.authrisedCurrency || "السعودية (الريال السعودي)"} العملة المعتمدة بكافة التعاملات المتعلقة بالمنافسة ويتم الصرف طبقاً للأنظمة واللوائح المالية المتبعة في نظام المنافسات والمشتريات الحكومية.</p>
+          <p>تعتبر العملة  <span ref={createRef('authrisedCurrency')}>{tasks?.authrisedCurrency || "السعودية (الريال السعودي)"}</span> العملة المعتمدة بكافة التعاملات المتعلقة بالمنافسة ويتم الصرف طبقاً للأنظمة واللوائح المالية المتبعة في نظام المنافسات والمشتريات الحكومية.</p>
         </div>
 
         <div className="border-b border-gray-300 pb-4 mb-6">
@@ -40,7 +43,7 @@ const FourteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
 
         <div className="border-b border-gray-300 pb-4 mb-6">
           <h3 className="font-semibold mb-2">33. الأسئلة والاستفسارات</h3>
-          <p>يمكن للمتنافسين في حال وجود أي استفسارات عن المنافسة، أن يرسلوا استفساراتهم عن طريق البوابة الإلكترونية أو الوسيلة البديلة خلال <span>{tasks.timelineToSendInquiries || "(10) عشرة أيام"}</span>  من تاريخ طرح المنافسة. وتلتزم الجهة الحكومية بالرد على استفسارات المتنافسين عن طريق البوابة الإلكترونية أو الوسيلة البديلة خلال مدة لا تتجاوز <span>{tasks.timelineToAnswerInquiries || "(7) سبعة أيام"} </span> من ذلك التاريخ، وفي حال تعذر ذلك فعلى الجهة الحكومية الرد عن طريق <span>{tasks.officialEmail || "البريد الرسمي"}</span> وعلى الجهة الحكومية جمع كافة الاستفسارات المقدمة من المتنافسين والإجابة عليها ومشاركتها مع جميع المتنافسين دون الكشف عن هوية المتنافس مقدم الاستفسار عن طريق البوابة الإلكترونية أو الوسيلة البديلة. كما يمكن للجهة الحكومية تنظيم ورشة عمل لمناقشة كافة الاستفسارات المقدمة والإجابة عليها.</p>
+          <p>يمكن للمتنافسين في حال وجود أي استفسارات عن المنافسة، أن يرسلوا استفساراتهم عن طريق البوابة الإلكترونية أو الوسيلة البديلة خلال <span ref={createRef('timelineToSendInquiries')}>{tasks.timelineToSendInquiries || "(10) عشرة أيام"}</span>  من تاريخ طرح المنافسة. وتلتزم الجهة الحكومية بالرد على استفسارات المتنافسين عن طريق البوابة الإلكترونية أو الوسيلة البديلة خلال مدة لا تتجاوز <span ref={createRef('timelineToAnswerInquiries')}>{tasks.timelineToAnswerInquiries || "(7) سبعة أيام"} </span> من ذلك التاريخ، وفي حال تعذر ذلك فعلى الجهة الحكومية الرد عن طريق <span ref={createRef('officialEmail')}>{tasks.officialEmail || "البريد الرسمي"}</span> وعلى الجهة الحكومية جمع كافة الاستفسارات المقدمة من المتنافسين والإجابة عليها ومشاركتها مع جميع المتنافسين دون الكشف عن هوية المتنافس مقدم الاستفسار عن طريق البوابة الإلكترونية أو الوسيلة البديلة. كما يمكن للجهة الحكومية تنظيم ورشة عمل لمناقشة كافة الاستفسارات المقدمة والإجابة عليها.</p>
         </div>
 
         <div className="border-b border-gray-300 pb-4 mb-6">

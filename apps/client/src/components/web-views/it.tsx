@@ -34,72 +34,72 @@ import Footer from '@ui/templates/IT/Footer'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-const getPageComponent = (currentPageNumber: number, tasks: any): React.ReactNode => {
+const getPageComponent = (currentPageNumber: number, tasks: any, currentTask?: string): React.ReactNode => {
     switch (currentPageNumber) {
         case 1:
-            return <FirstPage tasks={tasks} />
+            return <FirstPage tasks={tasks} currentTask={currentTask} />
         case 2:
-            return <SecondPage tasks={tasks} />
+            return <SecondPage tasks={tasks} currentTask={currentTask} />
         case 3:
-            return <ThirdPage tasks={tasks} />
+            return <ThirdPage tasks={tasks} currentTask={currentTask} />
         case 4:
-            return <FourthPage tasks={tasks} />
+            return <FourthPage tasks={tasks} currentTask={currentTask} />
         case 5:
-            return <FifthPage tasks={tasks} />
+            return <FifthPage tasks={tasks} currentTask={currentTask} />
         case 6:
-            return <SixthPage tasks={tasks} />
+            return <SixthPage tasks={tasks} currentTask={currentTask} />
         case 7:
-            return <SeventhPage tasks={tasks} />
+            return <SeventhPage tasks={tasks} currentTask={currentTask} />
         case 8:
-            return <EighthPage tasks={tasks} />
+            return <EighthPage tasks={tasks} currentTask={currentTask} />
         case 9:
-            return <NinthPage tasks={tasks} />
+            return <NinthPage tasks={tasks} currentTask={currentTask} />
         case 10:
-            return <TenthPage tasks={tasks} />
+            return <TenthPage tasks={tasks} currentTask={currentTask} />
         case 11:
-            return <EleventhPage tasks={tasks} />
+            return <EleventhPage tasks={tasks} currentTask={currentTask} />
         case 12:
-            return <TwelfthPage tasks={tasks} />
+            return <TwelfthPage tasks={tasks} currentTask={currentTask} />
         case 13:
-            return <ThirteenthPage tasks={tasks} />
+            return <ThirteenthPage tasks={tasks} currentTask={currentTask} />
         case 14:
-            return <FourteenthPage tasks={tasks} />
+            return <FourteenthPage tasks={tasks} currentTask={currentTask} />
         case 15:
-            return <FifteenthPage tasks={tasks} />
+            return <FifteenthPage tasks={tasks} currentTask={currentTask} />
         case 16:
-            return <SixteenthPage tasks={tasks} />
+            return <SixteenthPage tasks={tasks} currentTask={currentTask} />
         case 17:
-            return <SeventeenthPage tasks={tasks} />
+            return <SeventeenthPage tasks={tasks} currentTask={currentTask} />
         case 18:
-            return <EighteenthPage tasks={tasks} />
+            return <EighteenthPage tasks={tasks} currentTask={currentTask} />
         case 19:
-            return <NinteenthPage tasks={tasks} />
+            return <NinteenthPage tasks={tasks} currentTask={currentTask} />
         case 20:
-            return <TwentiethPage tasks={tasks} />
+            return <TwentiethPage tasks={tasks} currentTask={currentTask} />
         case 21:
-            return <TwentyFirstPage tasks={tasks} />
+            return <TwentyFirstPage tasks={tasks} currentTask={currentTask} />
         case 22:
-            return <TwentySecondPage tasks={tasks} />
+            return <TwentySecondPage tasks={tasks} currentTask={currentTask} />
         case 23:
-            return <TwentyThirdPage tasks={tasks} />
+            return <TwentyThirdPage tasks={tasks} currentTask={currentTask} />
         case 24:
-            return <TwentyFourthPage tasks={tasks} />
+            return <TwentyFourthPage tasks={tasks} currentTask={currentTask} />
         case 25:
-            return <TwentyFifthPage tasks={tasks} />
+            return <TwentyFifthPage tasks={tasks} currentTask={currentTask} />
         case 26:
-            return <TwentySixthPage tasks={tasks} />
+            return <TwentySixthPage tasks={tasks} currentTask={currentTask} />
         case 27:
-            return <TwentySeventhPage tasks={tasks} />
+            return <TwentySeventhPage tasks={tasks} currentTask={currentTask} />
         case 28:
-            return <TwentyEighthPage tasks={tasks} />
+            return <TwentyEighthPage tasks={tasks} currentTask={currentTask} />
         case 29:
-            return <TwentyNinthPage tasks={tasks} />
+            return <TwentyNinthPage tasks={tasks} currentTask={currentTask} />
         default:
-            return <FirstPage tasks={tasks} />
+            return <FirstPage tasks={tasks} currentTask={currentTask} />
     }
 }
 
-const IT = ({ tasks, currentPageNumber }: { tasks: any, currentPageNumber: number }) => {
+const IT = ({ tasks, currentPageNumber, currentTask }: { tasks: any, currentPageNumber: number, currentTask?: string }) => {
     const filteredTasks: any = {}
     tasks?.filter((item: any) => item.pageNumber === currentPageNumber).forEach((item: any) => {
         if (item.inputType === 'radio') {
@@ -120,7 +120,7 @@ const IT = ({ tasks, currentPageNumber }: { tasks: any, currentPageNumber: numbe
             {currentPageNumber === 0 ? null : (
                 <>
                     <Header />
-                    {getPageComponent(currentPageNumber, filteredTasks)}
+                    {getPageComponent(currentPageNumber, filteredTasks, currentTask)}
                     <Footer number={currentPageNumber} />
                 </>
             )}

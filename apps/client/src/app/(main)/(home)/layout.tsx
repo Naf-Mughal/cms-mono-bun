@@ -16,7 +16,6 @@ export default function HomeLayout({
     const { dir } = useLang();
     const t = useTranslations("SideNav");
     const path = usePathname();
-    console.log(path)
     return (
         <Protected>
             <main className="min-h-[calc(100vh-96px)] flex justify-between w-full overflow-hidden" dir={dir}>

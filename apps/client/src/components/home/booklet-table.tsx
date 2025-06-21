@@ -11,6 +11,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 import { useLang, useTranslations } from "@/providers/language"
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
+import Pagination from "../ui/pagination"
 
 export interface TableData {
     _id: string
@@ -25,6 +26,10 @@ export interface TableData {
 interface BookletTableProps {
     data: TableData[]
     isLoading?: boolean
+    pagination: { page: number, limit: number }
+    setPagination: (pagination: { page: number, limit: number }) => void
+    totalPages: number
+    currentPage: number
 }
 
 // Skeleton loader component
@@ -78,7 +83,7 @@ const TableSkeleton = () => {
     )
 }
 
-const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) => {
+const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false, pagination, setPagination, totalPages, currentPage }) => {
     const client = Client()
     const router = useRouter()
     const queryClient = useQueryClient()
@@ -171,6 +176,7 @@ const BookletTable: React.FC<BookletTableProps> = ({ data, isLoading = false }) 
                             </TableRow>
                         </ScrollSyncPane>
                     ))}
+                <Pagination pagination={pagination} setPagination={setPagination} totalPages={totalPages} currentPage={pagination.page} />
             </div>
         </ScrollSync>
     )

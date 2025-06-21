@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const TwentyFirstPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const TwentyFirstPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 mx-auto space-y-4 ">
@@ -18,7 +21,7 @@ const TwentyFirstPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
 
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-3">57. الضمان النهائي</h3>
-                    <p className="mb-3"><span className="font-semibold">أولاً:</span> يجب على من تتم الترسية عليه تقديم ضمان نهائي بنسبة ({tasks?.finalGuaranteePercentage || "5"} %) من قيمة العقد، وذلك خلال ({tasks?.finalGuaranteeDays || "خمسة عشر"}) يوم عمل من تاريخ إبلاغه بالترسية، ويجوز للجهة للحكومية تمديد هذه المدة لمدة مماثلة واحدة، وأما في الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية؛ يجوز للجهة تمديد تلك المدة لمدد مماثلة بما تراه محققاً للمصلحة. </p>
+                    <p className="mb-3"><span className="font-semibold">أولاً:</span> يجب على من تتم الترسية عليه تقديم ضمان نهائي بنسبة <span ref={createRef('finalGuaranteePercentage')}>({tasks?.finalGuaranteePercentage || "5"} %)</span> من قيمة العقد، وذلك خلال <span ref={createRef('finalGuaranteeDays')}>({tasks?.finalGuaranteeDays || "خمسة عشر"})</span> يوم عمل من تاريخ إبلاغه بالترسية، ويجوز للجهة للحكومية تمديد هذه المدة لمدة مماثلة واحدة، وأما في الأعمال والمشتريات التي تنفذ خارج المملكة العربية السعودية؛ يجوز للجهة تمديد تلك المدة لمدد مماثلة بما تراه محققاً للمصلحة. </p>
                     <p className="mb-3"><span className="font-semibold">ثانياً:</span> إذا كان صاحب العرض من المنشآت الصغيرة أو المتوسطة يتوجب عليه دفع غرامة مالية إلى الجهة الحكومية تساوي قيمة الضمان الابتدائي، إذا لم يقدم الضمان النهائي في حال تمت الترسية عليه، وفي حال مرور (60) ستين يوماً من تاريخ انتهاء مهلة تقديم الضمان النهائي دون أن يقوم بدفع الغرامة المالية المقررة يعاقب بمنعه من التعامل مع الجهات الحكومية لمدة (سنة).</p>
                     <p className="mb-3"><span className="font-semibold">ثالثاً:</span> يجب على الجهة الحكومية الاحتفاظ بالضمان النهائي إلى أن يفي المتعاقد معه بالتزاماته ويستلم المشروع استلاماً نهائياً، وفقاً لأحكام العقد وشروطه.</p>
                     <p className="mb-3"><span className="font-semibold">رابعاً:</span> مع مراعاة المادة (الحادية والستون) من النظام، لا يلزم تقديم الضمان النهائي في الحالات الآتية:</p>
@@ -28,7 +31,7 @@ const TwentyFirstPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                         <li><span>ج.</span> ‌التعاقد مع مؤسسة أو جمعية أهلية أو كيان غير هادف إلى الربح.</li>
                         <li><span>د.</span> ‌التعاقد مع الشركات التي تملك الدولة فيها نسبة لا تقل عن (51%) من رأس مالها.</li>
                         <li><span>ه.</span> ‌إذا كُلف المتعاقد بأعمال إضافية.</li>
-                        <li ><span style={{ display: tasks?.outsideOfKingdomOfSaudiArabia ? "block" : "none" }}>و.</span> ‌{tasks?.outsideOfKingdomOfSaudiArabia || ""} </li>
+                        <li style={{ display: tasks?.outsideOfKingdomOfSaudiArabia ? "block" : "none" }} ><span ref={createRef('outsideOfKingdomOfSaudiArabia')}>و.</span> ‌{tasks?.outsideOfKingdomOfSaudiArabia || ""} </li>
                     </ul>
                 </div>
 

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const TwentiethPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const TwentiethPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -30,7 +33,7 @@ const TwentiethPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                         يجب على الجهة الحكومية الالتزام بفترة توقف بعد إخطار المتنافسين بنتائج المنافسة، وذلك وفقاً للضوابط الآتية:
                     </p>
 
-                    <p className="mb-3"><span className="font-semibold">أولاً:</span> تلتزم الجهة الحكومية بفترة التوقف ({tasks?.downtime || "خمسة"}) أيام عمل من تاريخ إعلان نتائج المنافسة، وتلتزم الجهة الحكومية بالإعلان عنها في البوابة الإلكترونية أو الوسيلة البديلة.</p>
+                    <p className="mb-3"><span className="font-semibold">أولاً:</span> تلتزم الجهة الحكومية بفترة التوقف <span ref={createRef('downtime')}>{tasks?.downtime || "خمسة"}</span> أيام عمل من تاريخ إعلان نتائج المنافسة، وتلتزم الجهة الحكومية بالإعلان عنها في البوابة الإلكترونية أو الوسيلة البديلة.</p>
                     <p className="mb-3"><span className="font-semibold">ثانياً:</span> في حال تعذر الإعلان في البوابة أو موقع الجهة الحكومية أو الوسيلة البديلة لأسباب فنية، يبلغ المتنافسين بذلك عبر البريد الإلكتروني.</p>
                     <p className="mb-3"><span className="font-semibold">ثالثاً:</span> مع مراعاة ما ورد في المادة (السابعة والثمانين) من النظام، تستقبل الجهة الحكومية التظلمات على قرار الترسية أو أي إجراء من إجراءاتها من خلال البوابة أو الوسيلة البديلة.</p>
                     <p className="mb-3"><span className="font-semibold">رابعاً:</span> لا يجوز للجهة الحكومية أن تقبل أي تظلم بعد انتهاء فترة التوقف.</p>

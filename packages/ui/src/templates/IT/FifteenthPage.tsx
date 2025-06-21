@@ -1,20 +1,27 @@
 import React from 'react'
 import { ReadonlyList } from '../../components/readonly-list';
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const FifteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const FifteenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+  const { elementRefs } = useTaskHighlight(currentTask)
+  const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold mb-2">35. وثائق العرض الفني</h3>
           <p className="mb-2">يشمل العرض الفني المتطلبات التالية:</p>
-          <ReadonlyList data={tasks.technicalOfferDocuments || {}} />
+          <div ref={createRef('technicalOfferDocuments')}>
+            <ReadonlyList data={tasks.technicalOfferDocuments || {}} />
+          </div>
         </div>
 
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold mb-2">36. وثائق العرض المالي</h3>
           <p className="mb-2">يشمل العرض المالي المتطلبات التالية:</p>
-          <ReadonlyList data={tasks.finacialOfferDocuments || {}} />
+          <div ref={createRef('finacialOfferDocuments')}>
+            <ReadonlyList data={tasks.finacialOfferDocuments || {}} />
+          </div>
         </div>
 
         <div className="border-b border-gray-300 pb-4">
@@ -24,7 +31,7 @@ const FifteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
             <li><span>ب.</span>  تدوين أسعار العرض الإفرادية والإجمالية في جداول الكميات رقماً وكتابة بالعملة المحلية، ما لم ينص على تقديمها بعملة أخرى.</li>
             <li><span>ج.</span>  لا يجوز لمقدم العرض التعديل أو المحو أو الطمس على قائمة الأسعار، ويجب إعادة تدوين أي تصحيح يجريه صاحب العرض عليها رقماً وكتابة والتوقيع عليه.</li>
             <li><span>د.</span>  يجوز استبعاد العرض إذا بلغت فئات الأسعار التي جرى عليها التعديل أو المحو أو الطمس أكثر من (10%) من قائمة الأسعار، أو من القيمة الإجمالية للعرض.</li>
-            <li><span>ه.</span>  {tasks?.writingPrices?.value || ""}</li>
+            <li ref={createRef('writingPrices')}><span>ه.</span>  {tasks?.writingPrices?.value || ""}</li>
           </ul>
         </div>
 

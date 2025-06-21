@@ -1,8 +1,10 @@
 import React from 'react'
 import { ReadonlyList } from '../../components/readonly-list'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const TwelfthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
-  console.log(tasks)
+const TwelfthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+  const { elementRefs } = useTaskHighlight(currentTask)
+  const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 space-y-4 ">
@@ -12,9 +14,11 @@ const TwelfthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
           {
             typeof tasks?.confirmationOfParticipationInTheCompetition.value === "string" ?
               (
-                <p>{tasks?.confirmationOfParticipationInTheCompetition.value}</p>
+                <p ref={createRef('confirmationOfParticipationInTheCompetition')}>{tasks?.confirmationOfParticipationInTheCompetition.value}</p>
               ) : (
-                <ReadonlyList data={tasks?.confirmationOfParticipationInTheCompetition} />
+                <div ref={createRef('confirmationOfParticipationInTheCompetition')}>
+                  <ReadonlyList data={tasks?.confirmationOfParticipationInTheCompetition} />
+                </div>
               )
           }
         </div>

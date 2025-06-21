@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { type FC } from 'react'
 import { ReadonlyList } from 'src/components/readonly-list'
+import { useTaskHighlight, createTaskRef } from 'src/hooks/useTaskHighlight'
 
-const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
-    console.log(tasks?.alternativeOffers)
+const SixteenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="font-semibold mb-2">41. الضمان الابتدائي</h3>
-                    <p className="mb-2"><span className="font-semibold">أولاً:</span> على المتنافس تقديم الضمان الابتدائي بنسبة {" " + tasks.inatialGuaranteePercentage + "% " || ""} من القيمة الإجمالية للعرض مع مراعاة الأحكام العامة للضمانات أعلاه ووفقاً للشروط التالية:</p>
+                    <p className="mb-2"><span className="font-semibold">أولاً:</span> على المتنافس تقديم الضمان الابتدائي بنسبة <span ref={createRef('initialGuaranteePercentage')}>{" " + tasks.inatialGuaranteePercentage + "% " || ""}</span> من القيمة الإجمالية للعرض مع مراعاة الأحكام العامة للضمانات أعلاه ووفقاً للشروط التالية:</p>
                     <ul className="pr-5 space-y-2">
                         <li><span>أ.</span> لا يجوز قبول العرض الذي يقدم بدون ضمان ابتدائي وللجهة الحكومية قبول الضمان الناقص متى كانت نسبة النقص لا تتجاوز (10%) من قيمة الضمان المطلوب، وفي هذه الحالة، على لجنة فحص العروض -قبل التوصية بالترسية على مقدم الضمان الناقص- أن تطلب منه استكمال النقص في الضمان خلال مدة تحددها اللجنة لا تزيد عن (عشرة) أيام عمل، وإلّا عُد منسحباً ولا يعاد إليه الضمان الابتدائي.</li>
                         <li><span>ب.</span> يُقدم أصل خطاب الضمان الابتدائي مع العرض، على أن يكون الضمان الابتدائي ساري المفعول مدة لا تقل عن (90) تسعين يوماً من التاريخ المحدد لفتح العروض، وفي حال كان الضمان ناقص المدة بما لا يتجاوز (ثلاثين) يوماً، تعين على لجنة فحص العروض -قبل التوصية بالترسية على مقدم الضمان الناقص- أن تطلب منه استكمال النقص في الضمان خلال مدة تحددها اللجنة، وإلا يعد منسحباً ولا يعاد إليه الضمان الابتدائي، ولا يعد اليوم واليومين نقصاً في مدة الضمان.</li>
@@ -39,11 +41,13 @@ const SixteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="font-semibold mb-2">43	العروض البديلة</h3>
-                    <p className="mb-2">{tasks?.alternativeOffers?.children?.value ? `${tasks?.alternativeOffers?.children?.value} (${tasks?.alternativeOffers?.value})` : tasks?.alternativeOffers?.value || tasks?.alternativeOffers?.children?.value || ""}</p>
+                    <p className="mb-2" ref={createRef('alternativeOffers')}>{tasks?.alternativeOffers?.children?.value ? `${tasks?.alternativeOffers?.children?.value} (${tasks?.alternativeOffers?.value})` : tasks?.alternativeOffers?.value || tasks?.alternativeOffers?.children?.value || ""}</p>
                 </div>
                 <div className="pb-4">
                     <h3 className="font-semibold mb-2">44	متطلبات تنسيق العروض</h3>
-                    <ReadonlyList data={tasks?.offersFormattingRequirements || {}} />
+                    <div ref={createRef('offersFormattingRequirements')}>
+                        <ReadonlyList data={tasks?.offersFormattingRequirements || {}} />
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const ThirteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const ThirteenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+  const { elementRefs } = useTaskHighlight(currentTask)
+  const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -13,7 +16,7 @@ const ThirteenthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
             <li><span className="font-semibold">ثالثاً:</span> عند عدم اجتياز المتنافس الفائز لمرحلة التأهيل اللاحق فيتم الانتقال للمتنافس الذي يليه في الترتيب وهكذا، وتلغى المنافسة إذا لم يجتزه جميع المتنافسين.</li>
             <li><span className="font-semibold">رابعاً:</span> يجب على الجهة الحكومية في حال إجرائها تأهيل لاحق للمتنافس الفائز أن تستخدم ذات المعايير التي تم استخدامها في مرحلة التأهيل المسبق.</li>
             <li><span className="font-semibold">خامساً:</span> في حال قامت الجهة الحكومية بتأهيل سابق لمتنافس فيجوز لها عدم القيام بتأهيل ذلك المتنافس في الأعمال والمشتريات المشابهة شريطة ألا يكون قد مضى أكثر من عام على التأهيل السابق.</li>
-            <li><span className="font-semibold">سادساً:</span> معايير التأهيل مرفقة في ملحق رقم {tasks?.postQualification || ""}</li>
+            <li style={{ display: tasks?.postQualification ? "block" : "none" }} ><span className="font-semibold" ref={createRef('postQualification')}>سادساً:</span> معايير التأهيل مرفقة في ملحق رقم {tasks?.postQualification || ""}</li>
           </ul>
         </div>
 

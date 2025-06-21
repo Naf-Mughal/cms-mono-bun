@@ -1,11 +1,15 @@
 import React from 'react'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const SixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
   const baseBorder = '1px solid #D1D5DB' // Tailwind gray-300 border color
   const headerBg = '#595959' // Tailwind gray-600 background
   const headerTextColor = 'white'
   const greenText = '#047857' // Tailwind green-700
   const blackText = '#000000'
+
+  const { elementRefs } = useTaskHighlight(currentTask)
+  const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
 
   return (
     <div style={{ width: '100%', color: blackText }}>
@@ -21,7 +25,7 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr ref={createRef('nameOfGovtEntity')}>
                 <td style={{ border: baseBorder, padding: 8 }}>الجهة الحكومية</td>
                 <td
                   style={{
@@ -72,7 +76,15 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
           <h3 style={{ fontSize: 20, fontWeight: 600, color: blackText }}>2. تعريف عن المنافسة</h3>
           <p>
             يكون طرح إجراءات هذه المنافسة بما في ذلك استلام العروض عن طريق وسيلة بديلة عن البوابة الإلكترونية؛ وهي{' '}
-            <span style={{ color: tasks?.toReceiveBiddingOffers ? blackText : blackText }}>
+            <span
+              ref={createRef('toReceiveBiddingOffers')}
+              style={{
+                color: tasks?.toReceiveBiddingOffers ? blackText : blackText,
+                display: 'inline-block',
+                padding: '2px 4px',
+                borderRadius: '4px'
+              }}
+            >
               (الموقع الإلكتروني للجهة الحكومية: https://{tasks?.toReceiveBiddingOffers || "_____"}.gov.sa/)
             </span>{' '}
             ويشار إليها في هذه الكراسة بـ"الوسيلة البديلة".
@@ -91,13 +103,34 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
             </thead>
             <tbody>
               <tr>
-                <td style={{ border: baseBorder, padding: 8, color: tasks?.valueInNumber ? blackText : blackText }}>
+                <td
+                  ref={createRef('valueInNumber')}
+                  style={{
+                    border: baseBorder,
+                    padding: 8,
+                    color: tasks?.valueInNumber ? blackText : blackText
+                  }}
+                >
                   {tasks?.valueInNumber || "القيمة بالأرقام (...  ريال سعودي)"}
                 </td>
-                <td style={{ border: baseBorder, padding: 8, color: tasks?.valueInWords ? blackText : blackText }}>
+                <td
+                  ref={createRef('valueInWords')}
+                  style={{
+                    border: baseBorder,
+                    padding: 8,
+                    color: tasks?.valueInWords ? blackText : blackText
+                  }}
+                >
                   {tasks?.valueInWords || "القيمة بالتفقيط"}
                 </td>
-                <td style={{ border: baseBorder, padding: 8, color: tasks?.paymentMethod ? blackText : blackText }}>
+                <td
+                  ref={createRef('paymentMethod')}
+                  style={{
+                    border: baseBorder,
+                    padding: 8,
+                    color: tasks?.paymentMethod ? blackText : blackText
+                  }}
+                >
                   {tasks?.paymentMethod?.value || tasks?.paymentMethod || "شيك مصدق / حوالة بنكية / نظام سداد"}
                 </td>
               </tr>
@@ -119,29 +152,53 @@ const SixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr ref={createRef('letterOfConfirmationOfParticipation')}>
                 <td style={{ border: baseBorder, padding: 8 }}>خطاب تأكيد المشاركة</td>
-                <td style={{ border: baseBorder, padding: 8 }}>{tasks?.letterOfConfirmationOfParticipation || "تحدده الجهة الحكومية"}</td>
+                <td
+                  style={{ border: baseBorder, padding: 8 }}
+                >
+                  {tasks?.letterOfConfirmationOfParticipation || "تحدده الجهة الحكومية"}
+                </td>
               </tr>
-              <tr>
+              <tr ref={createRef('sendQuestionsAndInquiries')}>
                 <td style={{ border: baseBorder, padding: 8 }}>إرسال الأسئلة والاستفسارات</td>
-                <td style={{ border: baseBorder, padding: 8 }}>{tasks?.sendQuestionsAndInquiries || "تحدده الجهة الحكومية"}</td>
+                <td
+                  style={{ border: baseBorder, padding: 8 }}
+                >
+                  {tasks?.sendQuestionsAndInquiries || "تحدده الجهة الحكومية"}
+                </td>
               </tr>
-              <tr>
+              <tr ref={createRef('submitOffers')}>
                 <td style={{ border: baseBorder, padding: 8 }}>تقديم العروض</td>
-                <td style={{ border: baseBorder, padding: 8 }}>{tasks?.submitOffers || "تحدده الجهة الحكومية"}</td>
+                <td
+                  style={{ border: baseBorder, padding: 8 }}
+                >
+                  {tasks?.submitOffers || "تحدده الجهة الحكومية"}
+                </td>
               </tr>
-              <tr>
+              <tr ref={createRef('openOffers')}>
                 <td style={{ border: baseBorder, padding: 8 }}>فتح العروض</td>
-                <td style={{ border: baseBorder, padding: 8 }}>{tasks?.openOffers || "تحدده الجهة الحكومية"}</td>
+                <td
+                  style={{ border: baseBorder, padding: 8 }}
+                >
+                  {tasks?.openOffers || "تحدده الجهة الحكومية"}
+                </td>
               </tr>
-              <tr>
+              <tr ref={createRef('theAwardDay')}>
                 <td style={{ border: baseBorder, padding: 8 }}>الترسية</td>
-                <td style={{ border: baseBorder, padding: 8 }}>{tasks?.theAwardDay || "تحدده الجهة الحكومية"}</td>
+                <td
+                  style={{ border: baseBorder, padding: 8 }}
+                >
+                  {tasks?.theAwardDay || "تحدده الجهة الحكومية"}
+                </td>
               </tr>
-              <tr>
+              <tr ref={createRef('startWork')}>
                 <td style={{ border: baseBorder, padding: 8 }}>بدء الأعمال</td>
-                <td style={{ border: baseBorder, padding: 8 }}>{tasks?.startWork || "تحدده الجهة الحكومية"}</td>
+                <td
+                  style={{ border: baseBorder, padding: 8 }}
+                >
+                  {tasks?.startWork || "تحدده الجهة الحكومية"}
+                </td>
               </tr>
             </tbody>
           </table>

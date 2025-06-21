@@ -1,7 +1,10 @@
 import React from 'react'
 import { ReadonlyList } from '../../components/readonly-list'
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const SeventhPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 space-y-4 ">
@@ -26,7 +29,9 @@ const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 </div>
                 <div className="border-b border-gray-300 pb-4">
                     <h3 className="text-xl font-semibold pt-4 text-black">6. السجلات والتراخيص النظامية</h3>
-                    <ReadonlyList data={tasks?.regulatoryRecordsAndLicenses || {}} />
+                    <div ref={createRef('regulatoryRecordsAndLicenses')}>
+                        <ReadonlyList data={tasks?.regulatoryRecordsAndLicenses || {}} />
+                    </div>
                 </div>
                 <div>
                     <p className="font-bold text-black">7. ممثل الجهة الحكومية</p>
@@ -38,11 +43,11 @@ const SeventhPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td className="border p-2">الاسم</td><td className="border p-2">{tasks?.governmentRepresentativeName || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">الوظيفة</td><td className="border p-2">{tasks?.governmentRepresentativeJob || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">الهاتف</td><td className="border p-2">{tasks?.governmentRepresentativePhone || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">الفاكس</td><td className="border p-2">{tasks?.governmentRepresentativeFax || "تحدده الجهة الحكومية."}</td></tr>
-                            <tr><td className="border p-2">البريد الإلكتروني</td><td className="border p-2">{tasks?.governmentRepresentativeEmailAddress || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr ref={createRef('governmentRepresentativeName')}><td className="border p-2">الاسم</td><td className="border p-2">{tasks?.governmentRepresentativeName || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr ref={createRef('governmentRepresentativeJob')}><td className="border p-2">الوظيفة</td><td className="border p-2">{tasks?.governmentRepresentativeJob || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr ref={createRef('governmentRepresentativePhone')}><td className="border p-2">الهاتف</td><td className="border p-2">{tasks?.governmentRepresentativePhone || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr ref={createRef('governmentRepresentativeFax')}><td className="border p-2">الفاكس</td><td className="border p-2">{tasks?.governmentRepresentativeFax || "تحدده الجهة الحكومية."}</td></tr>
+                            <tr ref={createRef('governmentRepresentativeEmailAddress')}><td className="border p-2">البريد الإلكتروني</td><td className="border p-2">{tasks?.governmentRepresentativeEmailAddress || "تحدده الجهة الحكومية."}</td></tr>
                         </tbody>
                     </table>
                 </div>

@@ -66,7 +66,7 @@ const PerformTask = () => {
             <div
                 className={`h-[calc(100vh-176px)] overflow-y-auto bg-white rounded-md p-4 ${preview ? 'block grow-1 max-w-1/2' : 'hidden grow-0'}`}
             >
-                <IT tasks={tasks} currentPageNumber={task.pageNumber} />
+                <IT tasks={tasks} currentPageNumber={task.pageNumber} currentTask={task.inputName} />
             </div>
         </div>
     );

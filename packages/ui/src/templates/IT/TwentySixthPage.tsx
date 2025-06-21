@@ -1,7 +1,10 @@
 import React from 'react'
 import { ReadonlyList } from '../../components/readonly-list';
+import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 
-const TwentySixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
+const TwentySixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
+    const { elementRefs } = useTaskHighlight(currentTask)
+    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
     return (
         <div className="w-full text-black">
             <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -24,12 +27,16 @@ const TwentySixthPage: React.FC<any> = ({ tasks }: { tasks: any }) => {
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2">77	تفضيل المنتجات الوطنية</h3>
                     <p className="mb-3">في حال اشتمال المنافسة على منتجات وطنية غير مدرجة في القائمة الإلزامية فتطبق الشروط التالية:</p>
-                    <ReadonlyList data={tasks.preferenceForNationalProducts || {}} />
+                    <div ref={createRef('preferenceForNationalProducts')}>
+                        <ReadonlyList data={tasks.preferenceForNationalProducts || {}} />
+                    </div>
                 </div>
                 <div>
                     <h3 className="font-semibold mb-2">78	اشتراطات آليات المحتوى المحلي (نسبة المحتوى المحلي)</h3>
                     <p className="mb-3">اشتراطات آلية وزن المحتوى المحلي في التقييم المالي/ آلية الحد الأدنى المطلوب للمحتوى المحلي.</p>
-                    <ReadonlyList data={tasks.requirementsForLocalContentMechanisms || {}} />
+                    <div ref={createRef('requirementsForLocalContentMechanisms')}>
+                        <ReadonlyList data={tasks.requirementsForLocalContentMechanisms || {}} />
+                    </div>
                 </div>
 
             </div>
