@@ -20,7 +20,7 @@ const TwentyThirdPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, cu
                 </div>
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2 text-black">65	برنامج العمل</h3>
-                    <p className=" mb-3">يلتزم المتعاقد في تنفيذ نطاق الأعمال خلال مدة ستة (6) أسابيع من تاريخ الترسية.</p>
+                    <p className=" mb-3" ref={createRef('periodOfImplementationOfWorkProgramme')}>{tasks?.periodOfImplementationOfWorkProgramme}</p>
                     <div ref={createRef('workProgramme')}>
                         <ReadonlyList data={tasks.workProgramme || {}} />
                     </div>

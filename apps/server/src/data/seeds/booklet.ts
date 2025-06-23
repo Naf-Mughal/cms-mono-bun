@@ -624,11 +624,11 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['The government agency that implements its work or secures its purchases outside the Kingdom of Saudi Arabia must add or delete this paragraph as it deems appropriate, with the agency being obligated, in the event that the paragraph is added, to specify an alternative to ensure the quality of project implementation as much as practically possible, in accordance with the procedure in effect in the country.', 'على الجهة الحكومية التي تقوم بتنفيذ أعمالها أو تأمين مشترياتها خارج المملكة العربية السعودية إضافة هذه الفقرة أو حذفها بحسب ما تراه محققًا للمصلحة، مع التزام الجهة في حالة إضافة الفقرة بتحديد البديل لضمان جودة تنفيذ أعمال المشروع قدر الإمكان عملياً وذلك حسب الإجراء المعمول به في الدولة.'],
         pageNumber: 21
     },
     {
-        name: ['Fines List', 'غرامات التأخير'],
+        name: ['Fines', 'الغرامات'],
         inputName: 'finesList',
         data: {
             value: []
@@ -636,7 +636,19 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Note: Here the government entity mentions the amount of fines that may be imposed on the contractor to cover all aspects of default, such as delay in implementation, and the fines are graded in their application to ensure there is a balance between the fine and the degree of default, whether it is a fixed amount, a percentage of the value of the item that was not implemented or implemented in violation of the agreement, or any other method consistent with the nature of the item that was not implemented, and the value of the works and items that were not implemented or implemented in violation of the agreement, up to the value of the contract, is deducted from the value of the contract as unsecured items. The government entity also has the right to increase the ceiling of the fine after obtaining the approval of the Minister of Finance, as long as the increase is disclosed to the competitors before submitting their offers.', 'ملاحظة: هنا تدون الجهة الحكومية مقدار الغرامات التي قد تفرضها على المتعاقد بحيث تغطي الغرامة جوانب التقصير كافة، أو التأخير في التنفيذ، وتتدرج في التطبيق؛ بحيث يكون هناك تناسب في الغرامة مع درجة المخالفة سواء كانت بمبلغ مقطوع، أو بنسبة محددة من قيمة البند المقصر في تنفيذه، أو بأسلوب آخر يتواءم مع طبيعة البند المقصر في تنفيذه، وإضافة إلى حسم الغرامة، يتم حسم قيمة الأعمال و البنود غير المنفذة، أو التي نفذت خلافًا لما تم الاتفاق عليه، مهما بلغت قيمتها إلى قيمة العقد ، باعتبارها بنودًا غير مؤمنة كما يحق للجهة الحكومية زيادة سقف الغرامة بعد الحصول على موافقة وزير المالية على أن توضح تلك الزيادة للمتنافسين قبل تقديم عروضهم.'],
+        pageNumber: 21
+    },
+    {
+        name: ['Delayment Fines', 'غرامات التأخير'],
+        inputName: 'delaymentFines',
+        data: {
+            value: []
+        },
+        status: BookletTaskStatusesEnum.Pending,
+        type: BookletTaskTypesEnum.Add,
+        inputType: BookletInputTypesEnum.List,
+        description: ['Here is the formula and method for calculating fines.', 'هنا تدون صيغة وأسلوب احتساب الغرامات'],
         pageNumber: 22
     },
     {
@@ -660,19 +672,19 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Note: The government agency has the right to delete this paragraph if the scope of work does not include national products subject to the national product price preference mechanism.', 'ملاحظة: يحق للجهة الحكومية حذف هذه الفقرة في حال عدم اشتمال نطاق العمل على منتجات وطنية خاضعة لآلية التفضيل السعري للمنتج الوطني.'],
         pageNumber: 22
     },
     {
         name: ['Fines (local content percentage)', 'نسبة الغرامة عند مخالفة أحكام لائحة تفضيل المحتوى المحلي'],
         inputName: 'finesLocalContentPercentage',
         data: {
-            value: null,
+            value: 'عند عدم التزام المتعاقد بنسبة المحتوى المحلي المستهدفة، فسيتم إيقاع غرامة مالية تصل إلى 10% من قيمة العقد وفقًا لملحق الشروط والأحكام الخاص بـالآلية المطبقة.',
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['Note: The government agency has the right to delete this paragraph if the project does not include a mechanism for weighing local content in the financial evaluation or a mechanism for the minimum required local content.', 'ملاحظة: يحق للجهة الحكومية حذف هذه الفقرة في حال عدم اشتمال المشروع على آلية وزن المحتوى المحلي في التقييم المالي أو آلية الحد الأدنى المطلوب للمحتوى المحلي'],
         pageNumber: 22
     },
     {
@@ -684,7 +696,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['The government agency may add the insurance coverage requirements required in this paragraph.', 'يمكن للجهة الحكومية إضافة اشتراطات تغطية التأمين المطلوبة في هذه الفقرة'],
         pageNumber: 22
     },
     {
@@ -769,6 +781,18 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
+        description: ['This paragraph explains the scope of work for the project and the details that must be taken into account when providing the service from the contractor. An example of this is shown below', 'في هذه الفقرة يتم توضيح نطاق العمل الخاص بالمشروع والتفاصيل التي يجب مراعاتها عند تقديم الخدمة من المتعاقد. وفيما يلي، مثال على ذلك'],
+        pageNumber: 23
+    },
+    {
+        name: ['Period of implementation of the work programme', 'فترة تنفيذ برنامج العمل'],
+        inputName: 'periodOfImplementationOfWorkProgramme',
+        data: {
+            value: 'يلتزم المتعاقد في تنفيذ نطاق الأعمال خلال مدة ستة (6) أسابيع من تاريخ الترسية.',
+        },
+        status: BookletTaskStatusesEnum.Pending,
+        type: BookletTaskTypesEnum.Add,
+        inputType: BookletInputTypesEnum.Text,
         description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
         pageNumber: 23
     },
@@ -801,7 +825,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['This paragraph explains the project\'s work schedule, detailing the implementation phases and actual completion times. The government agency also requests a plan for distributing the contractor\'s employees and labor throughout the project phases and a timeline for that. The following is an example of this', 'في هذه الفقرة يتم توضيح برنامج العمل الخاص بالمشروع من خلال تفصيل مراحل التنفيذ والأوقات الفعلية لإكمال الأعمال كما تقوم الجهة الحكومية بطلب خطة توزيع موظفي وعمالة المتعاقد خلال مراحل المشروع والجدول الزمني لذلك. وفيما يلي مثال على ذلك'],
         pageNumber: 23
     },
     {
@@ -813,7 +837,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['In this paragraph, the government entity mentions payment method of the value of the competition documents if it intends to sell them. The paragraph is removed if it does not apply.', ''],
+        description: ['This section provides information and details about the site where the work will be performed, as well as whether plans, drawings, and the like will be provided. An example is below', 'في هذه الفقرة يتم توضيح معلومات وتفاصيل الموقع الذي سيتم فيه العمل بالإضافة إلى توضيح ما إذا كان سيتم توفير مخططات ورسومات وما شابه. وفيما يلي مثال على ذلك'],
         pageNumber: 23
     },
     {

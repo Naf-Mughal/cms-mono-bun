@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
+import { ReadonlyList } from '../../components/readonly-list';
 
 const TwentyFirstPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
     const { elementRefs } = useTaskHighlight(currentTask)
@@ -43,6 +44,9 @@ const TwentyFirstPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, cu
                 </div>
                 <div>
                     <h3 className="font-semibold mb-2">59. الغرامات</h3>
+                    <div ref={createRef('finesList')}>
+                        <ReadonlyList data={tasks.finesList || {}} />
+                    </div>
                 </div>
             </div>
         </div>
