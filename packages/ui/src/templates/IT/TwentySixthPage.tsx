@@ -33,7 +33,7 @@ const TwentySixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, cu
                 </div>
                 <div>
                     <h3 className="font-semibold mb-2">78	اشتراطات آليات المحتوى المحلي (نسبة المحتوى المحلي)</h3>
-                    <p className="mb-3">اشتراطات آلية وزن المحتوى المحلي في التقييم المالي/ آلية الحد الأدنى المطلوب للمحتوى المحلي.</p>
+                    <p className="mb-3" ref={createRef('localContentWeightingAndThresholdCriteria')}>{tasks?.localContentWeightingAndThresholdCriteria || ""}</p>
                     <div ref={createRef('requirementsForLocalContentMechanisms')}>
                         <ReadonlyList data={tasks.requirementsForLocalContentMechanisms || {}} />
                     </div>
