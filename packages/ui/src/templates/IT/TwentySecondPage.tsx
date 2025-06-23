@@ -12,8 +12,8 @@ const TwentySecondPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, c
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2">60 غرامات التأخير</h3>
                     <p className="mb-3"><span className="font-semibold">أولًا:</span> تفرض على المتعاقد غرامة [تأخير] إذا قصّر أو أخفق في تنفيذ التزاماته وفقًا لما يلي:</p>
-                    <div ref={createRef('finesList')}>
-                        <ReadonlyList data={tasks.finesList || {}} />
+                    <div ref={createRef('delaymentFines')}>
+                        <ReadonlyList data={tasks.delaymentFines || {}} />
                     </div>
                     <p className="mb-3"><span className="font-semibold">ثانياً:</span> لا يتجاوز إجمالي الغرامة المنصوص عليها في هذا البند عن <span ref={createRef('fines')}>[{tasks.fines || "5"}%] </span> بالمئة من القيمة الإجمالية للعقد.</p>
                 </div>
