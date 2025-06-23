@@ -652,7 +652,7 @@ export const bookletTasksSeed: BookletTasks = [
         pageNumber: 22
     },
     {
-        name: ['Fines', 'نسبة إجمالي الغرامة المنصوص عليها في هذا البند'],
+        name: ['Fine Percentage', 'نسبة إجمالي الغرامة المنصوص عليها في هذا البند'],
         inputName: 'fines',
         data: {
             value: null,
