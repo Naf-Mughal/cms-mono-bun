@@ -47,6 +47,30 @@ export enum BookletCategoriesEnum {
     // EWA = "Environment, Water and Agriculture",
 }
 
+export enum BookletCategoriesArabicEnum {
+    IT = "تقنية المعلومات",
+}
+
+export enum BookletDaysEnum {
+    Monday = "Monday",
+    Tuesday = "Tuesday",
+    Wednesday = "Wednesday",
+    Thursday = "Thursday",
+    Friday = "Friday",
+    Saturday = "Saturday",
+    Sunday = "Sunday",
+}
+
+export enum BookletDaysArabicEnum {
+    Monday = "الاثنين",
+    Tuesday = "الثلاثاء",
+    Wednesday = "الأربعاء",
+    Thursday = "الخميس",
+    Friday = "الجمعة",
+    Saturday = "السبت",
+    Sunday = "الأحد",
+}
+
 export enum BookletCitiesEnum {
     Jeddah = "Jeddah",
     Riyadh = "Riyadh",
@@ -166,7 +190,8 @@ export const bookletSchema = z.object({
     projectName: z.string({ required_error: "Project Name is required" }),
     bookletNumber: z.string({ required_error: "Booklet Number is required" }),
     issueDate: z.string({ required_error: "Issue Data is required" }),
-    issueCity: z.nativeEnum(BookletCitiesEnum, { required_error: "Issue City is required" }),
+    issueDay: z.nativeEnum(BookletDaysEnum, { required_error: "Issue Day is required" }).or(z.nativeEnum(BookletDaysArabicEnum, { required_error: "Issue Day is required" })),
+    issueCity: z.nativeEnum(BookletCitiesEnum, { required_error: "Issue City is required" }).or(z.nativeEnum(BookletCitiesArabicEnum, { required_error: "Issue City is required" })),
     bookletTasks: bookletTasksSchema,
 });
 

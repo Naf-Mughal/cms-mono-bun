@@ -1,5 +1,5 @@
 'use client';
-import { BookletCategoriesEnum, BookletCitiesArabicEnum, BookletCitiesEnum } from '@schemas/index';
+import { BookletCategoriesEnum, BookletCitiesArabicEnum, BookletCitiesEnum, BookletDaysArabicEnum, BookletDaysEnum } from '@schemas/index';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const EN = {
@@ -59,6 +59,8 @@ const EN = {
         "select": "Select Booklet Category",
         "projectName": "Bid/Project Name",
         "bookletNumber": "Booklet Number",
+        "issueDay": "Issue Day",
+        "selectDay": "Select Day",
         "issueDate": "Issue Date",
         "selectDate": "Select Day & Date",
         "issueCity": "Issue City",
@@ -107,6 +109,13 @@ const EN = {
         [BookletCitiesEnum.Mecca]: BookletCitiesEnum.Mecca as string,
         [BookletCitiesEnum.Riyadh]: BookletCitiesEnum.Riyadh as string,
         [BookletCitiesEnum.Taif]: BookletCitiesEnum.Taif as string,
+        [BookletDaysEnum.Saturday]: BookletDaysEnum.Saturday as string,
+        [BookletDaysEnum.Sunday]: BookletDaysEnum.Sunday as string,
+        [BookletDaysEnum.Monday]: BookletDaysEnum.Monday as string,
+        [BookletDaysEnum.Tuesday]: BookletDaysEnum.Tuesday as string,
+        [BookletDaysEnum.Wednesday]: BookletDaysEnum.Wednesday as string,
+        [BookletDaysEnum.Thursday]: BookletDaysEnum.Thursday as string,
+        [BookletDaysEnum.Friday]: BookletDaysEnum.Friday as string,
     },
     "TaskForm": {
         "submit": "Submit",
@@ -210,6 +219,8 @@ const AR = {
         "projectName": "اسم المشروع",
         "bookletNumber": "رقم النموذج",
         "issueDate": "تاريخ الاصدار",
+        "issueDay": "اليوم",
+        "selectDay": "اختر اليوم",
         "selectDate": "حدد تاريخ الاصدار",
         "issueCity": "مدينة الاصدار",
         "selectCity": "حدد مدينة الاصدار",
@@ -257,6 +268,13 @@ const AR = {
         [BookletCitiesEnum.Mecca]: BookletCitiesArabicEnum.Mecca as string,
         [BookletCitiesEnum.Riyadh]: BookletCitiesArabicEnum.Riyadh as string,
         [BookletCitiesEnum.Taif]: BookletCitiesArabicEnum.Taif as string,
+        [BookletDaysEnum.Saturday]: BookletDaysArabicEnum.Saturday as string,
+        [BookletDaysEnum.Sunday]: BookletDaysArabicEnum.Sunday as string,
+        [BookletDaysEnum.Monday]: BookletDaysArabicEnum.Monday as string,
+        [BookletDaysEnum.Tuesday]: BookletDaysArabicEnum.Tuesday as string,
+        [BookletDaysEnum.Wednesday]: BookletDaysArabicEnum.Wednesday as string,
+        [BookletDaysEnum.Thursday]: BookletDaysArabicEnum.Thursday as string,
+        [BookletDaysEnum.Friday]: BookletDaysArabicEnum.Friday as string,
     },
     "TaskForm": {
         "submit": "تنفيذ",

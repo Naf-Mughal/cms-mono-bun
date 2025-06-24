@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { type Booklet, BookletCategoriesEnum, BookletCitiesEnum, bookletSchema } from "@schemas/index"
+import { type Booklet, BookletCategoriesEnum, BookletCitiesEnum, bookletSchema, BookletDaysEnum } from "@schemas/index"
 import { useAppForm } from "../custom-ui/form"
 import { RadioField } from "../custom-ui/form/radio-field"
 import Link from "next/link"
@@ -12,6 +12,7 @@ import { useLang, useTranslations } from "@/providers/language"
 
 const BookletCityOptions = Object.values(BookletCitiesEnum).map((city) => ({ label: city, value: city }))
 const BookletCategoryOptions = Object.values(BookletCategoriesEnum).map((category) => ({ label: category, value: category }))
+const BookletDaysOptions = Object.values(BookletDaysEnum).map((day) => ({ label: day, value: day }))
 
 interface BookletFormData {
     bookletType: string
@@ -20,6 +21,7 @@ interface BookletFormData {
     bookletNumber: string
     issueDate: string
     issueCity: string
+    issueDay: string
 }
 
 export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Booklet }) {
@@ -38,6 +40,7 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
             bookletNumber: data?.bookletNumber || "",
             issueDate: data?.issueDate || "",
             issueCity: data?.issueCity || "",
+            issueDay: data?.issueDay || "",
         },
         validators: {
             onChange: bookletSchema
@@ -96,6 +99,7 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
             bookletNumber: formData.get('bookletNumber') as string,
             issueDate: formData.get('issueDate') as string,
             issueCity: formData.get('issueCity') as string,
+            issueDay: formData.get('issueDay') as string,
         }
 
         // Execute appropriate mutation
@@ -192,6 +196,19 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                             label={t("issueDate")}
                             required={true}
                             placeholder={t("issueDate")}
+                        />
+                    )}
+                />
+
+                <AppField
+                    name="issueDay"
+                    children={({ SelectField }) => (
+                        <SelectField
+                            label={t("issueDay")}
+                            required
+                            placeholder={t("selectDay")}
+                            options={BookletDaysOptions}
+                            dir={dir}
                         />
                     )}
                 />

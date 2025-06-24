@@ -15,7 +15,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
     .get('/:id/download', async ({ params, set, request }: Context & { params: { id: string } }) => {
         try {
             // Fetch the data for the generated PDF
-            const projection = { _id: 1, projectName: 1, bookletTasks: 1, bookletNumber: 1, issueDate: 1, issueCity: 1, category: 1 };
+            const projection = { _id: 1, projectName: 1, bookletTasks: 1, bookletNumber: 1, issueDate: 1, issueCity: 1, issueDay: 1, category: 1 };
             const { data } = await findOne(params.id, projection);
             const tasks: any = {}
             data.data.bookletTasks.forEach((item: any) => {
@@ -32,6 +32,13 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
                     tasks[item.inputName] = item.data.value
                 }
             })
+
+            tasks['issueDate'] = data.data.issueDate
+            tasks['issueDay'] = data.data.issueDay
+            tasks['issueCity'] = data.data.issueCity
+            tasks['bookletNumber'] = data.data.bookletNumber
+            tasks['projectName'] = data.data.projectName
+            tasks['category'] = data.data.category
 
             const html = getHTML(tasks || {});
             const firstPdfBuffer = await convertToPDF(html);

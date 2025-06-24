@@ -33,6 +33,10 @@ const bookletSchema: Schema<IBooklet> = new Schema(
       type: String,
       required: true,
     },
+    issueDay: {
+      type: String,
+      required: true,
+    },
     issueCity: {
       type: String,
       enum: Object.values(BookletCitiesEnum),
