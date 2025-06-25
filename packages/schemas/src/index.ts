@@ -110,6 +110,19 @@ export enum PaymentTypesEnum {
     Other = "other"
 }
 
+export enum PaymentTypesArabicEnum {
+    "Certified Cheque" = "شيك مصدق",
+    "Cash" = "كاش",
+    "Other" = "آخر"
+}
+
+export enum DynamicTableFooterLabelsEnum {
+    "Summary of All Tables" = "ملخص جميع الجداول",
+    "Total" = "إجمالي",
+    "Tax" = "الضريبة",
+    "Grand Total" = "إجمالي"
+}
+
 export enum BookletInputTypesEnum {
     Text = "text",
     Readonly = "readonly",

@@ -37,7 +37,7 @@ const TwentyThirdPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, cu
                     <h3 className="font-semibold mb-2 ">68 بناء البرمجيات الحكومية</h3>
                     <p className=" mb-3" ref={createRef('buildingGovernmentSoftware')}>{tasks?.buildingGovernmentSoftware}</p>
                 </div>
-                <div className="border-b border-gray-300 pb-4 mb-6">
+                <div className="pb-4 mb-6">
                     <h3 className="font-semibold mb-2 text-black">69	جدول الكميات والأسعار</h3>
                     <div ref={createRef('quantityAndPriceTable')}>
                         <ReadOnlyDynamicTable data={tasks?.quantityAndPriceTable} />

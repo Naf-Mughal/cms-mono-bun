@@ -158,6 +158,11 @@ const EN = {
         "Certified Cheque": "Certified Cheque",
         "yes": "Yes",
         "no": "No"
+    },
+    "DynamicTable": {
+        "Total": "Total",
+        "Tax": "Tax",
+        "Grand Total": "Grand Total"
     }
 }
 
@@ -317,6 +322,12 @@ const AR = {
         "Certified Cheque": "شيك مصدق",
         "yes": "نعم",
         "no": "لا"
+    },
+    "DynamicTable": {
+        "Summary of All Tables": "ملخص جميع الجداول",
+        "Total": "إجمالي",
+        "Tax": "الضريبة",
+        "Grand Total": "إجمالي"
     }
 }
 

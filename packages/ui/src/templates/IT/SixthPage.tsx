@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
+import { PaymentTypesArabicEnum } from '@schemas/index'
 
 const SixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
   const baseBorder = '1px solid #D1D5DB' // Tailwind gray-300 border color
@@ -85,7 +86,7 @@ const SixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentT
                 borderRadius: '4px'
               }}
             >
-              (الموقع الإلكتروني للجهة الحكومية: https://{tasks?.toReceiveBiddingOffers || "_____"}.gov.sa/)
+              (الموقع الإلكتروني للجهة الحكومية: {tasks?.toReceiveBiddingOffers || ""})
             </span>{' '}
             ويشار إليها في هذه الكراسة بـ"الوسيلة البديلة".
           </p>
@@ -130,8 +131,9 @@ const SixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentT
                     padding: 8,
                     color: tasks?.paymentMethod ? blackText : blackText
                   }}
+                  colSpan={1}
                 >
-                  {tasks?.paymentMethod?.value || tasks?.paymentMethod || "شيك مصدق / حوالة بنكية / نظام سداد"}
+                  {tasks?.paymentMethod?.value || PaymentTypesArabicEnum[tasks?.paymentMethod as keyof typeof PaymentTypesArabicEnum] || ""}
                 </td>
               </tr>
             </tbody>

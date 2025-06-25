@@ -6,11 +6,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Plus, Trash2, Edit, Check, ChevronDown, ChevronUp, Calculator } from "lucide-react"
+import { useTranslations } from "@/providers/language"
 
 // Define the table data structure for external access
 export interface SingleTableData {
-    editingColumnIndex: any
-    newColumnName: any
+    editingTableName?: boolean
+    newTableName?: string
     id: string
     tableName: string
     columns: string[]
@@ -33,13 +34,13 @@ interface DynamicTableProps {
 }
 
 export default function DynamicTable({ onDataChange, initialData }: DynamicTableProps) {
-    // Initialize state with initialData if provided
+    const t = useTranslations("DynamicTable")
     const [tables, setTables] = useState<SingleTableData[]>(() => {
         if (initialData?.tables) {
             return initialData.tables.map(table => ({
                 ...table,
-                editingColumnIndex: undefined,
-                newColumnName: undefined
+                editingTableName: false,
+                newTableName: undefined
             }))
         }
         return []
@@ -58,15 +59,15 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
 
         tables.forEach((table) => {
             // Parse the "Total" value (index 0)
-            const total = Number.parseFloat(table.footerValues[0]) || 0
+            const total = Number.parseFloat(table.footerValues[0] || "") || 0
             totalSum += total
 
             // Parse the "Tax" value (index 1)
-            const tax = Number.parseFloat(table.footerValues[1]) || 0
+            const tax = Number.parseFloat(table.footerValues[1] || "") || 0
             taxSum += tax
 
             // Parse the "Grand Total" value (index 2)
-            const grandTotal = Number.parseFloat(table.footerValues[2]) || 0
+            const grandTotal = Number.parseFloat(table.footerValues[2] || "") || 0
             grandTotalSum += grandTotal
         })
 
@@ -87,8 +88,8 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                 rows: table.rows,
                 footerValues: table.footerValues,
                 // Omit editing-related fields from the output
-                editingColumnIndex: undefined,
-                newColumnName: undefined
+                editingTableName: undefined,
+                newTableName: undefined
             })),
             summary,
         }
@@ -118,8 +119,8 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
             const newTableId = `table-${Date.now()}`
 
             // Create initial columns and rows
-            const initialColumns = ["Column 1", "Column 2", "Column 3"]
-            const initialRows = Array(4)
+            const initialColumns = [""]
+            const initialRows = Array(1)
                 .fill(0)
                 .map(() => Array(initialColumns.length).fill(""))
 
@@ -130,8 +131,8 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                 columns: initialColumns,
                 rows: initialRows,
                 footerValues: ["", "", ""],
-                editingColumnIndex: undefined,
-                newColumnName: undefined
+                editingTableName: false,
+                newTableName: undefined
             }
 
             // Add the new table to the list
@@ -149,6 +150,17 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
         }
     }
 
+    const deleteTable = (tableId: string) => {
+        // Remove the table from the tables array
+        const updatedTables = tables.filter(table => table.id !== tableId)
+        setTables(updatedTables)
+
+        // Remove the table from the expanded tables state
+        const updatedExpandedTables = { ...expandedTables }
+        delete updatedExpandedTables[tableId]
+        setExpandedTables(updatedExpandedTables)
+    }
+
     const toggleAddTable = () => {
         setShowAddTable(!showAddTable)
     }
@@ -160,12 +172,67 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
         })
     }
 
+    // Table name editing functions
+    const startEditingTableName = (tableId: string, e: React.MouseEvent) => {
+        e.stopPropagation() // Prevent table expansion toggle
+        const updatedTables = tables.map((table) => {
+            if (table.id === tableId) {
+                return {
+                    ...table,
+                    editingTableName: true,
+                    newTableName: table.tableName,
+                }
+            }
+            return table
+        })
+        setTables(updatedTables)
+    }
+
+    const updateNewTableName = (tableId: string, value: string) => {
+        const updatedTables = tables.map((table) => {
+            if (table.id === tableId) {
+                return { ...table, newTableName: value }
+            }
+            return table
+        })
+        setTables(updatedTables)
+    }
+
+    const confirmEditTableName = (tableId: string) => {
+        const updatedTables = tables.map((table) => {
+            if (table.id === tableId && table.newTableName?.trim()) {
+                return {
+                    ...table,
+                    tableName: table.newTableName,
+                    editingTableName: false,
+                    newTableName: undefined,
+                }
+            }
+            return table
+        })
+        setTables(updatedTables)
+    }
+
+    const cancelEditTableName = (tableId: string) => {
+        const updatedTables = tables.map((table) => {
+            if (table.id === tableId) {
+                return {
+                    ...table,
+                    editingTableName: false,
+                    newTableName: undefined,
+                }
+            }
+            return table
+        })
+        setTables(updatedTables)
+    }
+
     const addColumn = (tableId: string) => {
         const tableIndex = tables.findIndex((t) => t.id === tableId)
         if (tableIndex === -1) return
 
-        const table = tables[tableIndex]
-        const columnCount = table.columns.length
+        const table = tables[tableIndex] as SingleTableData
+        const columnCount = table?.columns?.length || 0
         const newColumnName = `Column ${columnCount + 1}`
 
         const updatedTables = [...tables]
@@ -178,46 +245,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
         setTables(updatedTables)
     }
 
-    const startEditingColumn = (tableId: string, colIndex: number) => {
-        const updatedTables = tables.map((table) => {
-            if (table.id === tableId) {
-                return {
-                    ...table,
-                    editingColumnIndex: colIndex,
-                    newColumnName: table.columns[colIndex],
-                }
-            }
-            return table
-        })
-        setTables(updatedTables)
-    }
 
-    const updateNewColumnName = (tableId: string, value: string) => {
-        const updatedTables = tables.map((table) => {
-            if (table.id === tableId) {
-                return { ...table, newColumnName: value }
-            }
-            return table
-        })
-        setTables(updatedTables)
-    }
-
-    const confirmEditColumn = (tableId: string) => {
-        const updatedTables = tables.map((table) => {
-            if (table.id === tableId && table.editingColumnIndex !== undefined && table.newColumnName?.trim()) {
-                const updatedColumns = [...table.columns]
-                updatedColumns[table.editingColumnIndex] = table.newColumnName
-                return {
-                    ...table,
-                    columns: updatedColumns,
-                    editingColumnIndex: undefined,
-                    newColumnName: "",
-                }
-            }
-            return table
-        })
-        setTables(updatedTables)
-    }
 
     const addRow = (tableId: string) => {
         const updatedTables = tables.map((table) => {
@@ -236,7 +264,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
     const updateCell = (tableId: string, rowIndex: number, colIndex: number, value: string) => {
         const updatedTables = tables.map((table) => {
             if (table.id === tableId) {
-                const updatedRows = [...table.rows]
+                const updatedRows = [...table.rows] as any
                 updatedRows[rowIndex][colIndex] = value
                 return {
                     ...table,
@@ -308,7 +336,57 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                 ) : (
                                     <ChevronDown className="h-4 w-4" />
                                 )}
-                                <span className="font-bold text-lg">{table.tableName}</span>
+                                {table.editingTableName ? (
+                                    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                                        <Input
+                                            value={table.newTableName || ""}
+                                            onChange={(e) => updateNewTableName(table.id, e.target.value)}
+                                            className="h-8 font-bold text-lg"
+                                            autoFocus
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    confirmEditTableName(table.id)
+                                                } else if (e.key === 'Escape') {
+                                                    cancelEditTableName(table.id)
+                                                }
+                                            }}
+                                        />
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={() => confirmEditTableName(table.id)}
+                                            className="h-6 w-6"
+                                        >
+                                            <Check className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                ) : (
+                                    <div className="flex items-center gap-2">
+                                        <span className="font-bold text-lg">{table.tableName}</span>
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={(e) => startEditingTableName(table.id, e)}
+                                            className="h-6 w-6"
+                                        >
+                                            <Edit className="h-3 w-3" />
+                                        </Button>
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={(e) => {
+                                                e.stopPropagation() // Prevent table expansion toggle
+                                                deleteTable(table.id)
+                                            }}
+                                            className="h-6 w-6 text-destructive hover:text-destructive"
+                                        >
+                                            <Trash2 className="h-3 w-3" />
+                                        </Button>
+                                    </div>
+                                )}
                             </div>
                         </CardHeader>
 
@@ -330,48 +408,36 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                                     {table.columns.map((column, colIndex) => (
                                                         <th key={colIndex} className="p-2 border text-right">
                                                             <div className="flex justify-between items-center">
-                                                                {table.editingColumnIndex === colIndex ? (
-                                                                    <div className="flex items-center w-full">
+                                                                <div className="flex">
+                                                                    {table.columns.length > 1 && (
                                                                         <Button type="button"
                                                                             variant="ghost"
                                                                             size="icon"
-                                                                            onClick={() => confirmEditColumn(table.id)}
-                                                                            className="h-6 w-6 ml-1"
+                                                                            onClick={() => removeColumn(table.id, colIndex)}
+                                                                            className="h-6 w-6 text-destructive ml-1"
                                                                         >
-                                                                            <Check className="h-4 w-4" />
+                                                                            <Trash2 className="h-3 w-3" />
                                                                         </Button>
-                                                                        <Input
-                                                                            value={table.newColumnName || ""}
-                                                                            onChange={(e) => updateNewColumnName(table.id, e.target.value)}
-                                                                            className="h-8"
-                                                                            autoFocus
-                                                                        />
-                                                                    </div>
-                                                                ) : (
-                                                                    <>
-                                                                        <div className="flex">
-                                                                            {table.columns.length > 1 && (
-                                                                                <Button type="button"
-                                                                                    variant="ghost"
-                                                                                    size="icon"
-                                                                                    onClick={() => removeColumn(table.id, colIndex)}
-                                                                                    className="h-6 w-6 text-destructive ml-1"
-                                                                                >
-                                                                                    <Trash2 className="h-3 w-3" />
-                                                                                </Button>
-                                                                            )}
-                                                                            <Button type="button"
-                                                                                variant="ghost"
-                                                                                size="icon"
-                                                                                onClick={() => startEditingColumn(table.id, colIndex)}
-                                                                                className="h-6 w-6 ml-1"
-                                                                            >
-                                                                                <Edit className="h-3 w-3" />
-                                                                            </Button>
-                                                                        </div>
-                                                                        <span>{column}</span>
-                                                                    </>
-                                                                )}
+                                                                    )}
+                                                                </div>
+                                                                <Input
+                                                                    value={column}
+                                                                    onChange={(e) => {
+                                                                        const updatedTables = tables.map((t) => {
+                                                                            if (t.id === table.id) {
+                                                                                const updatedColumns = [...t.columns]
+                                                                                updatedColumns[colIndex] = e.target.value
+                                                                                return {
+                                                                                    ...t,
+                                                                                    columns: updatedColumns,
+                                                                                }
+                                                                            }
+                                                                            return t
+                                                                        })
+                                                                        setTables(updatedTables)
+                                                                    }}
+                                                                    className="border-0 p-0 w-full h-h-full rounded-none focus-visible:!ring-0 !shadow-none focus-visible:!outline-none focus:!outline-none text-right font-medium"
+                                                                />
                                                             </div>
                                                         </th>
                                                     ))}
@@ -423,7 +489,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                                     {footerLabels.map((label, index) => (
                                                         <tr key={`footer-${index}`}>
                                                             <td className="p-2 border font-medium text-right w-7/10">
-                                                                {label}
+                                                                {t(label)}
                                                             </td>
                                                             <td className="p-2 border w-3/10 ">
                                                                 <Input
@@ -495,53 +561,43 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                 {/* Summary Table - Only shown if there are tables */}
                 {tables.length > 0 && (
                     <Card className="border-0 shadow-none px-2">
-                        <CardHeader className="py-3 px-4 ">
-                            <div className="flex justify-between items-center">
-                                <div className="flex items-center gap-2">
-                                    <Calculator className="h-5 w-5" />
-                                    <span className="font-bold text-lg">Summary Table</span>
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="p-0 px-0 pt-0">
-                            <div className="overflow-x-auto">
-                                <table className="w-full rounded-lg" dir="rtl">
-                                    <thead>
-                                        <tr>
-                                            <th colSpan={2} className="p-3 border text-center font-bold text-lg">
-                                                Summary of All Tables
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr className="">
-                                            <td className="p-2 border font-medium text-right" style={{ width: "70%" }}>
-                                                Total
-                                            </td>
-                                            <td className="p-2 border text-right font-bold" style={{ width: "30%" }}>
-                                                {summary.total.toFixed(2)}
-                                            </td>
-                                        </tr>
-                                        <tr className="">
-                                            <td className="p-2 border font-medium text-right" style={{ width: "70%" }}>
-                                                Tax
-                                            </td>
-                                            <td className="p-2 border text-right font-bold" style={{ width: "30%" }}>
-                                                {summary.tax.toFixed(2)}
-                                            </td>
-                                        </tr>
-                                        <tr className="">
-                                            <td className="p-2 border font-medium text-right" style={{ width: "70%" }}>
-                                                Grand Total
-                                            </td>
-                                            <td className="p-2 border text-right font-bold" style={{ width: "30%" }}>
-                                                {summary.grandTotal.toFixed(2)}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </CardContent>
+                        <div className="overflow-x-auto">
+                            <table className="w-full rounded-lg" dir="rtl">
+                                <thead>
+                                    <tr>
+                                        <th colSpan={2} className="p-3 border text-center font-bold text-lg">
+                                            {t("Summary of All Tables")}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="">
+                                        <td className="p-2 border font-medium text-right" style={{ width: "70%" }}>
+                                            {t("Total")}
+                                        </td>
+                                        <td className="p-2 border text-right font-bold" style={{ width: "30%" }}>
+                                            {summary.total.toFixed(2)}
+                                        </td>
+                                    </tr>
+                                    <tr className="">
+                                        <td className="p-2 border font-medium text-right" style={{ width: "70%" }}>
+                                            {t("Tax")}
+                                        </td>
+                                        <td className="p-2 border text-right font-bold" style={{ width: "30%" }}>
+                                            {summary.tax.toFixed(2)}
+                                        </td>
+                                    </tr>
+                                    <tr className="">
+                                        <td className="p-2 border font-medium text-right" style={{ width: "70%" }}>
+                                            {t("Grand Total")}
+                                        </td>
+                                        <td className="p-2 border text-right font-bold" style={{ width: "30%" }}>
+                                            {summary.grandTotal.toFixed(2)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </Card>
                 )}
             </div>

@@ -164,9 +164,9 @@ export const List = ({ data, onChange, depth = 1 }: ListProps) => {
                             onBlur={() => setHoveredIndex(null)}
                             tabIndex={0}
                         >
-                            <div className="flex items-center justify-between group">
+                            <div className="flex items-center justify-between group w-full">
                                 {/* Item Display or Edit Input */}
-                                <div className="flex items-center">
+                                <div className="flex items-center w-full">
                                     <span className="ml-2">
                                         {depth > NUMBERING_DEPTH ? (
                                             <div className={`${BULLET_SIZE} rounded-full bg-black`}></div>
@@ -180,7 +180,7 @@ export const List = ({ data, onChange, depth = 1 }: ListProps) => {
                                                 type="text"
                                                 value={editValue}
                                                 onChange={(e) => setEditValue(e.target.value)}
-                                                className="flex-1 p-1 border rounded"
+                                                className="w-full p-1 border rounded"
                                                 dir="rtl"
                                             />
                                             <button
@@ -242,7 +242,7 @@ export const List = ({ data, onChange, depth = 1 }: ListProps) => {
                                         type="text"
                                         value={addValue}
                                         onChange={(e) => setAddValue(e.target.value)}
-                                        className="flex-1 p-1 border rounded"
+                                        className="w-full p-1 border rounded"
                                         dir="rtl"
                                         placeholder="أدخل العنصر الجديد"
                                     />
@@ -299,7 +299,7 @@ export const List = ({ data, onChange, depth = 1 }: ListProps) => {
                                 type="text"
                                 value={topLevelAddValue}
                                 onChange={(e) => setTopLevelAddValue(e.target.value)}
-                                className="flex-1 p-1 border rounded"
+                                className="w-full p-1 border rounded"
                                 dir="rtl"
                                 placeholder="أدخل عنصرًا جديدًا في المستوى الأعلى"
                             />

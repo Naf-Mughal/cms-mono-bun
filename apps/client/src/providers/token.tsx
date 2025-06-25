@@ -17,6 +17,10 @@ export const TokenProvider = ({ children }: { children: React.ReactNode }) => {
         }
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem('token', token || '');
+    }, [token]);
+
     return (
         <TokenContext.Provider value={{ token, setToken }}>
             {children}

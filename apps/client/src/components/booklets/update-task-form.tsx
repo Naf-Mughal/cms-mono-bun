@@ -331,7 +331,7 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                                                                     label={(child?.children as any)?.children?.value || ''}
                                                                     labelClass="text-[#525355] font-semibold text-lg"
                                                                     isInline={false}
-                                                                    dir={(child?.children as any)?.children?.value ? "rtl" : 'ltr'}
+                                                                    dir={dir}
                                                                     name={`data.children.${index}.children.value`}
                                                                     disabled={updateBookletTaskMutation.isPending}
                                                                 />
