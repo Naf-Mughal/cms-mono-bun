@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Plus, Trash2, Edit, Check, ChevronDown, ChevronUp, Calculator } from "lucide-react"
 import { useTranslations } from "@/providers/language"
-
+import { useLang } from "@/providers/language"
 // Define the table data structure for external access
 export interface SingleTableData {
     editingTableName?: boolean
@@ -35,6 +35,7 @@ interface DynamicTableProps {
 
 export default function DynamicTable({ onDataChange, initialData }: DynamicTableProps) {
     const t = useTranslations("DynamicTable")
+    const {dir} = useLang()
     const [tables, setTables] = useState<SingleTableData[]>(() => {
         if (initialData?.tables) {
             return initialData.tables.map(table => ({
@@ -394,7 +395,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                             <CardContent className="px-0 pt-0">
                                 <div className="overflow-x-auto">
                                     <div className="border-0 rounded-md">
-                                        <table className="w-full border-0" dir="rtl">
+                                        <table className="w-full border-0" dir={dir}>
                                             <thead>
                                                 <tr>
                                                     <th
@@ -484,7 +485,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
 
                                         {/* Separate Footer Table - Also RTL */}
                                         {table.columns.length > 0 && (
-                                            <table className="w-full border-0" dir="rtl">
+                                            <table className="w-full border-0" dir={dir}>
                                                 <tbody>
                                                     {footerLabels.map((label, index) => (
                                                         <tr key={`footer-${index}`}>
@@ -562,7 +563,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                 {tables.length > 0 && (
                     <Card className="border-0 shadow-none px-2">
                         <div className="overflow-x-auto">
-                            <table className="w-full rounded-lg" dir="rtl">
+                            <table className="w-full rounded-lg" dir={dir}>
                                 <thead>
                                     <tr>
                                         <th colSpan={2} className="p-3 border text-center font-bold text-lg">
