@@ -2,6 +2,18 @@ import { BookletInputTypesEnum, BookletTaskStatusesEnum, BookletTaskTypesEnum, t
 
 export const bookletTasksSeed: BookletTasks = [
     {
+        name: ['Logo', 'شعار'],
+        inputName: 'logo',
+        data: {
+            value: [],
+        },
+        status: BookletTaskStatusesEnum.Pending,
+        type: BookletTaskTypesEnum.Add,
+        inputType: BookletInputTypesEnum.SingleUpload,
+        description: ['', ''],
+        pageNumber: 0
+    },
+    {
         name: ['Name of Government Orgnization', 'اسم الجهة الحكومية'],
         inputName: 'nameOfGovtEntity',
         data: {

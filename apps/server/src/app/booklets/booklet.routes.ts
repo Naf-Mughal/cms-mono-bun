@@ -7,6 +7,26 @@ import { convertToPDF, create, del, findOne, findTask, paginate, update, updateT
 import { getHTML } from "./getHTML";
 import { PDFDocument } from 'pdf-lib';
 import { join } from 'path';
+import { existsSync } from 'fs';
+
+const getLogoPathWithFileCheck = (baseUrl: string, id: string, uploadsDir?: string): string | null => {
+    const extensions = ['png', 'jpg', 'jpeg'];
+    
+    if (uploadsDir) {
+        // Check local file system
+        for (const ext of extensions) {
+            const filePath = join(uploadsDir, `${id}.${ext}`);
+            if (existsSync(filePath)) {
+                return `${id}.${ext}`;
+            }
+        }
+    } else {
+        // If no uploads directory provided, return first extension
+        return `${id}.png`;
+    }
+    
+    return null; // No logo file found
+};
 
 export const bookletRouter = new Elysia({ prefix: '/booklets' })
     .onError(({ error }) => {
@@ -39,9 +59,12 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
             tasks['bookletNumber'] = data.data.bookletNumber
             tasks['projectName'] = data.data.projectName
             tasks['category'] = data.data.category
+            tasks['logo'] = getLogoPathWithFileCheck(process.env.UPLOADS_URL!, params.id, join(__dirname, '../../../uploads')) || `${process.env.UPLOADS_URL}/${params.id}.png`
+
+            console.log(tasks['logo'])
 
             const html = getHTML(tasks || {});
-            const firstPdfBuffer = await convertToPDF(html);
+            const firstPdfBuffer = await convertToPDF(html, tasks['logo']);
 
             const mergedPdf = await PDFDocument.create();
 

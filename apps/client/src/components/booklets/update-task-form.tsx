@@ -16,6 +16,7 @@ import { MultiUpload } from "../ui/multi-upload"
 import { Client } from "@/lib/eden"
 import RowsTable from "../ui/rows-table"
 import { useLang, useTranslations } from "@/providers/language"
+import { SingleUpload } from "../ui/single-upload"
 
 interface UpdateBookletTaskResponse {
     success: boolean
@@ -363,6 +364,8 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
                 return <DynamicTable onDataChange={setDynamicTable} initialData={dynamicTable as any || {}} />
             case 'multi-upload':
                 return <MultiUpload data={updatedData} prefix={id} onChange={setUpdatedData} />
+            case 'single-upload':
+                return <SingleUpload prefix={id} onChange={setUpdatedData} />
 
             default:
                 return (
