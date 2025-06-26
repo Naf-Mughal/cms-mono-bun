@@ -2,18 +2,6 @@ import { BookletInputTypesEnum, BookletTaskStatusesEnum, BookletTaskTypesEnum, t
 
 export const bookletTasksSeed: BookletTasks = [
     {
-        name: ['Logo', 'شعار'],
-        inputName: 'logo',
-        data: {
-            value: [],
-        },
-        status: BookletTaskStatusesEnum.Pending,
-        type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.SingleUpload,
-        description: ['', ''],
-        pageNumber: 0
-    },
-    {
         name: ['Name of Government Orgnization', 'اسم الجهة الحكومية'],
         inputName: 'nameOfGovtEntity',
         data: {
@@ -1150,6 +1138,18 @@ export const bookletTasksSeed: BookletTasks = [
         inputType: BookletInputTypesEnum.List,
         description: ['The government agency adds the special conditions it deems appropriate according to the scope of work.', 'تضيف الجهة الحكومية الشروط الخاصة التي تراها مناسبة بحسب نطاق العمل'],
         pageNumber: 28
+    },
+    {
+        name: ['Logo of Organization', 'شعار الجهة'],
+        inputName: 'logo',
+        data: {
+            value: [],
+        },
+        status: BookletTaskStatusesEnum.Pending,
+        type: BookletTaskTypesEnum.Add,
+        inputType: BookletInputTypesEnum.SingleUpload,
+        description: ['', ''],
+        pageNumber: 0
     },
     {
         name: ['Attachments', 'الملحقات'],
