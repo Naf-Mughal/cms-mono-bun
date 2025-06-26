@@ -11,7 +11,7 @@ import { existsSync } from 'fs';
 
 const getLogoPathWithFileCheck = (baseUrl: string, id: string, uploadsDir?: string): string | null => {
     const extensions = ['png', 'jpg', 'jpeg'];
-    
+
     if (uploadsDir) {
         // Check local file system
         for (const ext of extensions) {
@@ -24,7 +24,7 @@ const getLogoPathWithFileCheck = (baseUrl: string, id: string, uploadsDir?: stri
         // If no uploads directory provided, return first extension
         return `${id}.png`;
     }
-    
+
     return null; // No logo file found
 };
 
@@ -121,7 +121,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
         return { ...data };
     })
     .get('/:id', async ({ params, set }: Context & { params: { id: string } }) => {
-        const projection = { _id: 1, bookletType: 1, bookletNumber: 1, projectName: 1, issueCity: 1, issueDate: 1, category: 1 };
+        const projection = { _id: 1, bookletType: 1, bookletNumber: 1, projectName: 1, issueCity: 1, issueDate: 1, issueDay: 1, category: 1 };
         const { data, status } = await findOne(params.id, projection);
         set.status = status;
         return { ...data };
