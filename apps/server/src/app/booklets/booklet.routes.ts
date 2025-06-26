@@ -59,7 +59,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
             tasks['bookletNumber'] = data.data.bookletNumber
             tasks['projectName'] = data.data.projectName
             tasks['category'] = data.data.category
-            tasks['logo'] = getLogoPathWithFileCheck(process.env.UPLOADS_URL!, params.id, join(__dirname, '../../../uploads')) || `${process.env.UPLOADS_URL}/${params.id}.png`
+            tasks['logo'] = getLogoPathWithFileCheck(process.env.UPLOADS_URL!, params.id, join(__dirname, '../../../uploads')) || null
 
             console.log(tasks['logo'])
 

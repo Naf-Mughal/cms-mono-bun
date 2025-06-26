@@ -139,43 +139,43 @@ export const paginate = async ({ page = 1, limit = 10, filter = {}, projection =
   }
 };
 
-export const convertToPDF = async (html: string, logoFileName: string) => {
-  // Read the logo file and convert to base64
-  let logoDataUrl = '';
-  try {
-    const filePath = join(__dirname, '../../../uploads', `${logoFileName}`);
-    const logoBuffer = readFileSync(filePath);
-    const logoExtension = extname(logoFileName).toLowerCase().substring(1);
+export const convertToPDF = async (html: string, logoFileName: string | null) => {
+  let logoDataUrl: string | null = null;
+  if (logoFileName) {
 
-    // Determine MIME type based on extension
-    let mimeType = '';
-    switch (logoExtension) {
-      case 'png':
-        mimeType = 'image/png';
-        break;
-      case 'jpg':
-      case 'jpeg':
-        mimeType = 'image/jpeg';
-        break;
-      case 'svg':
-        mimeType = 'image/svg+xml';
-        break;
-      case 'gif':
-        mimeType = 'image/gif';
-        break;
-      case 'webp':
-        mimeType = 'image/webp';
-        break;
-      default:
-        throw new Error(`Unsupported image format: ${logoExtension}`);
+    try {
+      const filePath = join(__dirname, '../../../uploads', `${logoFileName}`);
+      const logoBuffer = readFileSync(filePath);
+      const logoExtension = extname(logoFileName).toLowerCase().substring(1);
+
+      // Determine MIME type based on extension
+      let mimeType = '';
+      switch (logoExtension) {
+        case 'png':
+          mimeType = 'image/png';
+          break;
+        case 'jpg':
+        case 'jpeg':
+          mimeType = 'image/jpeg';
+          break;
+        case 'svg':
+          mimeType = 'image/svg+xml';
+          break;
+        case 'gif':
+          mimeType = 'image/gif';
+          break;
+        case 'webp':
+          mimeType = 'image/webp';
+          break;
+        default:
+          throw new Error(`Unsupported image format: ${logoExtension}`);
+      }
+
+      logoDataUrl = `data:${mimeType};base64,${logoBuffer.toString('base64')}`;
+    } catch (error: any) {
+      console.error(`Failed to load logo file: ${logoFileName}`, error.message);
     }
-
-    logoDataUrl = `data:${mimeType};base64,${logoBuffer.toString('base64')}`;
-  } catch (error: any) {
-    console.error(`Failed to load logo file: ${logoFileName}`, error.message);
-    throw new Error(`Logo file not found or cannot be read: ${logoFileName}`);
   }
-
   const updatedHtml = `
   <html>
     <head>
@@ -283,7 +283,7 @@ export const convertToPDF = async (html: string, logoFileName: string) => {
                 <h4 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0;">اسم النموذج</h4>
               </div>
               <div style="width: auto; height: 60px; padding: 8px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">
-                <img src="${logoDataUrl}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                ${logoDataUrl ? `<img src="${logoDataUrl}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">` : `<span style="color: white; font-size: 12px;">شعار الجهة</span>`}
               </div>
             </div>
           </div>

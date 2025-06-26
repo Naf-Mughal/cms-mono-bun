@@ -16,13 +16,13 @@ export const useTaskHighlight = (currentTask?: string) => {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       
       // Remove highlight after 3 seconds
-      const timer = setTimeout(() => {
-        element.style.border = '';
-      }, 3000);
+      // const timer = setTimeout(() => {
+      //   element.style.border = '';
+      // }, 3000);
       
       return () => {
-        clearTimeout(timer);
-        element.style.border = '';
+        // clearTimeout(timer);
+        // element.style.border = '';
       };
     }
   }, [currentTask]);
