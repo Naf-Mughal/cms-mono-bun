@@ -114,7 +114,7 @@ export const del = async (id: string) => {
 export const paginate = async ({ page = 1, limit = 10, filter = {}, projection = {} }: { page: number, limit: number, filter?: any, projection?: any }) => {
   try {
     const skip = (page - 1) * limit;
-    const booklets = await Booklets.find(filter, projection).skip(skip).limit(limit);
+    const booklets = await Booklets.find(filter, projection).skip(skip).limit(limit).sort({ createdAt: -1 });
     const totalDocuments = await Booklets.countDocuments();
     const totalPages = Math.ceil(totalDocuments / limit);
 
