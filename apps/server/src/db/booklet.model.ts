@@ -5,6 +5,7 @@ import type { Booklet } from '@schemas/index';
 interface IBooklet extends Document, Booklet {
   createdAt: Date;
   updatedAt: Date;
+  userId: string;
 }
 
 const bookletSchema: Schema<IBooklet> = new Schema(
@@ -40,6 +41,10 @@ const bookletSchema: Schema<IBooklet> = new Schema(
     issueCity: {
       type: String,
       enum: Object.values(BookletCitiesEnum),
+      required: true,
+    },
+    userId: {
+      type: String,
       required: true,
     },
     bookletTasks: [

@@ -13,7 +13,7 @@ type TextFieldProps = {
   isNumaric?: boolean;
 } & React.TextareaHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>;
 
-const formatNumberWithCommas = (value: string, isNumaric: boolean = false) => {
+const formatNumberWithCommas = (value: string) => {
   const raw = value.replace(/,/g, "");
   if (!/^\d*$/.test(raw)) return value;
   return raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");

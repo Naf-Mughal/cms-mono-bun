@@ -24,8 +24,8 @@ export const AuthPasswordField = ({ label, isInline = false, className, ...input
           {inputProps.required && <span className="text-[#3C9E19]">*</span>}
         </Label>
       ) : (
-        <div className="space-y-1 !m-0">
-          <Label htmlFor={field.name} className="font-semibold text-[#525355] !m-0">{label}</Label>
+        <div className="mb-1">
+          <Label htmlFor={field.name} className="font-semibold !m-0">{label} {inputProps.required && <span className="text-[#3C9E19]">*</span>}</Label>
         </div>
       )}
       <div className="relative w-full">

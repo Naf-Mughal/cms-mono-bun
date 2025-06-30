@@ -120,8 +120,10 @@ export function RegisterForm() {
 
                 <AppField
                     name="name"
-                    children={({ AuthTextField }) => (
-                        <AuthTextField
+                    children={({ TextField }) => (
+                        <TextField
+                            isInline={false}
+                            required={true}
                             label={t('name')}
                             name="name"
                             disabled={registerMutation.isPending}
@@ -134,7 +136,7 @@ export function RegisterForm() {
                         <AppField
                             name="userType"
                             children={({ RadioGroupField, handleChange }) => (
-                                <RadioGroupField label={t('userType')}>
+                                <RadioGroupField label={t('userType')} inline={false} required={true}>
                                     <RadioField
                                         value="organization"
                                         label="Organization"
@@ -159,8 +161,10 @@ export function RegisterForm() {
                             {userType === "organization" && (
                                 <AppField
                                     name="organizationName"
-                                    children={({ AuthTextField }) => (
-                                        <AuthTextField
+                                    children={({ TextField }) => (
+                                        <TextField
+                                            isInline={false}
+                                            required={true}
                                             label={t('organizationName')}
                                             name="organizationName"
                                             disabled={registerMutation.isPending}
@@ -174,8 +178,10 @@ export function RegisterForm() {
                 />
                 <AppField
                     name="email"
-                    children={({ AuthTextField }) => (
-                        <AuthTextField
+                    children={({ TextField }) => (
+                        <TextField
+                            isInline={false}
+                            required={true}
                             label={t('email')}
                             name="email"
                             disabled={registerMutation.isPending}
@@ -185,8 +191,9 @@ export function RegisterForm() {
 
                 <AppField
                     name="phone"
-                    children={({ AuthTextField }) => (
-                        <AuthTextField
+                    children={({ TextField }) => (
+                        <TextField
+                            isInline={false}
                             label={t('phone')}
                             name="phone"
                             disabled={registerMutation.isPending}
@@ -198,6 +205,7 @@ export function RegisterForm() {
                     name="password"
                     children={({ AuthPasswordField }) => (
                         <AuthPasswordField
+                            required={true}
                             label={t('password')}
                             name="password"
                             disabled={registerMutation.isPending}
@@ -218,6 +226,7 @@ export function RegisterForm() {
                     }}
                     children={({ AuthPasswordField }) => (
                         <AuthPasswordField
+                            required={true}
                             label={t('confirmPassword')}
                             name="confirmPassword"
                             disabled={registerMutation.isPending}

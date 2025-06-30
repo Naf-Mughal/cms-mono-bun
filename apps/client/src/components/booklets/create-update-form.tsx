@@ -41,6 +41,7 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
             issueDate: data?.issueDate || "",
             issueCity: data?.issueCity || "",
             issueDay: data?.issueDay || "",
+            userId: "test",
         },
         validators: {
             onChange: bookletSchema

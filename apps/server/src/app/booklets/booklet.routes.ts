@@ -115,7 +115,8 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
             throw new Error('Invalid or expired token', { cause: StatusCodes.UNAUTHORIZED });
         }
     })
-    .post('/create', async ({ body, set }: Context & { body: Booklet }) => {
+    .post('/create', async ({ body, set, user }: Context & { body: Booklet, user: any }) => {
+        body.userId = user.id;
         const { data, status } = await create(body);
         set.status = status;
         return { ...data };
@@ -126,9 +127,8 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
         set.status = status;
         return { ...data };
     })
-    .get('/:id/tasks', async ({ params, set, user }: Context & { params: { id: string }, user: any }) => {
+    .get('/:id/tasks', async ({ params, set }: Context & { params: { id: string } }) => {
         const projection = { _id: 1, projectName: 1, bookletTasks: 1 };
-        console.log(user)
         const { data, status } = await findOne(params.id, projection);
         set.status = status;
         return { ...data };
@@ -153,8 +153,9 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
         set.status = status;
         return { ...data };
     })
-    .post('/paginate', async ({ body, set }: Context & { body: any }) => {
+    .post('/paginate', async ({ body, set, user }: Context & { body: any, user: any }) => {
         const { page = 1, limit = 10, filter = {} } = body;
+        filter.userId = user.id;
         const projection = { _id: 1, bookletType: 1, bookletNumber: 1, projectName: 1, issueCity: 1, issueDate: 1, category: 1 };
         const { data, status } = await paginate({ page, limit, filter, projection });
         set.status = status;

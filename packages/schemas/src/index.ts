@@ -199,6 +199,7 @@ export const genaricBookletsTaskSchema = z.object({
 export const bookletTasksSchema = z.array(genaricBookletsTaskSchema).optional();
 
 export const bookletSchema = z.object({
+    userId: z.string({ required_error: "User ID is required" }),
     bookletType: z.enum(['internal', 'external'], { required_error: "Booklet Type is required" }),
     category: z.nativeEnum(BookletCategoriesEnum, { required_error: "Category is required" }),
     projectName: z.string({ required_error: "Project Name is required" }),
