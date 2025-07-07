@@ -172,7 +172,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['', ''],
+        description: ['Add/Edit/Delete', 'اضافه/تعديل/حذف'],
         pageNumber: 7
     },
     {
@@ -369,7 +369,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['Write No.: The qualification criteria are attached in Appendix No.', 'كتابة رقم: معايير التأهيل مرفقة في ملحق رقم.'],
+        description: ['Write No.: The qualification criteria are attached in Appendix No.', 'كتابة رقم ملحق معايير التأهيل المرفق في ملحق رقم.'],
         pageNumber: 13
     },
     {
@@ -381,7 +381,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['', ''],
+        description: ['Keep as is / Edit', 'تعديل / حفظ البند كما هو'],
         pageNumber: 14
     },
     {
@@ -417,7 +417,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['', ''],
+        description: ['The entity determines the alternative means of communication.', 'تحدد الجهة وسيلة التواصل البديلة'],
         pageNumber: 14
     },
     {
@@ -490,7 +490,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['', ''],
+        description: ['The government agency determines the initial guarantee percentage, which should range between 1% and 2%.', 'تحدد الجهة الحكومية نسبة الضمان الابتدائي على ان تتراوح بين ١٪ و٢٪ '],
         pageNumber: 16
     },
     {
@@ -534,7 +534,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['', ''],
+        description: ['The government agency determines additional coordination requirements.', 'تحدد الجهة الحكومية متطلبات التنسيق الاضافية'],
         pageNumber: 16
     },
     {
@@ -576,7 +576,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['', ''],
+        description: ['Add/Modify/Delete', 'اضافه / تعديل / حذف'],
         pageNumber: 19
     },
     {
@@ -588,7 +588,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['', ''],
+        description: ['The authority shall specify that the suspension period shall not be less than (five) working days and not more than (ten) working days.', 'تحدد الجهة الا تقل فترة التوقف عن (خمسة) أيام عمل ولا تزيد عن (عشرة) ايام عمل '],
         pageNumber: 20
     },
     {
@@ -600,7 +600,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['', ''],
+        description: ['Taking into account what is stated in Paragraph (1) of Article (Sixty-One) of the System, the government agency may raise the percentage of the final guarantee by more than (5%) of the contract value if it deems that it is in the interest of competition to do so; provided that the prior approval of the Ministry of Finance is obtained for that before offering the works, and that the percentage of that final guarantee is stated in the competition documents.', 'مع مراعاة ما ورد في الفقرة (1) من المادة (الحادية والستين) من النظام، يجوز للجهة الحكومية رفع نسبة الضمان النهائي بما يتجاوز (5%( من قيمة العقد إذا رأت أن من مصلحة المنافسة الأخذ بذلك؛ شريطة أخذ موافقة وزارة المالية المسبقة على ذلك قبل طرح الأعمال، وأن ينص على نسبة الضمان النهائي تلك في وثائق المنافسة.'],
         pageNumber: 21
     },
     {
@@ -612,7 +612,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Text,
-        description: ['', ''],
+        description: ['Addition', 'إضافة'],
         pageNumber: 21
     },
     {
@@ -1047,7 +1047,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.RowsTable,
-        description: ['', ''],
+        description: ['This paragraph explains the method of implementing works and services, and examples of this include:', 'يتم في هذه الفقرة توضيح طريقة تنفيذ الاعمال والخدمات ومن الامثلة على ذلك '],
         pageNumber: 25
     },
     {

@@ -32,7 +32,7 @@ export default function ReadonlyRowsTable({ data }: ReadonlyRowsTableProps) {
                 <table className="w-full border rounded-md" dir="rtl">
                     <thead className="border-b">
                         <tr className="bg-gray-50">
-                            <th className="text-right font-bold text-sm py-2 px-3">Content</th>
+                            <th className="text-right font-bold text-sm py-2 px-3"></th>
                         </tr>
                     </thead>
                     <tbody>
