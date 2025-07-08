@@ -454,11 +454,11 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="border-b-0">
+                                            <tbody>
                                                 {table.rows.map((row, rowIndex) => (
-                                                    <tr key={rowIndex} className="border-b-0">
+                                                    <tr key={rowIndex}>
                                                         {row.map((cell, colIndex) => (
-                                                            <td key={colIndex} className="p-2 border border-b-0">
+                                                            <td key={colIndex} className="p-2 border">
                                                                 <Input
                                                                     value={cell}
                                                                     onChange={(e) => updateCell(table.id, rowIndex, colIndex, e.target.value)}
@@ -466,7 +466,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                                                 />
                                                             </td>
                                                         ))}
-                                                        <td className="p-2 border border-b-0">
+                                                        <td className="p-2 border">
                                                             {table.columns.length > 0 && table.rows.length > 1 && (
                                                                 <Button type="button"
                                                                     variant="ghost"
@@ -484,7 +484,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                         </table>
 
                                         {/* Separate Footer Table - Also RTL */}
-                                        {table.columns.length > 0 && (
+                                        {/* {table.columns.length > 0 && (
                                             <table className="w-full border-0" dir={dir}>
                                                 <tbody>
                                                     {footerLabels.map((label, index) => (
@@ -516,7 +516,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                                                     ))}
                                                 </tbody>
                                             </table>
-                                        )}
+                                        )} */}
                                     </div>
                                 </div>
                                 <div className="flex gap-2 mt-4">
@@ -560,7 +560,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                 </div>
 
                 {/* Summary Table - Only shown if there are tables */}
-                {tables.length > 0 && (
+                {/* {tables.length > 0 && (
                     <Card className="border-0 shadow-none px-2">
                         <div className="overflow-x-auto">
                             <table className="w-full rounded-lg" dir={dir}>
@@ -600,7 +600,7 @@ export default function DynamicTable({ onDataChange, initialData }: DynamicTable
                             </table>
                         </div>
                     </Card>
-                )}
+                )} */}
             </div>
         </div>
     )

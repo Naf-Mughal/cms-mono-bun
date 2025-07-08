@@ -48,11 +48,11 @@ export default function ReadOnlyDynamicTable({ data }: ReadOnlyDynamicTableProps
                                             ))}
                                         </tr>
                                     </thead>
-                                    <tbody className="border-b-0">
+                                    <tbody>
                                         {table?.rows?.map((row, rowIndex) => (
-                                            <tr key={rowIndex} className="border-b-0">
+                                            <tr key={rowIndex}>
                                                 {row?.map((cell, colIndex) => (
-                                                    <td key={colIndex} className="p-2 border border-b-0 text-right">
+                                                    <td key={colIndex} className="p-2 border text-right">
                                                         {cell}
                                                     </td>
                                                 ))}
@@ -62,7 +62,7 @@ export default function ReadOnlyDynamicTable({ data }: ReadOnlyDynamicTableProps
                                 </table>
 
                                 {/* Separate Footer Table - Also RTL */}
-                                {table?.columns?.length > 0 && (
+                                {/* {table?.columns?.length > 0 && (
                                     <table className="w-full border-0" dir="rtl">
                                         <tbody>
                                             {footerLabels?.map((label, index) => (
@@ -77,12 +77,12 @@ export default function ReadOnlyDynamicTable({ data }: ReadOnlyDynamicTableProps
                                             ))}
                                         </tbody>
                                     </table>
-                                )}
+                                )} */}
                             </div>
                         </div>
                     </div>
                 ))}
-                {data?.tables?.length > 0 && data?.summary && (
+                {/* {data?.tables?.length > 0 && data?.summary && (
                     <div className="border-0 shadow-none px-2">
                         <div className="overflow-x-auto">
                             <table className="w-full rounded-lg" dir="rtl">
@@ -122,7 +122,7 @@ export default function ReadOnlyDynamicTable({ data }: ReadOnlyDynamicTableProps
                             </table>
                         </div>
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     )
