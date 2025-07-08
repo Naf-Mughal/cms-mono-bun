@@ -72,7 +72,7 @@ export const uploadRouter = new Elysia({ prefix: "/uploads" })
         },
         {
             body: t.Object({
-                file: t.File(),
+                file: t.File({ maxSize: '1000m' }), 
                 itemName: t.String(),
                 prefix: t.String(),
             }),
