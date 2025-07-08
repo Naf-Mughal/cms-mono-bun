@@ -7,7 +7,7 @@ import cors from '@elysiajs/cors';
 import { staticPlugin } from '@elysiajs/static'
 
 configureDb();
-export const app = new Elysia({ prefix: '/api' })
+export const app = new Elysia({ prefix: '/api', serve: { maxRequestBodySize: Number.MAX_SAFE_INTEGER } })
     .onError(({ code, error, set }) => {
         if (code === 'VALIDATION') {
             set.status = 400;
