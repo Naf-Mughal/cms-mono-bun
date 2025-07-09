@@ -1099,32 +1099,56 @@ export const bookletTasksSeed: BookletTasks = [
         name: ['Requirements for local content mechanisms', 'اشتراطات آليات المحتوى المحلي (نسبة المحتوى المحلي'],
         inputName: 'requirementsForLocalContentMechanisms',
         data: {
-            value: [
-                'خط الأساس للمحتوى المحلي المطلوب في هذه المنافسة هو (....)%، والذي يجب على المتنافس تقديم خط أساس في عرضه لا يقل عنه ليتمكن من اجتياز التقييم الفني وفق الشروط والأحكام الملحقة بهذه الكراسة.',
-                'الحد الأدنى المطلوب للمحتوى المحلي في هذه المنافسة هو (....)%، والذي يجب على المتنافس الالتزام به أثناء تقديم نسبة المحتوى المحلي المستهدفة في العقد وفق الشروط والأحكام الملحقة بهذه الكراسة.',
-                'يجوز للمتنافس تقديم خط الأساس للمحتوى المحلي في هذه المنافسة والذي سيكون جزء من معايير التقييم المالي للعروض وفق الشروط والأحكام الملحقة بهذه الكراسة.',
-                'يلتزم المتنافس بتقديم نسبة المحتوى المحلي المستهدفة وفق الشروط والأحكام الملحقة بهذه الكراسة.'
-            ],
+            value: 'نعم. تنطبق على آلية وزن المحتوى الوطني',
+            children: [
+                {
+                    value: 'نعم. تنطبق على آلية وزن المحتوى الوطني',
+                    children: {
+                        value: [
+                            'خط الأساس للمحتوى المحلي المطلوب في هذه المنافسة هو (....)%، والذي يجب على المتنافس تقديم خط أساس في عرضه لا يقل عنه ليتمكن من اجتياز التقييم الفني وفق الشروط والأحكام الملحقة بهذه الكراسة.',
+                            'الحد الأدنى المطلوب للمحتوى المحلي في هذه المنافسة هو (....)%، والذي يجب على المتنافس الالتزام به أثناء تقديم نسبة المحتوى المحلي المستهدفة في العقد وفق الشروط والأحكام الملحقة بهذه الكراسة.',
+                            'يجوز للمتنافس تقديم خط الأساس للمحتوى المحلي في هذه المنافسة والذي سيكون جزء من معايير التقييم المالي للعروض وفق الشروط والأحكام الملحقة بهذه الكراسة.',
+                            'يلتزم المتنافس بتقديم نسبة المحتوى المحلي المستهدفة وفق الشروط والأحكام الملحقة بهذه الكراسة.'
+                        ],
+                    },
+                    type: BookletInputTypesEnum.List
+                },
+                {
+                    value: 'لا تنطبق آلية وزن المحتوى المحلي في التقييم المالي أو آلية الحد الأدنى المطلوب للمحتوى المحلي على العقد.',
+                }
+            ]
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.List,
-        description: ['', ''],
+        inputType: BookletInputTypesEnum.RadioWithValues,
+        description: ['Does the competition include a mechanism for weighing national content in the financial evaluation or a mechanism for the minimum required national content?', 'هل المنافسة تشمل آلية وزن المحتوى الوطني في التقييم المالي او آلية الحد الادنى المطلوب للمحتوى الوطني ؟'],
         pageNumber: 26
     },
     {
         name: ['Economic Participation Program Requirements', 'متطلبات برنامج المشاركة الاقتصادية (التوازن الاقتصادي)'],
         inputName: 'economicParticipationProgramRequirements',
         data: {
-            value: [
-                'عرض المشاركة الاقتصادية.',
-                'نموذج التعهد الخاص بالمشاركة الاقتصادية موقع ومختوماً بختم مقدمه.'
-            ],
+            value: 'نعم التكلفة التقديرية أقل من 100 مليون',
+            children: [
+                {
+                    value: 'نعم التكلفة التقديرية أقل من 100 مليون',
+                },
+                {
+                    value: 'لا  التكلفة التقديرية أعلى من 100 مليون',
+                    children: {
+                        value: [
+                            'عرض المشاركة الاقتصادية.',
+                            'نموذج التعهد الخاص بالمشاركة الاقتصادية موقع ومختوماً بختم مقدمه.'
+                        ],
+                    },
+                    type: BookletInputTypesEnum.List
+                }
+            ]
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.List,
-        description: ['The government agency has the right to delete this section if the estimated cost of the competition is less than (100) million Saudi riyals.', 'يحق للجهة الحكومية حذف هذا القسم في حال كانت التكلفة التقديرية للمنافسة أقل من (100) مليون ريال سعودي'],
+        inputType: BookletInputTypesEnum.RadioWithValues,
+        description: ['Is the estimated cost less than 100 million Saudi riyals?', 'هل التكلفة التقديرية اقل من 100 مليون ريال سعودي؟'],
         pageNumber: 27
     },
     {

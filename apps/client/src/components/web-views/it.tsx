@@ -111,6 +111,9 @@ const IT = ({ tasks, currentPageNumber, currentTask }: { tasks: any, currentPage
         else if (item.inputType === 'dynamic-table') {
             filteredTasks[item.inputName] = item.tableData
         }
+        else if (item.inputType === 'radio-with-values') {
+            filteredTasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)
+        }
         else {
             filteredTasks[item.inputName] = item.data.value
         }

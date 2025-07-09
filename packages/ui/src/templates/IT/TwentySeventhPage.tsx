@@ -15,9 +15,18 @@ const TwentySeventhPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, 
                     <p className="mb-3">
                         يجب على المتنافس الالتزام بما ورد في سياسة المشاركة الاقتصادية الصادرة من هيئة المحتوى المحلي والمشتريات الحكومية، وتسليم متطلبات المشاركة الاقتصادية في ملف مستقل ليتم دراسته من قبل هيئة المحتوى المحلي والمشتريات الحكومية والذي يجب أن يحتوي على الآتي:
                     </p>
-                    <div ref={createRef('economicParticipationProgramRequirements')}>
-                        <ReadonlyList data={tasks.economicParticipationProgramRequirements || {}} />
-                    </div>
+                    {
+                        tasks?.economicParticipationProgramRequirements?.children ?
+                            (
+                                <div ref={createRef('economicParticipationProgramRequirements')}>
+                                    <p>{tasks?.economicParticipationProgramRequirements?.value || ""}</p>
+                                    <ReadonlyList data={tasks?.economicParticipationProgramRequirements.children || {}} />
+                                </div>
+                            ) :
+                            (
+                                <p ref={createRef('economicParticipationProgramRequirements')}>{tasks?.economicParticipationProgramRequirements?.value || ""}</p>
+                            )
+                    }
                 </div>
             </div>
         </div>

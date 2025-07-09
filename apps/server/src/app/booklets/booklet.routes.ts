@@ -48,6 +48,9 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
                 else if (item.inputType === 'dynamic-table') {
                     tasks[item.inputName] = item.tableData
                 }
+                else if (item.inputType === 'radio-with-values') {
+                    tasks[item.inputName] = item.data?.children?.find((child: any) => child.value === item.data.value)
+                }
                 else {
                     tasks[item.inputName] = item.data.value
                 }

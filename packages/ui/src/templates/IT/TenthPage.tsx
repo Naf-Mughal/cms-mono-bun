@@ -1,9 +1,10 @@
 import React from 'react'
 import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
+import { ReadonlyList } from '../../components/readonly-list'
 
 const TenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
   const { elementRefs } = useTaskHighlight(currentTask)
-    const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
+  const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
   return (
     <div className="w-full text-black">
       <div className="py-6 space-y-4 ">
@@ -24,9 +25,16 @@ const TenthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentT
 
         <div className="border-b border-gray-300 pb-4">
           <h3 className="font-semibold text-lg text-gray-900">18. تجزئة المنافسة</h3>
-          <p ref={createRef('competitionSegmentation')}>
-            {tasks?.competitionSegmentation?.value || ""}
-          </p>
+          {
+            typeof tasks?.competitionSegmentation.value === "string" ?
+              (
+                <p ref={createRef('competitionSegmentation')}>{tasks?.competitionSegmentation?.value || ""}</p>
+              ) : (
+                <div ref={createRef('competitionSegmentation')}>
+                  <ReadonlyList data={tasks?.competitionSegmentation} />
+                </div>
+              )
+          }
         </div>
 
         <div>

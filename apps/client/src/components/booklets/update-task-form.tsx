@@ -285,6 +285,7 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
             case 'list':
                 return <List data={updatedData} onChange={setUpdatedData} />
             case 'radio':
+            case 'radio-with-values':
                 return (
                     <>
                         <Subscribe

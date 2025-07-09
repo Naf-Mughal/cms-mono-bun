@@ -5,6 +5,7 @@ import { useTaskHighlight, createTaskRef } from '../../hooks/useTaskHighlight'
 const TwentySixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, currentTask?: any }) => {
     const { elementRefs } = useTaskHighlight(currentTask)
     const createRef = (taskName: string) => createTaskRef(elementRefs, taskName)
+    console.log(tasks?.requirementsForLocalContentMechanisms?.children)
     return (
         <div className="w-full text-black">
             <div className="py-6 max-w-[1200px] mx-auto space-y-4 ">
@@ -34,9 +35,18 @@ const TwentySixthPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, cu
                 <div>
                     <h3 className="font-semibold mb-2">78	اشتراطات آليات المحتوى المحلي (نسبة المحتوى المحلي)</h3>
                     <p className="mb-3" ref={createRef('localContentWeightingAndThresholdCriteria')}>{tasks?.localContentWeightingAndThresholdCriteria || ""}</p>
-                    <div ref={createRef('requirementsForLocalContentMechanisms')}>
-                        <ReadonlyList data={tasks.requirementsForLocalContentMechanisms || {}} />
-                    </div>
+                    {
+                        tasks?.requirementsForLocalContentMechanisms?.children ?
+                            (
+                                <div ref={createRef('requirementsForLocalContentMechanisms')}>
+                                    <p>{tasks?.requirementsForLocalContentMechanisms?.value || ""}</p>
+                                    <ReadonlyList data={tasks?.requirementsForLocalContentMechanisms.children || {}} />
+                                </div>
+                            ) :
+                            (
+                                <p ref={createRef('requirementsForLocalContentMechanisms')}>{tasks?.requirementsForLocalContentMechanisms?.value || ""}</p>
+                            )
+                    }
                 </div>
 
             </div>

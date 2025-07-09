@@ -130,6 +130,7 @@ export enum BookletInputTypesEnum {
     Date = "date",
     Select = "select",
     Radio = "radio",
+    RadioWithValues = "radio-with-values",
     Checkbox = "checkbox",
     TextArea = "textarea",
     File = "file",
