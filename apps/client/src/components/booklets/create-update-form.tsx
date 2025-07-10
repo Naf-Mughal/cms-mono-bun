@@ -19,6 +19,11 @@ interface BookletFormData {
     category: string
     projectName: string
     bookletNumber: string
+    governmentName: string
+    departmentName: string
+    formName: string
+    revision: string
+    revisionDate: string
     issueDate: string
     issueCity: string
     issueDay: string
@@ -38,6 +43,11 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
             category: data?.category || "",
             projectName: data?.projectName || "",
             bookletNumber: data?.bookletNumber || "",
+            governmentName: data?.governmentName || "",
+            departmentName: data?.departmentName || "",
+            formName: data?.formName || "",
+            revision: data?.revision || "",
+            revisionDate: data?.revisionDate || "",
             issueDate: data?.issueDate || "",
             issueCity: data?.issueCity || "",
             issueDay: data?.issueDay || "",
@@ -97,6 +107,11 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
             bookletType: formData.get('bookletType') as string,
             category: formData.get('category') as string,
             projectName: formData.get('projectName') as string,
+            governmentName: formData.get('governmentName') as string,
+            departmentName: formData.get('departmentName') as string,
+            formName: formData.get('formName') as string,
+            revision: formData.get('revision') as string,
+            revisionDate: formData.get('revisionDate') as string,
             bookletNumber: formData.get('bookletNumber') as string,
             issueDate: formData.get('issueDate') as string,
             issueCity: formData.get('issueCity') as string,
@@ -167,6 +182,38 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                         />
                     )}
                 />
+                <AppField
+                    name="governmentName"
+                    children={({ TextField }) => (
+                        <TextField
+                            label={t("governmentName")}
+                            required
+                            placeholder={t("governmentName")}
+                        />
+                    )}
+                />
+
+                <AppField
+                    name="departmentName"
+                    children={({ TextField }) => (
+                        <TextField
+                            label={t("departmentName")}
+                            required
+                            placeholder={t("departmentName")}
+                        />
+                    )}
+                />
+
+                <AppField
+                    name="formName"
+                    children={({ TextField }) => (
+                        <TextField
+                            label={t("formName")}
+                            required
+                            placeholder={t("formName")}
+                        />
+                    )}
+                />
 
                 <AppField
                     name="projectName"
@@ -223,6 +270,29 @@ export function CreateUpdataBookletForm({ id, data }: { id?: string, data?: Book
                             placeholder={t("selectCity")}
                             options={BookletCityOptions}
                             dir={dir}
+                        />
+                    )}
+                />
+
+
+                <AppField
+                    name="revision"
+                    children={({ TextField }) => (
+                        <TextField
+                            label={t("revision")}
+                            required
+                            placeholder={t("revision")}
+                        />
+                    )}
+                />
+
+                <AppField
+                    name="revisionDate"
+                    children={({ TextField }) => (
+                        <TextField
+                            label={t("revisionDate")}
+                            required
+                            placeholder={t("revisionDate")}
                         />
                     )}
                 />

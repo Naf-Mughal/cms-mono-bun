@@ -35,8 +35,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
     .get('/:id/download', async ({ params, set, request }: Context & { params: { id: string } }) => {
         try {
             // Fetch the data for the generated PDF
-            const projection = { _id: 1, projectName: 1, bookletTasks: 1, bookletNumber: 1, issueDate: 1, issueCity: 1, issueDay: 1, category: 1 };
-            const { data } = await findOne(params.id, projection);
+            const { data } = await findOne(params.id);
             const tasks: any = {}
             data.data.bookletTasks.forEach((item: any) => {
                 if (item.inputType === 'radio') {
@@ -67,7 +66,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
             console.log(tasks['logo'])
 
             const html = getHTML(tasks || {});
-            const firstPdfBuffer = await convertToPDF(html, tasks['logo']);
+            const firstPdfBuffer = await convertToPDF(html, data.data.bookletNumber, data.data.revision, data.data.revisionDate, data.data.governmentName, data.data.departmentName, data.data.formName, tasks['logo']);
 
             const mergedPdf = await PDFDocument.create();
 
@@ -131,7 +130,7 @@ export const bookletRouter = new Elysia({ prefix: '/booklets' })
         return { ...data };
     })
     .get('/:id/tasks', async ({ params, set }: Context & { params: { id: string } }) => {
-        const projection = { _id: 1, projectName: 1, bookletTasks: 1 };
+        const projection = { _id: 1, projectName: 1, governmentName: 1, departmentName: 1, formName: 1, revisionDate: 1, revision: 1, bookletNumber: 1, bookletTasks: 1 };
         const { data, status } = await findOne(params.id, projection);
         set.status = status;
         return { ...data };

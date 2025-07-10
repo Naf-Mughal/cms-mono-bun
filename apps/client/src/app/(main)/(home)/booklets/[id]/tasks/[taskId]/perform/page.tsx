@@ -41,6 +41,7 @@ const PerformTask = () => {
     }
 
     const tasks = tasksRes.data.data.bookletTasks;
+    const booklet = tasksRes.data.data;
 
     const nextTaskMap = tasks.reduce((acc: any, task: any, index: number) => {
         if (index < tasks.length - 1) {
@@ -66,7 +67,7 @@ const PerformTask = () => {
             <div
                 className={`h-[calc(100vh-176px)] overflow-y-auto bg-white rounded-md p-4 ${preview ? 'block grow-1 max-w-1/2' : 'hidden grow-0'}`}
             >
-                <IT tasks={tasks} currentPageNumber={task.pageNumber} currentTask={task.inputName} />
+                <IT tasks={tasks} currentPageNumber={task.pageNumber} currentTask={task.inputName} governmentName={booklet.governmentName} departmentName={booklet.departmentName} formName={booklet.formName} revisionDate={booklet.revisionDate} revision={booklet.revision} bookletNumber={booklet.bookletNumber} />
             </div>
         </div>
     );

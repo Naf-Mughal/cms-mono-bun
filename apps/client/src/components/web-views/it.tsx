@@ -99,7 +99,7 @@ const getPageComponent = (currentPageNumber: number, tasks: any, currentTask?: s
     }
 }
 
-const IT = ({ tasks, currentPageNumber, currentTask }: { tasks: any, currentPageNumber: number, currentTask?: string }) => {
+const IT = ({ tasks, currentPageNumber, currentTask, governmentName, departmentName, formName, revisionDate, revision, bookletNumber }: { tasks: any, currentPageNumber: number, currentTask?: string, governmentName?: string, departmentName?: string, formName?: string, revisionDate?: string, revision?: string, bookletNumber?: string }) => {
     const filteredTasks: any = {}
     tasks?.filter((item: any) => item.pageNumber === currentPageNumber).forEach((item: any) => {
         if (item.inputType === 'radio') {
@@ -122,9 +122,9 @@ const IT = ({ tasks, currentPageNumber, currentTask }: { tasks: any, currentPage
         <div className='h-full flex flex-col gap-2 my-4' style={{ direction: 'rtl' }}>
             {currentPageNumber === 0 ? null : (
                 <>
-                    <Header />
+                    <Header governmentName={governmentName} departmentName={departmentName} formName={formName} />
                     {getPageComponent(currentPageNumber, filteredTasks, currentTask)}
-                    <Footer number={currentPageNumber} />
+                    <Footer number={currentPageNumber} revisionDate={revisionDate} revision={revision} bookletNumber={bookletNumber} />
                 </>
             )}
         </div>

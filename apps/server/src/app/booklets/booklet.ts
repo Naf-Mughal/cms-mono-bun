@@ -139,7 +139,7 @@ export const paginate = async ({ page = 1, limit = 10, filter = {}, projection =
   }
 };
 
-export const convertToPDF = async (html: string, logoFileName: string | null) => {
+export const convertToPDF = async (html: string, bookletNumber?: string, revision?: string, revisionDate?: string, governmentName?: string, departmentName?: string, formName?: string, logoFileName?: string | null) => {
   let logoDataUrl: string | null = null;
   if (logoFileName) {
 
@@ -274,13 +274,13 @@ export const convertToPDF = async (html: string, logoFileName: string | null) =>
       },
       displayHeaderFooter: true,
       headerTemplate: `
-          <div style="font-size: 12px; width: 100%; direction: rtl; font-family: 'Arial Regular', Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
+          <div style="font-size: 12px; width: 100%; direction: rtl; margin: 0 15mm; padding: 10px 0;">
             <div style="max-width: 1200px; margin: 0 auto; padding: 16px 0; background: white; border-bottom: 1px solid #d1d5db; display: flex; align-items: center; justify-content: space-between;">
               <div style="text-align: right; line-height: 1.2;">
                 <h1 style="font-size: 16px; font-weight: bold; color: #1f2937; margin: 0 0 3px 0;">المملكة العربية السعودية</h1>
-                <h2 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">اسم الجهة الحكومية</h2>
-                <h3 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">اسم الإدارة</h3>
-                <h4 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0;">اسم النموذج</h4>
+                <h2 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">${governmentName || 'اسم الجهة الحكومية'}</h2>
+                <h3 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0 0 3px 0;">${departmentName || 'اسم الإدارة'}</h3>
+                <h4 style="font-size: 14px; font-weight: 500; color: #374151; margin: 0;">${formName || 'اسم النموذج'}</h4>
               </div>
               <div style="width: auto; height: 60px; padding: 8px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">
                 ${logoDataUrl ? `<img src="${logoDataUrl}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">` : `<span style="color: white; font-size: 12px;">شعار الجهة</span>`}
@@ -289,16 +289,16 @@ export const convertToPDF = async (html: string, logoFileName: string | null) =>
           </div>
         `,
       footerTemplate: `
-          <div style="font-size: 12px; width: 100%; direction: rtl; font-family: 'Arial Regular', Arial, sans-serif; margin: 0 15mm; padding: 10px 0;">
+          <div style="font-size: 12px; width: 100%; direction: rtl; margin: 0 15mm; padding: 10px 0;">
             <div style="max-width: 1200px; margin: 0 auto; padding: 12px 0; font-size: 12px; text-align: right; border-top: 1px solid #d1d5db;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-end;">
                 <div>
                   <p style="margin: 0 0 2px 0; font-size: 11px;">رقم الصفحة</p>
                   <p style="margin: 0; font-weight: bold;"><span class="pageNumber"></span> من <span class="totalPages"></span></p>
                 </div>
-                <div>تاريخ الإصدار: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;"></span></div>
-                <div>رقم النسخة: الثانية</div>
-                <div>رقم الكراسة: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;"></span></div>
+                <div>تاريخ الإصدار: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;">${revisionDate || ''}</span></div>
+                <div>رقم النسخة: ${revision || 'الثانية'}</div>
+                <div>رقم الكراسة: <span style="display: inline-block; border-bottom: 1px solid #9CA3AF; width: 80px; height: 14px;">${bookletNumber || ''}</span></div>
               </div>
             </div>
           </div>

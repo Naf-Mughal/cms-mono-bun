@@ -26,6 +26,26 @@ const bookletSchema: Schema<IBooklet> = new Schema(
       unique: true,
       index: true
     },
+    governmentName: {
+      type: String,
+      required: true,
+    },
+    departmentName: {
+      type: String,
+      required: true,
+    },
+    formName: {
+      type: String,
+      required: true,
+    },
+    revision: {
+      type: String,
+      required: true,
+    },
+    revisionDate: {
+      type: String,
+      required: true,
+    },
     bookletNumber: {
       type: String,
       required: true,

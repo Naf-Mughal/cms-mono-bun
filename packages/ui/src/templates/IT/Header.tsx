@@ -1,4 +1,12 @@
-const Header = () => {
+const Header = ({
+    governmentName,
+    departmentName,
+    formName,
+}: {
+    governmentName?: string
+    departmentName?: string
+    formName?: string
+}) => {
     return (
         <header>
             <div
@@ -8,10 +16,10 @@ const Header = () => {
                         المملكة العربية السعودية
                     </h1>
                     <h2 className="text-base font-medium text-gray-700">
-                        اسم الجهة الحكومية
+                        {governmentName || "اسم الجهة الحكومية"}
                     </h2>
-                    <h3 className="text-base font-medium text-gray-700">اسم الإدارة</h3>
-                    <h4 className="text-base font-medium text-gray-700">اسم النموذج</h4>
+                    <h3 className="text-base font-medium text-gray-700">{departmentName || "اسم الإدارة"}</h3>
+                    <h4 className="text-base font-medium text-gray-700">{formName || "اسم النموذج"}</h4>
                 </div>
                 <div className="w-auto h-24 p-3 bg-gray-500 flex items-center justify-center rounded-[1vw]">
                     <span className="text-white">شعار الجهة</span>
