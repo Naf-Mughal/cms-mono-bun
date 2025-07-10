@@ -856,11 +856,27 @@ export const bookletTasksSeed: BookletTasks = [
         name: ['Building Government Software', 'بناء البرمجيات الحكومية'],
         inputName: 'buildingGovernmentSoftware',
         data: {
-            value: 'يلتزم المتنافس -عند التعاقد لبناء البرمجيات الحكومية- بالفقرة (ه) من قواعد تنظيم البرمجيات الحكومية الحرة ومفتوحة المصدر الصادرة بموجب قرار مجلس الوزراء رقم (14) وتاريخ 2/1/1443هـ، وجميع الأوامر والقرارات والأنظمة والتعليمات الصادرة في هذا الشأن.',
+            value: "yes",
+            children: [
+                {
+                    value: 'yes',
+                    children: {
+                        value: 'نعم يلتزم المتنافس -عند التعاقد لبناء البرمجيات الحكومية- بالفقرة (ه) من قواعد تنظيم البرمجيات الحكومية الحرة ومفتوحة المصدر الصادرة بموجب قرار مجلس الوزراء رقم (14) وتاريخ 2/1/1443هـ، وجميع الأوامر والقرارات والأنظمة والتعليمات الصادرة في هذا الشأن.',
+                    },
+                    type: BookletInputTypesEnum.Readonly
+                },
+                {
+                    value: 'no',
+                    children: {
+                        value: 'يلتزم المتنافس -عند التعاقد لبناء البرمجيات الحكومية',
+                    },
+                    type: BookletInputTypesEnum.Readonly
+                }
+            ]
         },
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
-        inputType: BookletInputTypesEnum.Text,
+        inputType: BookletInputTypesEnum.Radio,
         description: ['Note: To maintain this clause, the government entity must aim, through this brochure or part of it, to oblige the competitor to build government software.', 'ملاحظة: يشترط لابقاء هذا البند بأن تهدف الجهة الحكومية من هذه الكراسة أو في جزء منها بإلزام المتنافس ببناء البرمجيات الحكومية'],
         pageNumber: 23
     },
