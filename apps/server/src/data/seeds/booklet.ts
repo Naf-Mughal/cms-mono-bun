@@ -877,7 +877,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.Radio,
-        description: ['Note: To maintain this clause, the government entity must aim, through this brochure or part of it, to oblige the competitor to build government software.', 'ملاحظة: يشترط لابقاء هذا البند بأن تهدف الجهة الحكومية من هذه الكراسة أو في جزء منها بإلزام المتنافس ببناء البرمجيات الحكومية'],
+        description: ['Is it required for this clause to remain in force that the government entity aims, through this brochure or part of it, to oblige the competitor to build government software?', 'هل يشترط لإبقاء هذا البند أن تهدف الجهة الحكومية من هذه الكراسة أو جزء منها إلى إلزام المتنافس ببناء البرمجيات الحكومية؟'],
         pageNumber: 23
     },
     {
