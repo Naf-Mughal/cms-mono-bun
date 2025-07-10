@@ -35,7 +35,7 @@ const TwentyThirdPage: React.FC<any> = ({ tasks, currentTask }: { tasks: any, cu
                 </div>
                 <div className="border-b border-gray-300 pb-4 mb-6">
                     <h3 className="font-semibold mb-2 ">68 بناء البرمجيات الحكومية</h3>
-                    <p className=" mb-3" ref={createRef('buildingGovernmentSoftware')}>{tasks?.buildingGovernmentSoftware}</p>
+                    <p className=" mb-3" ref={createRef('buildingGovernmentSoftware')}>{tasks?.buildingGovernmentSoftware?.value}</p>
                 </div>
                 <div className="pb-4 mb-6">
                     <h3 className="font-semibold mb-2 text-black">69	جدول الكميات والأسعار</h3>
