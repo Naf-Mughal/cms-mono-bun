@@ -5,6 +5,10 @@
     "apps/*",
     "packages/*"
   ],
+  "scripts": {
+    "server": "cd apps/server && bun dev",
+    "client": "cd apps/client && bun dev"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },

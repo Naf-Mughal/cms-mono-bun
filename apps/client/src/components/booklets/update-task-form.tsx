@@ -178,7 +178,7 @@ export function UpdataBookletTaskForm({ id, taskId, data, nextTaskId }: { id: st
         }
 
         // Handle different input types
-        if (data?.inputType === "radio") {
+        if (data?.inputType === "radio" || data?.inputType === "radio-with-values") {
             // For radio inputs, use the current state data which includes all nested structures
             const currentRadioValue = formData.get('data.value') || radioValue
 
