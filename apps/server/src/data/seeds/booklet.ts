@@ -304,7 +304,7 @@ export const bookletTasksSeed: BookletTasks = [
                 {
                     value: 'yes',
                     children: {
-                        value: 'يحق للجهة تجزئة المنافسة عند الترسية متى اقتضت المصلحة العامة ذلك، على ألّا يكون الهدف من التجزئة التحوّل إلى أساليب الشراء الأخرى و أن تكون طبيعة الأعمال والمشتريات قابلة للتجزئة فعلياً من حيث القيمة والمدة والبنود والعناصر، وأن تكون التجزئة على البنود غير المتماثلة في المنافسة وفي حال اقتضت المصلحة تجزئة البنود المتماثلة؛ فيجب الحصول على موافقة هيئة كفاءة الإنفاق والمشروعات الحكومية قبل طرح المنافسة.في حال تمت تجزئة المنافسة فإنه تتم الترسية على أكثر من متعاقد على أن يتم.',
+                        value: 'يحق للجهة تجزئة المنافسة عند الترسية متى اقتضت المصلحة العامة ذلك، على 	ألّا يكون الهدف من التجزئة التحوّل إلى أساليب الشراء الأخرى و أن تكون طبيعة الأعمال والمشتريات قابلة للتجزئة فعلياً من حيث القيمة والمدة والبنود والعناصر، وأن تكون التجزئة على البنود غير المتماثلة في المنافسة وفي حال اقتضت المصلحة تجزئة البنود المتماثلة؛ فيجب الحصول على موافقة هيئة كفاءة الإنفاق والمشروعات الحكومية قبل طرح المنافسة.في حال تمت تجزئة المنافسة فإنه تتم الترسية على أكثر من متعاقد على أن يتم (إضافة أسلوب التجزئة، والبنود المزمع تجزئتها، وآلية ترسيتها.'
                     },
                     type: BookletInputTypesEnum.Text
                 },
@@ -434,7 +434,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['', ''],
+        description: ['Add items', 'اضافة بنود'],
         pageNumber: 15
     },
     {
@@ -450,7 +450,7 @@ export const bookletTasksSeed: BookletTasks = [
         status: BookletTaskStatusesEnum.Pending,
         type: BookletTaskTypesEnum.Add,
         inputType: BookletInputTypesEnum.List,
-        description: ['', ''],
+        description: ['Add items', 'اضافة بنود'],
         pageNumber: 15
     },
     {
