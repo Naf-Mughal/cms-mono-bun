@@ -23,7 +23,7 @@ export const RadioGroupField = ({ label, children, required = false, className, 
         <div className="space-y-2 w-full">
             <div className={cn("flex gap-2 w-full", inline ? "flex-row items-center" : "flex-col")}>
                 <Label htmlFor={field.name} className={`font-semibold w-[220px] flex items-center gap-1 ${label ? "" : "hidden"}`}>{label} {required && <span className="text-[#3C9E19]">*</span>}</Label>
-                <RadioGroup name={field.name} className={cn("flex gap-2 w-full", dir === "rtl" ? "flex-row-reverse" : "flex-row", className)} defaultValue={field.state.value} onValueChange={(value) => field.handleChange(value)}>
+                <RadioGroup name={field.name} className={cn("flex gap-2 w-full items-stretch", dir === "rtl" ? "flex-row-reverse" : "flex-row", className)} defaultValue={field.state.value} onValueChange={(value) => field.handleChange(value)}>
                     {children}
                 </RadioGroup>
             </div>

@@ -868,7 +868,7 @@ export const bookletTasksSeed: BookletTasks = [
                 {
                     value: 'no',
                     children: {
-                        value: 'يلتزم المتنافس -عند التعاقد لبناء البرمجيات الحكومية',
+                        value: 'لا يلتزم المتنافس -عند التعاقد لبناء البرمجيات الحكومية',
                     },
                     type: BookletInputTypesEnum.Readonly
                 }
