@@ -72,7 +72,12 @@ const EN = {
         "cancel": "Cancel",
         "internal": "Internal",
         "external": "External",
-        "description": "Description"
+        "description": "Description",
+        "governmentName": "Government Name",
+        "departmentName": "Department Name",
+        "formName": "Form Name",
+        "revisionDate": "Revision Date",
+        "revision": "Revision",
     },
     "BookletTable": {
         "category": "Category",
@@ -240,7 +245,12 @@ const AR = {
         "cancel": "الغاء",
         "internal": "داخلي",
         "external": "خارجي",
-        "description": "وصف"
+        "description": "وصف",
+        "governmentName": "اسم الحكومة",
+        "departmentName": "اسم القسم",
+        "formName": "اسم النموذج",
+        "revisionDate": "تاريخ التحديث",
+        "revision": "نسخة"
     },
     "BookletTable": {
         "category": "فئة النموذج",
